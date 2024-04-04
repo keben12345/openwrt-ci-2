@@ -102,11 +102,6 @@ jobs:
         wget https://raw.githubusercontent.com/openwrt-ipq60xx/patches/main/feeds/luci/0001-show-soc-status-on-luci.patch
         git am 0001-show-soc-status-on-luci.patch
 
-    - name: Load Custom Script
-      run: |
-        chmod +x $DIY_SCRIPT
-        cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$DIY_SCRIPT
 
     - name: Download DL Package
       run: |
