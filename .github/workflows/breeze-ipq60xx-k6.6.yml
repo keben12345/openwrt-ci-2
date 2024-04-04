@@ -1,4 +1,4 @@
-name: ipq60xx-k6.6-breeze
+name: breeze-ipq60xx-k6.6
 
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
@@ -11,11 +11,11 @@ env:
   CONFIG_FILE: config/breezek66
   DIY_SCRIPT: breezek66.sh
   CLASH_KERNEL: amd64
-  CACHE_TOOLCHAIN: true
+  CACHE_TOOLCHAIN: false
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: ipq60xx-k6.6-breeze
+  FIRMWARE_TAG: breeze-ipq60xx-k6.6
   TZ: Asia/Shanghai
 
 jobs:
@@ -93,6 +93,14 @@ jobs:
         ./scripts/feeds install -a
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+
+    - name: Apply patches   
+      run: |
+        git config --global user.name "OpenWrt Builder"
+        git config --global user.email "buster-openwrt@ovvo.uk"
+        cd $OPENWRT_PATH/feeds/luci
+        wget https://raw.githubusercontent.com/openwrt-ipq60xx/patches/main/feeds/luci/0001-show-soc-status-on-luci.patch
+        git am 0001-show-soc-status-on-luci.patch
 
     - name: Load Custom Script
       run: |
