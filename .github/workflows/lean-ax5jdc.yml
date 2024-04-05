@@ -1,4 +1,4 @@
-name: Redmi-ax5jdc
+name: lean-ax5jdc
 
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
@@ -8,8 +8,8 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede.git
   REPO_BRANCH: master
-  CONFIG_FILE: config/ax5jdc
-  DIY_SCRIPT: ax5jdc.sh
+  CONFIG_FILE: config/lean-ax5jdc
+  DIY_SCRIPT: lean-ax5jdc.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
