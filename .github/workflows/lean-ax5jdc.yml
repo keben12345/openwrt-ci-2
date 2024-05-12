@@ -8,7 +8,7 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede.git
   REPO_BRANCH: master
-  CONFIG_FILE: config/lean-ax5jdc
+  CONFIG_FILE: config/ax5
   DIY_SCRIPT: lean-ax5jdc.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
