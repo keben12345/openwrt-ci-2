@@ -1,21 +1,20 @@
-name: Redmi-ax5-nand
-
-# 脚本参考github/haiibo和dzlea
+name: compile ipq60xx-packages
+# 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede.git
-  REPO_BRANCH: master
-  CONFIG_FILE: config/ax5
-  DIY_SCRIPT: ax5.sh
+  REPO_URL: https://github.com/breeze303/openwrt-6.x.git
+  REPO_BRANCH: main
+  CONFIG_FILE: config/compile-packages
+  DIY_SCRIPT: compile.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: ax5-lean
+  FIRMWARE_TAG: compile-packages
   TZ: Asia/Shanghai
 
 jobs:
@@ -65,7 +64,7 @@ jobs:
     - name: Clone Source Code
       run: |
         df -hT $GITHUB_WORKSPACE
-        git clone --depth=1 $REPO_URL -b $REPO_BRANCH openwrt
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         COMMIT_AUTHOR=$(git show -s --date=short --format="%an")
@@ -94,6 +93,7 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
+
     - name: Load Custom Script
       run: |
         chmod +x $DIY_SCRIPT
@@ -102,12 +102,21 @@ jobs:
 
     - name: Download DL Package
       run: |
-        [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_PATH/.config
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
         cd $OPENWRT_PATH
         make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+
+    - name: text md5
+      run: |
+        rm -rf $OPENWRT_PATH/.vermagic
+        rm -rf $OPENWRT_PATH/package/kernel/linux/Makefile
+        rm -rf $OPENWRT_PATH/include/kernel-defaults.mk
+        mv $GITHUB_WORKSPACE/md5opw/vermagic-k6.6 $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/md5opw/Makefile-k6.6 $OPENWRT_PATH/package/kernel/linux//Makefile
+        mv $GITHUB_WORKSPACE/md5opw/kernel-defaults-k6.6 $OPENWRT_PATH/include/kernel-defaults.mk
 
     - name: Compile Firmware
       id: compile
@@ -134,13 +143,11 @@ jobs:
       if: steps.compile.outputs.status == 'success'
       run: |
         cd $OPENWRT_PATH/bin/targets/*/*
-        cat sha256sums
-        rm -rf packages
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
     - name: Upload Firmware To Artifact
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_FIRMWARE == 'true'
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.FIRMWARE_TAG }}-firmware-${{ env.FILE_DATE }}
+        name: ${{ env.FIRMWARE_TAG }}-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
