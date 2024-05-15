@@ -1,4 +1,4 @@
-name: test
+name: breeze-emmc-nowifi
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
@@ -7,14 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/breeze303/openwrt-6.x.git
   REPO_BRANCH: main
-  CONFIG_FILE: config/compile-packages
-  DIY_SCRIPT: compile.sh
+  CONFIG_FILE: config/breeze-emmc-nowifi
+  DIY_SCRIPT: generic.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: compile-packages
+  FIRMWARE_TAG: openwrt-breeze-emmc-k6.6nowifi
   TZ: Asia/Shanghai
 
 jobs:
@@ -64,7 +64,7 @@ jobs:
     - name: Clone Source Code
       run: |
         df -hT $GITHUB_WORKSPACE
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
+        git clone --depth=1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         COMMIT_AUTHOR=$(git show -s --date=short --format="%an")
@@ -84,15 +84,28 @@ jobs:
         mixkey: ${{ env.FIRMWARE_TAG }}
         prefix: ${{ env.OPENWRT_PATH }}
 
-
     - name: Install Feeds
+      run: |
+        cd $OPENWRT_PATH
+        sed -i '$d' feeds.conf.default
+        sed -i '$d' feeds.conf.default
+        cat feeds.conf.default
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
+
+    - name: Install Feeds 2
       run: |
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
 
+    - name: Apply patches   
+      run: |
+        git config --global user.name "OpenWrt Builder"
+        git config --global user.email "buster-openwrt@ovvo.uk"
+        cd $OPENWRT_PATH/feeds/luci
+        wget https://raw.githubusercontent.com/openwrt-ipq60xx/patches/main/feeds/luci/0001-show-soc-status-on-luci.patch
+        git am 0001-show-soc-status-on-luci.patch
 
     - name: Load Custom Script
       run: |
@@ -114,7 +127,7 @@ jobs:
         rm -rf $OPENWRT_PATH/.vermagic
         rm -rf $OPENWRT_PATH/package/kernel/linux/Makefile
         rm -rf $OPENWRT_PATH/include/kernel-defaults.mk
-        mv $GITHUB_WORKSPACE/md5/vermagic-breeze $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/md5/vermagic-op $OPENWRT_PATH/vermagic
         mv $GITHUB_WORKSPACE/md5/Makefile-breeze $OPENWRT_PATH/package/kernel/linux//Makefile
         mv $GITHUB_WORKSPACE/md5/kernel-defaults-breeze $OPENWRT_PATH/include/kernel-defaults.mk
 
@@ -143,6 +156,7 @@ jobs:
       if: steps.compile.outputs.status == 'success'
       run: |
         cd $OPENWRT_PATH/bin/targets/*/*
+        cat sha256sums
         rm -rf packages
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
