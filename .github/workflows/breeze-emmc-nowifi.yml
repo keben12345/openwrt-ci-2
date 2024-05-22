@@ -124,12 +124,13 @@ jobs:
 
     - name: text md5
       run: |
+        cd $OPENWRT_PATH
         rm -rf $OPENWRT_PATH/.vermagic
-        rm -rf $OPENWRT_PATH/package/kernel/linux/Makefile
-        rm -rf $OPENWRT_PATH/include/kernel-defaults.mk
-        mv $GITHUB_WORKSPACE/md5/vermagic-op $OPENWRT_PATH/vermagic
-        mv $GITHUB_WORKSPACE/md5/Makefile-breeze $OPENWRT_PATH/package/kernel/linux//Makefile
-        mv $GITHUB_WORKSPACE/md5/kernel-defaults-breeze $OPENWRT_PATH/include/kernel-defaults.mk
+        mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
+        sed -i '119d' include/kernel-defaults.mk
+        sed -i '119i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '29d' package/kernel/linux//Makefile
+        sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux//Makefile
 
     - name: Compile Firmware
       id: compile
