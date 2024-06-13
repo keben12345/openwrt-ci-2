@@ -9,18 +9,18 @@ git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/packages/net/{xray-core,sing-box,hysteria,mosdns}
 git clone --depth=1 https://github.com/kenzok8/small.git package/small
-mv package/small/luci-app-passwall feeds/luci/applications/luci-app-passwall
-mv package/small/xray-core feeds/package/net/xray-core
-mv package/small/sing-box feeds/package/net/sing-box
-mv package/small/hysteria feeds/package/net/hysteria
-mv package/small/mosdns feeds/package/net/mosdns
+mv package/small/luci-app-passwall feeds/luci/applications/
+mv package/small/xray-core feeds/package/net/
+mv package/small/sing-box feeds/package/net/
+mv package/small/hysteria feeds/package/net/
+mv package/small/mosdns feeds/package/net/
 
 rm -rf package/small
 
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
 git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
-mv package/openclash/luci-app-openclash feeds/luci/applications/luci-app-openclash
+mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
 
 # 添加其它插件
