@@ -1,4 +1,4 @@
-# sed -i 's/192.168.1.1/192.168.22.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.13.1/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 
 # 编译新版Sing-box和hysteria，尽量使用golang版本1.22以上版本 ，可以用以下命令
@@ -6,6 +6,7 @@ rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
 # 安装最新版passwall
+rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/packages/net/{xray-core,sing-box,hysteria,mosdns}
 git clone --depth=1 https://github.com/kenzok8/small.git package/small
 mv package/small/luci-app-passwall feeds/luci/applications/luci-app-passwall
