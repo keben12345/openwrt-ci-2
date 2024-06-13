@@ -10,10 +10,7 @@ rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/packages/net/{xray-core,sing-box,hysteria,mosdns}
 git clone --depth=1 https://github.com/kenzok8/small.git package/small
 mv package/small/luci-app-passwall feeds/luci/applications/
-mv package/small/xray-core feeds/package/net/
-mv package/small/sing-box feeds/package/net/
-mv package/small/hysteria feeds/package/net/
-mv package/small/mosdns feeds/package/net/
+mv package/small/{xray-core,sing-box,hysteria,mosdns} feeds/packages/net/
 
 rm -rf package/small
 
