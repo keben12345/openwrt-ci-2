@@ -1,18 +1,22 @@
-sed -i 's/192.168.1.1/192.168.13.1/g' package/base-files/files/bin/config_generate
-sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
+# sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 
-# 编译新版Sing-box和hysteria，尽量使用golang版本1.22以上版本 ，可以用以下命令
+# 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-
-# 安装最新版passwall
-rm -rf feeds/luci/applications/luci-app-passwall
-rm -rf feeds/packages/net/{xray-core,sing-box,hysteria,mosdns}
-git clone --depth=1 https://github.com/kenzok8/small.git package/small
-mv package/small/luci-app-passwall feeds/luci/applications/
-mv package/small/{xray-core,sing-box,hysteria,mosdns} feeds/packages/net/
-
-rm -rf package/small
+git clone --depth=1 https://github.com/kenzok8/golang feeds/packages/lang/golang
+#删除自带的老旧依赖，ssr-plus，passwall
+rm -rf feeds/packages/net/{brook,chinadns-ng,dns2socks,dns2tcp,hysteria,ipt2socks,microsocks,naiveproxy}
+rm -rf feeds/packages/net/{pdnsd-alt,simple-obfs,sing-box,tcping,trojan*,tuic-client,v2ray*,xray*,mosdns,redsocks2}
+rm -rf feeds/packages/net/{gn,ssocks,shadow-tls}
+rm -rf feeds/packages/utils/v2dat
+rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns}
+#下载安装kenzok8的small库
+sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+./scripts/feeds update -a
+./scripts/feeds install -a
+#新版ssr-libev和ss-rust缺少依赖，所以延用旧版，删除新版
+rm -rf feeds/small/shadowsocks-rust
+rm -rf feeds/small/shadowsocksr-libev
 
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
