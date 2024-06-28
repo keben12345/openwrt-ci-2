@@ -1,4 +1,4 @@
-name: mt7986-jdc-hanwckf
+name: mt7986-hanwckf
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
@@ -7,13 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x.git
   REPO_BRANCH: openwrt-21.02
-  CONFIG_FILE: config/mt7986-jdc-hanwckf
+  CONFIG_FILE: config/mt7986-hanwckf
   DIY_SCRIPT: scripts/mt798x.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
+  UPLOAD_ARTIFACT: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: mt7986-jdc-baili
+  FIRMWARE_TAG: mediatek-mt7986
   TZ: Asia/Shanghai
 
 jobs:
@@ -67,25 +68,18 @@ jobs:
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
-
-    - name: Generate Variables(生成变量)
-      run: |
-        cp $CONFIG_FILE $OPENWRT_PATH/.config
-        cd $OPENWRT_PATH
-        make defconfig > /dev/null 2>&1
         SOURCE_REPO="$(echo $REPO_URL | awk -F '/' '{print $(NF)}')"
         echo "SOURCE_REPO=$SOURCE_REPO" >> $GITHUB_ENV
-        DEVICE_TARGET=$(cat .config | grep CONFIG_TARGET_BOARD | awk -F '"' '{print $2}')
-        echo "DEVICE_TARGET=$DEVICE_TARGET" >> $GITHUB_ENV
-        DEVICE_SUBTARGET=$(cat .config | grep CONFIG_TARGET_SUBTARGET | awk -F '"' '{print $2}')
-        echo "DEVICE_SUBTARGET=$DEVICE_SUBTARGET" >> $GITHUB_ENV
+        SOURCE_AUTHOR="$(echo $REPO_URL | awk -F '/' '{print $4}')"
+        echo "SOURCE_AUTHOR=$SOURCE_AUTHOR" >> $GITHUB_ENV
+
 
     - name: Cache Toolchain(缓存工具链)
       if: env.CACHE_TOOLCHAIN == 'true'
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-mt7986
         prefix: ${{ env.OPENWRT_PATH }}
     
     - name: Install Feeds(安装feeds)
@@ -95,15 +89,6 @@ jobs:
         ./scripts/feeds install -a
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-  
-    - name: Load Custom Configuration(加载自定义配置)
-      run: |
-        mv $CONFIG_FILE $OPENWRT_PATH/default.config
-        cp $GITHUB_WORKSPACE/config/packages.txt $OPENWRT_PATH/packages.txt
-        cd $OPENWRT_PATH
-        rm -rf .config
-        cat default.config packages.txt >> .config
-        cat .config
 
     - name: Load Custom Script（加载自定义脚本）
       run: |
@@ -113,6 +98,7 @@ jobs:
 
     - name: Download DL Package(下载DL软件包)
       run: |
+        mv $CONFIG_FILE $OPENWRT_PATH/.config
         cd $OPENWRT_PATH
         make defconfig
         make download -j8
@@ -122,7 +108,7 @@ jobs:
     - name: edit md5(编辑内核值）
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vermagic-imm21.02 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '109d' include/kernel-defaults.mk
         sed -i '109i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
@@ -147,7 +133,7 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.SOURCE_REPO }}-bin-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.FILE_DATE }}
+        name: ${{ env.FIRMWARE_TAG }}-${{ env.SOURCE_AUTHOR }}-${{ env.FILE_DATE }}
         path: ${{ env.OPENWRT_PATH }}/bin
 
     - name: Organize Files(整理文件)
@@ -162,10 +148,10 @@ jobs:
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
     - name: Upload Firmware To Artifact(将固件上传到Artifact)
-      if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE != 'true'
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_ARTIFACT == 'true'
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.SOURCE_REPO }}-firmware-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.FILE_DATE }}
+        name: ${{ env.FIRMWARE_TAG }}-${{ env.SOURCE_AUTHOR }}-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
 
     - name: Upload Firmware To Release(发布固件)
@@ -178,12 +164,11 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
-          **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
           ### 📒 固件信息
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
-          - 🌐 默认地址: 192.168.13.1
+          - 🌐 默认地址: 192.168.23.1
           - 🔑 默认密码: 无
           ### 🧊 固件版本
           - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
