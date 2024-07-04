@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x.git
   REPO_BRANCH: openwrt-21.02
   CONFIG_FILE: config/mt7981-padavanonly
-  DIY_SCRIPT: script/mt798x-hanwckf.sh
+  DIY_SCRIPT: script/mt798x.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -99,7 +99,7 @@ jobs:
     - name: edit md5（编辑内核值）
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vermagic-imm21.02 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '109d' include/kernel-defaults.mk
         sed -i '109i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
