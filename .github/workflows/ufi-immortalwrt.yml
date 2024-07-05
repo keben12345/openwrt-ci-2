@@ -1,4 +1,4 @@
-name: msm8916-ufi
+name: ufi-immortalwrt
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
@@ -7,14 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/lkiuyu/immortalwrt.git
   REPO_BRANCH: master
-  CONFIG_FILE: config/msm8916-ufi
+  CONFIG_FILE: config/ufi-immortalwrt
   DIY_SCRIPT: scripts/ufi.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: msm8916-ufi
+  FIRMWARE_TAG: msm8916-ufi-immortalwrt
   TZ: Asia/Shanghai
 
 jobs:
