@@ -90,6 +90,17 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
+    - name: Apply patches(安装首页补丁)   
+      run: |
+        rm $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/luci
+        rm $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+        rm $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/luci-mod-status.json
+        mkdir $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin
+        mv $GITHUB_WORKSPACE/patch/op-dev-status/soc-status $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin/
+        mv $GITHUB_WORKSPACE/patch/op-dev-status/luci $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/
+        mv $GITHUB_WORKSPACE/patch/op-dev-status/10_system.js $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/
+        mv $GITHUB_WORKSPACE/patch/op-dev-status/luci-mod-status.json $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/
+
     - name: Load Custom Script(加载自定义脚本)
       run: |
         chmod +x $DIY_SCRIPT
