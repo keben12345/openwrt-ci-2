@@ -90,16 +90,13 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    - name: Apply patches(安装首页补丁)   
+    - name: Apply patches   
       run: |
-        rm $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/luci
-        rm $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
-        rm $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/luci-mod-status.json
-        mkdir $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin
-        mv $GITHUB_WORKSPACE/patch/op-view-status/soc-status $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin/
-        mv $GITHUB_WORKSPACE/patch/op-view-status/luci $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/
-        mv $GITHUB_WORKSPACE/patch/op-view-status/10_system.js $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/
-        mv $GITHUB_WORKSPACE/patch/op-view-status/luci-mod-status.json $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/
+        git config --global user.name "OpenWrt Builder"
+        git config --global user.email "buster-openwrt@ovvo.uk"
+        cd $OPENWRT_PATH/feeds/luci
+        wget https://raw.githubusercontent.com/openwrt-ipq60xx/patches/main/feeds/luci/0001-show-soc-status-on-luci.patch
+        git am 0001-show-soc-status-on-luci.patch
 
     - name: Load Custom Script(加载自定义脚本)
       run: |
