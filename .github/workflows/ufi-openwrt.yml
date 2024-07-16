@@ -105,6 +105,16 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
+    - name: edit md5
+      run: |
+        rm -rf $OPENWRT_PATH/.vermagic
+        mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
+        cd $OPENWRT_PATH
+        sed -i '116d' include/kernel-defaults.mk
+        sed -i '116i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '29d' package/kernel/linux/Makefile
+        sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
+
     - name: Compile Firmware(开始编译固件)
       id: compile
       run: |
