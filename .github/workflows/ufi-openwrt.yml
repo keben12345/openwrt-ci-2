@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/lkiuyu/openwrt-ufi.git
   REPO_BRANCH: main
   CONFIG_FILE: config/ufi-openwrt
-  DIY_SCRIPT: scripts/ufi.sh
+  DIY_SCRIPT: script/ufi.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -96,10 +96,10 @@ jobs:
         rm $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
         rm $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/luci-mod-status.json
         mkdir $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin
-        mv $GITHUB_WORKSPACE/patch/op-dev-status/soc-status $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin/
-        mv $GITHUB_WORKSPACE/patch/op-dev-status/luci $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/
-        mv $GITHUB_WORKSPACE/patch/op-dev-status/10_system.js $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/
-        mv $GITHUB_WORKSPACE/patch/op-dev-status/luci-mod-status.json $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/
+        mv $GITHUB_WORKSPACE/patch/op-view-status/soc-status $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin/
+        mv $GITHUB_WORKSPACE/patch/op-view-status/luci $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/
+        mv $GITHUB_WORKSPACE/patch/op-view-status/10_system.js $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/
+        mv $GITHUB_WORKSPACE/patch/op-view-status/luci-mod-status.json $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/
 
     - name: Load Custom Script(加载自定义脚本)
       run: |
