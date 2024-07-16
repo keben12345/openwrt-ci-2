@@ -25,6 +25,8 @@ CONFIG_OPENSSL_WITH_WHIRLPOOL=y
 CONFIG_PACKAGE_android-tools-adbd=y
 CONFIG_PACKAGE_cgi-io=y
 CONFIG_PACKAGE_dbus=y
+# CONFIG_PACKAGE_dnsmasq is not set
+CONFIG_PACKAGE_dnsmasq-full=y
 CONFIG_PACKAGE_gc=y
 CONFIG_PACKAGE_glib2=y
 CONFIG_PACKAGE_kmod-usb-gadget-functionfs=y
