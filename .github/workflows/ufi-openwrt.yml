@@ -100,7 +100,7 @@ jobs:
 
     - name: replace 10_system.js
       run: |
-        mv $GITHUB_WORKSPACE/patch/op-view-status/10_system.js $OPENWRT_PATH/feeds/luci//modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+        mv $GITHUB_WORKSPACE/patch/op-status/10_system.js $OPENWRT_PATH/feeds/luci//modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
     - name: Load Custom Script(加载自定义脚本)
       run: |
