@@ -93,8 +93,8 @@ jobs:
     - name: Apply patches   
       run: |
         mkdir $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin
-        mkdir $OPENWRT_PATH/feeds/luci/modules/123
-        mv $GITHUB_WORKSPACE/patch/op-status/* $OPENWRT_PATH/feeds/luci/modules/123/
+        mkdir $OPENWRT_PATH/feeds/luci/modules/abc
+        mv $GITHUB_WORKSPACE/patch/op-status/* $OPENWRT_PATH/feeds/luci/modules/abc/
         cd $OPENWRT_PATH/feeds/luci/modules
         mv abc/soc-status luci-base/root/sbin/soc-status
         mv abc/luci luci-base/root/usr/share/rpcd/ucode/luci
