@@ -86,9 +86,8 @@ return baseclass.extend({
 				systeminfo.load[1] / 65535.0,
 				systeminfo.load[2] / 65535.0
 			) : null,
-			_('核心频率'),          coreinfo.cpufreq / 1000 + ' MHz ' + '(' + coreinfo.governor + ')',
-			_('核心温度'),          'CPU ' + coretemp.cpu + ' °C',
-			_('使用率'),            'CPU ' + coreusage.cpu + '%'
+			_('核心状态'),          'CPU ' + coreusage.cpu + '%', coreinfo.cpufreq / 1000 + ' MHz ' + '(' + coreinfo.governor + ')',
+			_('温度    '),          'CPU ' + coretemp.cpu + ' °C'
 		];
 
 		var table = E('table', { 'class': 'table' });
