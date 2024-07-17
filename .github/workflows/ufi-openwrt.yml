@@ -96,7 +96,7 @@ jobs:
         git config --global user.email "buster-openwrt@ovvo.uk"
         mv $GITHUB_WORKSPACE/patch/1-show-soc-status-on-luci.patch $OPENWRT_PATH/feeds/luci/
         cd $OPENWRT_PATH/feeds/luci
-        git am 0001-show-soc-status-on-luci.patch
+        git am 1-show-soc-status-on-luci.patch
 
     - name: replace 10_system.js
       run: |
