@@ -86,7 +86,7 @@ return baseclass.extend({
 				systeminfo.load[1] / 65535.0,
 				systeminfo.load[2] / 65535.0
 			) : null,
-			_('核心状态'),          'CPU ' + coreusage.cpu + '%', coreinfo.cpufreq / 1000 + ' MHz ' + '(' + coreinfo.governor + ')',
+			_('CPU状态 '),          '使用率 ' + coreusage.cpu + '%' + ' , ' + '频率 ' + coreinfo.cpufreq / 1000 + ' MHz ' + '工作模式 ' + coreinfo.governor ,
 			_('温度    '),          'CPU ' + coretemp.cpu + ' °C'
 		];
 
