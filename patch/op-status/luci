@@ -626,10 +626,6 @@ const methods = {
 			result.cpu = trim(fd.read('all'));
 			fd.close();
 
-			fd = popen('soc-status nss_usage');
-			result.nss = trim(fd.read('all'));
-			fd.close();
-
 			return result;
 		}
 	}
