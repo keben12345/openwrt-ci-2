@@ -609,10 +609,6 @@ const methods = {
 			result.cpu = trim(fd.read('all'));
 			fd.close();
 
-			fd = popen('soc-status wifi_temp');
-			result.wifi = trim(fd.read('all'));
-			fd.close();
-
 			return result;
 		}
 	},
@@ -624,10 +620,6 @@ const methods = {
 
 			fd = popen('soc-status cpu_usage');
 			result.cpu = trim(fd.read('all'));
-			fd.close();
-
-			fd = popen('soc-status nss_usage');
-			result.nss = trim(fd.read('all'));
 			fd.close();
 
 			return result;
