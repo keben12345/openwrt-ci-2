@@ -31,12 +31,6 @@ get_cpu_usage() {
   echo "$value"
 }
 
-get_nss_usage() {
-  local value="$(grep '%' /sys/kernel/debug/qca-nss-drv/stats/cpu_load_ubi 2>/dev/null | awk '{print $2}' | sed 's/%//')"
-  [ -n "$value" ] || value="-1"
-  echo "$value"
-}
-
 case "$1" in
   cpu_freq)
     get_cpu_freq
@@ -53,11 +47,8 @@ case "$1" in
   cpu_usage)
     get_cpu_usage
     ;;
-  nss_usage)
-    get_nss_usage
-    ;;
   *)
-    echo "Usage: $0 {cpu_freq|cpu_governor|cpu_temp|wifi_temp|cpu_usage|nss_usage}"
+    echo "Usage: $0 {cpu_freq|cpu_governor|cpu_temp|wifi_temp|cpu_usage}"
     exit 1
     ;;
 esac
