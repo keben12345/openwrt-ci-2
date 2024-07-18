@@ -148,7 +148,6 @@ jobs:
     - name: Organize Files(整理文件)
       if: steps.compile.outputs.status == 'success'
       run: |
-        cp -rf $OPENWRT_PATH/feeds/luci/modules $OPENWRT_PATH/bin/targets/*/*
         cd $OPENWRT_PATH/bin/targets/*/*
         cat sha256sums
         cp $OPENWRT_PATH/.config full.config
