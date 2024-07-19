@@ -77,7 +77,7 @@ return baseclass.extend({
 			_('Model'),            boardinfo.model,
 			_('Architecture'),     boardinfo.system,
 			_('Target Platform'),  (L.isObject(boardinfo.release) ? boardinfo.release.target : ''),
-			_('Firmware Version'), (L.isObject(boardinfo.release) ? boardinfo.release.description + ' / ' : '') + (luciversion || ''),
+			_('Firmware Version'), boardinfo.release.description,
 			_('Kernel Version'),   boardinfo.kernel,
 			_('Local Time'),       datestr,
 			_('Uptime'),           systeminfo.uptime ? '%t'.format(systeminfo.uptime) : null,
@@ -86,8 +86,7 @@ return baseclass.extend({
 				systeminfo.load[1] / 65535.0,
 				systeminfo.load[2] / 65535.0
 			) : null,
-			_('CPU状态 '),          '使用率 ' + coreusage.cpu + '%' + ' ， ' + '频率 ' + coreinfo.cpufreq / 1000 + ' MHz ' + ' ， ' + '模式 ' + coreinfo.governor ,
-			_('温度    '),          'CPU ' + coretemp.cpu + ' °C'
+			_('CPU状态 '),          '温度 ' + coretemp.cpu + ' °C' + ' ， ' + '使用率 ' + coreusage.cpu + '%' + ' ， ' + '频率 ' + coreinfo.cpufreq / 1000 + ' MHz ' + '(' + coreinfo.governor + ')'
 		];
 
 		var table = E('table', { 'class': 'table' });
