@@ -7,7 +7,7 @@ on:
 env:
   REPO_URL: https://github.com/lkiuyu/openwrt-ufi.git
   REPO_BRANCH: main
-  CONFIG_FILE: config/ufi-openwrt
+  CONFIG_FILE: config/ufi-openwrt-test
   DIY_SCRIPT: script/ufi.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
