@@ -21,7 +21,7 @@ rm -rf package/imm-luci
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/paswall-app
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/paswall-pkg
 
-git clone --depth=1 https://github.com/kiddin9/openwrt-packages.git package/kiddin9-packages
-mv package/kiddin9-packages/cpufreq package/mypkg/cpufreq
-mv package/kiddin9-packages/luci-app-cpufreq package/mypkg/luci-app-cpufreq
-rm -rf package/kiddin9-packages
+git clone --depth=1 https://github.com/kiddin9/openwrt-packages.git package/kiddin9-pkg
+mv package/kiddin9-pkg/cpufreq package/mypkg/cpufreq
+mv package/kiddin9-pkg/luci-app-cpufreq package/mypkg/luci-app-cpufreq
+rm -rf package/kiddin9-pkg
