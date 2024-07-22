@@ -10,10 +10,12 @@ sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_genera
 
 rm -rf feeds/luci/applications/luci-app-dockerman
 git clone --depth=1 https://github.com/immortalwrt/luci.git package/imm-luci
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/paswall-app
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/paswall-pkg
 mkdir package/mypkg
+mv package/imm-luci/luci.mk  package/luci.mk
 mv package/imm-luci/applications/luci-app-dockerman feeds/luci/applications/luci-app-dockerman
 mv package/imm-luci/applications/luci-app-cpufreq package/mypkg/luci-app-cpufreq
 mv package/imm-luci/applications/luci-app-diskman package/mypkg/luci-app-diskman
-mv package/imm-luci/applications/luci-app-passwall package/mypkg/luci-app-passwall
 mv package/imm-luci/applications/luci-app-homeproxy package/mypkg/luci-app-homeproxy
 rm -rf package/imm-luci
