@@ -18,4 +18,5 @@ mv package/imm-luci/applications/luci-app-dockerman feeds/luci/applications/luci
 mv package/imm-luci/applications/luci-app-cpufreq package/mypkg/luci-app-cpufreq
 mv package/imm-luci/applications/luci-app-diskman package/mypkg/luci-app-diskman
 mv package/imm-luci/applications/luci-app-homeproxy package/mypkg/luci-app-homeproxy
+mv package/imm-luci/applications/luci-app-ramfree package/mypkg/luci-app-ramfree
 rm -rf package/imm-luci
