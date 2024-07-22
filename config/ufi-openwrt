@@ -89,9 +89,18 @@ CONFIG_TARGET_ROOTFS_PARTSIZE=480
 # CONFIG_WPA_MBO_SUPPORT is not set
 
 CONFIG_PACKAGE_kmod-usb2=y
+CONFIG_PACKAGE_kmod-usb-storage=y
+CONFIG_PACKAGE_kmod-usb-storage-extras=y
+CONFIG_PACKAGE_kmod-fs-btrfs=y
+CONFIG_PACKAGE_kmod-fs-exfat=y
+CONFIG_PACKAGE_kmod-fs-f2fs=y
+CONFIG_PACKAGE_kmod-fs-vfat=y
+CONFIG_PACKAGE_kmod-fs-ntfs3=y
 CONFIG_PACKAGE_kmod-usb-net-asix-ax88179=y
 CONFIG_PACKAGE_kmod-usb-net-rtl8152=y
 CONFIG_PACKAGE_kmod-rtw88-8822bu=y
+CONFIG_PACKAGE_block-mount=y
+CONFIG_PACKAGE_usbutils=y
 CONFIG_PACKAGE_openssl-util=y
 CONFIG_PACKAGE_coremark=y
 CONFIG_PACKAGE_htop=y
