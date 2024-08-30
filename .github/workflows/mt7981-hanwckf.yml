@@ -1,20 +1,20 @@
-name: ufi-immortalwrt
+name: mt7986-hanwckf
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/lkiuyu/immortalwrt.git
-  REPO_BRANCH: master
-  CONFIG_FILE: config/ufi-immortalwrt
-  DIY_SCRIPT: scripts/ufi.sh
+  REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
+  REPO_BRANCH: openwrt-21.02
+  CONFIG_FILE: config/mt7981-hanwckf
+  DIY_SCRIPT: scripts/mt798x-test.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
-  UPLOAD_FIRMWARE: true
+  UPLOAD_ARTIFACT: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: msm8916-ufi-immortalwrt
+  FIRMWARE_TAG: mt7981-hanwckf
   TZ: Asia/Shanghai
 
 jobs:
@@ -73,38 +73,28 @@ jobs:
         SOURCE_AUTHOR="$(echo $REPO_URL | awk -F '/' '{print $4}')"
         echo "SOURCE_AUTHOR=$SOURCE_AUTHOR" >> $GITHUB_ENV
 
+
     - name: Cache Toolchain(缓存工具链)
       if: env.CACHE_TOOLCHAIN == 'true'
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-msm8916
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-mt7981
         prefix: ${{ env.OPENWRT_PATH }}
     
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        cat feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    - name: Load Custom Script(加载自定义脚本)
+    - name: Load Custom Script（加载自定义脚本）
       run: |
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
-
-    - name: edit md5（编辑内核值）
-      run: |
-        rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
-        cd $OPENWRT_PATH
-        sed -i '119d' include/kernel-defaults.mk
-        sed -i '119i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
-        sed -i '29d' package/kernel/linux/Makefile
-        sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
     - name: Download DL Package(下载DL软件包)
       run: |
@@ -114,6 +104,16 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+
+    - name: edit md5(编辑内核值）
+      run: |
+        rm -rf $OPENWRT_PATH/.vermagic
+        mv $GITHUB_WORKSPACE/vermagic-imm21.02 $OPENWRT_PATH/vermagic
+        cd $OPENWRT_PATH
+        sed -i '109d' include/kernel-defaults.mk
+        sed -i '109i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '27d' package/kernel/linux/Makefile
+        sed -i '27i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
     - name: Compile Firmware(开始编译固件)
       id: compile
@@ -133,7 +133,7 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.SOURCE_REPO }}-bin-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.FILE_DATE }}
+        name: ${{ env.FIRMWARE_TAG }}-${{ env.SOURCE_AUTHOR }}-${{ env.FILE_DATE }}
         path: ${{ env.OPENWRT_PATH }}/bin
 
     - name: Organize Files(整理文件)
@@ -142,14 +142,16 @@ jobs:
         cd $OPENWRT_PATH/bin/targets/*/*
         cat sha256sums
         cp $OPENWRT_PATH/.config full.config
+        mv -f $OPENWRT_PATH/bin/packages/*/*/*.ipk packages
+        tar -zcf Packages.tar.gz packages
         rm -rf packages feeds.buildinfo version.buildinfo
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
     - name: Upload Firmware To Artifact(将固件上传到Artifact)
-      if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_ARTIFACT == 'true'
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.FIRMWARE_TAG }}-${{ env.FILE_DATE }}
+        name: ${{ env.FIRMWARE_TAG }}-${{ env.SOURCE_AUTHOR }}-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
 
     - name: Upload Firmware To Release(发布固件)
@@ -163,7 +165,7 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           ### 📒 固件信息
-          - 💻 这是msm8916-ufi平台使用的 OpenWrt 固件
+          - 💻 这是 ${{ env.FIRMWARE_TAG }} 使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.23.1
