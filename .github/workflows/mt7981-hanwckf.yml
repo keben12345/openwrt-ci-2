@@ -1,4 +1,4 @@
-name: mt7986-hanwckf
+name: mt7981-hanwckf
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
