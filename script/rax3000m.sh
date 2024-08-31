@@ -26,3 +26,14 @@ git clone --depth=1 https://github.com/kiddin9/openwrt-packages.git  package/kid
 mv package/kiddin9/luci-app-ddns feeds/luci/applications/
 mv package/kiddin9/ddns-scripts feeds/packages/net/ddns-scripts
 rm -rf package/kiddin9
+
+
+mkdir package/mypkg
+git clone --depth=1 https://github.com/immortalwrt/luci.git package/imm-luci
+mv package/imm-luci/luci.mk  package/luci.mk
+
+rm -rf feeds/luci/protocols/luci-proto-wireguard
+mv package/imm-luci/protocols/luci-proto-wireguard package/mypkg/
+
+mv package/imm-luci/applications/luci-app-ramfree package/mypkg/
+rm -rf package/imm-luci
