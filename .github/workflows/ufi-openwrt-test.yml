@@ -7,8 +7,8 @@ on:
 env:
   REPO_URL: https://github.com/lkiuyu/openwrt-ufi.git
   REPO_BRANCH: main
-  CONFIG_FILE: config/ufi-openwrt-test
-  DIY_SCRIPT: script/ufi.sh
+  CONFIG_FILE: config/ufi-openwrt
+  DIY_SCRIPT: script/ufi-test.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -96,7 +96,7 @@ jobs:
         mv $GITHUB_WORKSPACE/patch/op-status/soc-status $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin/
         chmod a+rwx $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin/soc-status
         mv $GITHUB_WORKSPACE/patch/op-status/luci $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/
-        mv $GITHUB_WORKSPACE/patch/op-status/10_system.js $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+        mv $GITHUB_WORKSPACE/patch/op-status/10_system.js $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/
         mv $GITHUB_WORKSPACE/patch/op-status/luci-mod-status.json $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/
 
     - name: Load Custom Script(加载自定义脚本)
@@ -160,7 +160,7 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_FIRMWARE == 'true'
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.FIRMWARE_TAG }}-${{ env.FILE_DATE }}
+        name: ${{ env.FIRMWARE_TAG }}-${{ env.SOURCE_AUTHOR }}-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
 
     - name: Upload Firmware To Release(发布固件)
