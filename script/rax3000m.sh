@@ -18,3 +18,11 @@ rm -rf feeds/luci/applications/luci-app-openclash
 git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
 mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
+
+#安装最新ddns
+rm -rf feeds/luci/applications/luci-app-ddns
+rm -rf feeds/packages/net/ddns-scripts
+git clone --depth=1 https://github.com/kiddin9/openwrt-packages.git  package/kiddin9
+mv package/kiddin9/luci-app-ddns feeds/luci/applications/
+mv package/kiddin9/ddns-scripts feeds/packages/net/ddns-scripts
+rm -rf package/kiddin9
