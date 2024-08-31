@@ -7,13 +7,13 @@ on:
 env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
-  CONFIG_FILE: config/mt7981-hanwckf
-  DIY_SCRIPT: script/mt798x.sh
+  CONFIG_FILE: config/rax3000m-hanwckf
+  DIY_SCRIPT: script/rax3000m.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
-  UPLOAD_ARTIFACT: false
-  FIRMWARE_RELEASE: true
+  UPLOAD_ARTIFACT: true
+  FIRMWARE_RELEASE: false
   FIRMWARE_TAG: mt7981-hanwckf
   TZ: Asia/Shanghai
 
