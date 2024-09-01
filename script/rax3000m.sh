@@ -27,21 +27,21 @@ mv package/imm-luci/luci.mk  package/luci.mk
 #ddns
 rm -rf feeds/luci/applications/luci-app-ddns
 rm -rf feeds/packages/net/{ddns-scripts,ddns-scripts_aliyun,ddns-scripts_dnspod}
-mv package/imm-luci/applications/luci-app-ddns feeds/luci/applications/luci-app-ddns
-mv package/imm-pkg/net/ddns-scripts feeds/packages/net/ddns-scripts
-mv package/imm-pkg/net/ddns-scripts_aliyun feeds/packages/net/ddns-scripts_aliyun
-mv package/imm-pkg/net/ddns-scripts_dnspod feeds/packages/net/ddns-scripts_dnspod
+mv package/imm-luci/applications/luci-app-ddns package/mypkg/
+mv package/imm-pkg/net/ddns-scripts package/mypkg/
+mv package/imm-pkg/net/ddns-scripts_aliyun package/mypkg/
+mv package/imm-pkg/net/ddns-scripts_dnspod package/mypkg/
 #wireguard
 rm -rf feeds/luci/protocols/luci-proto-wireguard
-mv package/imm-luci/protocols/luci-proto-wireguard feeds/luci/protocols/luci-proto-wireguard
-mv package/imm-luci/libs/luci-lib-uqr  feeds/luci/libs/luci-lib-uqr
-mv package/imm-luci/contrib/package/ucode-mod-html feeds/luci/contrib/package/ucode-mod-html
-mv package/imm-luci/contrib/package/ucode-mod-lua feeds/luci/contrib/package/ucode-mod-lua
+mv package/imm-luci/protocols/luci-proto-wireguard package/mypkg/
+mv package/imm-luci/libs/luci-lib-uqr package/mypkg/
+mv package/imm-luci/contrib/package/ucode-mod-html package/mypkg/
+mv package/imm-luci/contrib/package/ucode-mod-lua package/mypkg/
 #socat
 rm -rf feeds/luci/applications/luci-app-socat
 rm -rf feeds/packages/net/socat
-mv package/imm-luci/applications/luci-app-socat feeds/luci/applications/luci-app-socat
-mv package/imm-pkg/net/socat feeds/packages/net/socat
+mv package/imm-luci/applications/luci-app-socat package/mypkg/
+mv package/imm-pkg/net/socat package/mypkg/
 
 rm -rf package/imm-luci
 rm -rf package/imm-pkg
