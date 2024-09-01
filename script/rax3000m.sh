@@ -26,17 +26,19 @@ git clone --depth=1 https://github.com/immortalwrt/packages.git package/imm-pkg
 mv package/imm-luci/luci.mk  package/luci.mk
 #ddns
 rm -rf feeds/luci/applications/luci-app-ddns
-rm -rf feeds/packages/net/ddns-scripts
-mv package/imm-luci/luci-app-ddns package/mypkg/
-mv package/imm-pkg/ddns-scripts package/mypkg/
+rm -rf feeds/packages/net/{ddns-scripts,ddns-scripts_aliyun,ddns-scripts_dnspod}
+mv package/imm-luci/luci-app-ddns feeds/luci/applications/luci-app-ddns
+mv package/imm-pkg/ddns-scripts feeds/packages/net/ddns-scripts
+mv package/imm-pkg/ddns-scripts_aliyun feeds/packages/net/ddns-scripts_aliyun
+mv package/imm-pkg/ddns-scripts_dnspod feeds/packages/net/ddns-scripts_dnspod
 #wireguard
 rm -rf feeds/luci/protocols/luci-proto-wireguard
-mv package/imm-luci/protocols/luci-proto-wireguard package/mypkg/
+mv package/imm-luci/protocols/luci-proto-wireguard feeds/luci/protocols/luci-proto-wireguard
 #socat
 rm -rf feeds/luci/applications/luci-app-socat
 rm -rf feeds/packages/net/socat
-mv package/imm-luci/luci-app-ddns package/mypkg/
-mv package/imm-pkg/ddns-scripts package/mypkg/
+mv package/imm-luci/luci-app-socat feeds/luci/applications/luci-app-socat
+mv package/imm-pkg/socat feeds/packages/net/socat
 
 rm -rf package/imm-luci
 rm -rf package/imm-pkg
