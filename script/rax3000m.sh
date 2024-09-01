@@ -34,11 +34,14 @@ mv package/imm-pkg/ddns-scripts_dnspod feeds/packages/net/ddns-scripts_dnspod
 #wireguard
 rm -rf feeds/luci/protocols/luci-proto-wireguard
 mv package/imm-luci/protocols/luci-proto-wireguard feeds/luci/protocols/luci-proto-wireguard
+mv package/imm-luci/libs/luci-lib-uqr  feeds/luci/libs/luci-lib-uqr
+mv package/imm-luci/contrib/package/ucode-mod-html feeds/luci/contrib/package/ucode-mod-html
+mv package/imm-luci/contrib/package/ucode-mod-lua feeds/luci/contrib/package/ucode-mod-lua
 #socat
 rm -rf feeds/luci/applications/luci-app-socat
 rm -rf feeds/packages/net/socat
 mv package/imm-luci/luci-app-socat feeds/luci/applications/luci-app-socat
-mv package/imm-pkg/socat feeds/packages/net/socat
+mv package/imm-pkg/net/socat feeds/packages/net/socat
 
 rm -rf package/imm-luci
 rm -rf package/imm-pkg
