@@ -20,4 +20,4 @@ mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
 
 #下载5g模块
-git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+# git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
