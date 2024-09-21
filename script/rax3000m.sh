@@ -1,5 +1,5 @@
-sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
-sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.6.1/192.168.23.1/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/RAX3000M/g' package/base-files/files/bin/config_generate
 
 # 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 rm -rf feeds/packages/lang/golang
