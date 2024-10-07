@@ -17,7 +17,6 @@ sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 #新版ssr-libev和ss-rust缺少依赖，所以延用旧版，删除新版
 rm -rf feeds/small/shadowsocks-rust
 rm -rf feeds/small/shadowsocksr-libev
-rm -rf feeds/small/luci-app-passwall
 
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
