@@ -85,6 +85,7 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
+        mv $GITHUB_WORKSPACE/patch/lean/feeds.conf.default $OPENWRT_PATH/feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
