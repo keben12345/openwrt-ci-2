@@ -1,6 +1,14 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 
+rm -rf $OPENWRT_PATH/.vermagic
+mv $GITHUB_WORKSPACE/vermagic-imm21.02 $OPENWRT_PATH/vermagic
+cd $OPENWRT_PATH
+sed -i '109d' include/kernel-defaults.mk
+sed -i '109i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+sed -i '27d' package/kernel/linux/Makefile
+sed -i '27i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
+
 # 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 rm -rf feeds/packages/lang/golang
 git clone --depth=1 https://github.com/kenzok8/golang feeds/packages/lang/golang
@@ -34,3 +42,4 @@ rm -rf package/openclash
 # git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/mypackage/nas-luci
 # mv package/mypackage/nas-packages/network/services/* package/mypackage/nas-packages/
 # rm -rf package/mypackage/nas-packages/network
+
