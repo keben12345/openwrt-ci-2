@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
   CONFIG_FILE: config/q30-hanwckf
-  DIY_SCRIPT: script/rax3000m.sh
+  DIY_SCRIPT: script/mt798x.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
