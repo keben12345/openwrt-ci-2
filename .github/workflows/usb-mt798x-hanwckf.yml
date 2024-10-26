@@ -1,4 +1,4 @@
-name: rax3000m-hanwckf
+name: usb-mt798x-hanwckf
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
@@ -7,14 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
-  CONFIG_FILE: config/rax3000m-hanwckf
+  CONFIG_FILE: config/xr30emmc-hanwckf
   DIY_SCRIPT: script/rax3000m.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_ARTIFACT: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: rax3000m-hanwckf
+  FIRMWARE_TAG: usb-mt798x-hanwckf
   TZ: Asia/Shanghai
 
 jobs:
@@ -79,7 +79,7 @@ jobs:
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-rax3000m
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-usb-mt798x
         prefix: ${{ env.OPENWRT_PATH }}
     
     - name: Install Feeds(安装feeds)
