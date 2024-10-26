@@ -6,7 +6,6 @@ rm -rf feeds/luci/applications/luci-app-openclash
 git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
 mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
-sed -i 's/OpenWrt/CMCC-8Hd5/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.sh
 
 # 添加其它插件
 # git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/mypackage/luci-theme-argon
