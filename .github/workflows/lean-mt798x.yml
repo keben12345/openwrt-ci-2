@@ -1,4 +1,4 @@
-name: mt798x-lean
+name: lean-mt798x
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
