@@ -1,6 +1,6 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
-sed -i 's/ImmortalWrt/rax3000m64g/g' package/base-files/files/bin/config_generate
-sed -i 's/ImmortalWrt/rax3000m64g/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/ImmortalWrt/rax3000m/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/rax3000m/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
 
 #安装最新openclash
@@ -11,7 +11,3 @@ mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/ban
 
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-echo >> feeds.conf.default
-echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
-./scripts/feeds update -a
-./scripts/feeds install -a
