@@ -7,7 +7,7 @@ on:
 env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
-  CONFIG_FILE: config/xr30emmc-hanwckf
+  CONFIG_FILE: config/rax3000m-hanwckf
   DIY_SCRIPT: script/rax3000m.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
@@ -149,7 +149,7 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
-        name: R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
+        name: R${{ env.DATE }} for ${{ env.SOURCE_AUTHOR }}-${{ env.FIRMWARE_TAG }}
         allowUpdates: true
         tag: ${{ env.FIRMWARE_TAG }}
         token: ${{ secrets.GITHUB_TOKEN }}
