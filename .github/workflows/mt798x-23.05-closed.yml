@@ -1,4 +1,4 @@
-name: mt798x-23.05
+name: mt798x-23.05-closed
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
@@ -14,7 +14,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: mmt798x-23.05
+  FIRMWARE_TAG: mt798x-23.05
   TZ: Asia/Shanghai
 
 jobs:
@@ -95,7 +95,6 @@ jobs:
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
-
 
     - name: Download DL Package(下载DL软件包)
       run: |
