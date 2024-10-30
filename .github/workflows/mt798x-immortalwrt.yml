@@ -98,6 +98,11 @@ jobs:
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
+    - name: Apply patches   
+      run: |
+        mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
+        mv $GITHUB_WORKSPACE/patch/immortalwrt/defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
+
     - name: Download DL Package(下载DL软件包)
       run: |
         mv $CONFIG_FILE $OPENWRT_PATH/.config
