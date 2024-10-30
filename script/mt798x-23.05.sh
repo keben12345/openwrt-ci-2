@@ -4,6 +4,7 @@ sed -i 's/ImmortalWrt/rax3000m64g/g' package/kernel/mac80211/files/lib/wifi/mac8
 mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/m798x-23.05-closed/defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
 chmod a+rwx package/emortal/default-settings/files/99-default-settings
+sed -i 's#downloads.immortalwrt.org#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 
 #安装最新openclash
 #rm -rf feeds/luci/applications/luci-app-openclash
