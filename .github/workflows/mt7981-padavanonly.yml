@@ -96,7 +96,7 @@ jobs:
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
-    - name: Load Custom Script(加载自定义脚本)
+    - name: Load apptch(加载补丁)
       run: |
         mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
         mv $GITHUB_WORKSPACE/patch/m798x-closed/defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
