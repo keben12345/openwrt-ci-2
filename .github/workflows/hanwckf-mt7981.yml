@@ -1,4 +1,4 @@
-name: mt7981-hanwckf
+name: hanwckf-mt7981
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
@@ -7,14 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
-  CONFIG_FILE: config/mt7981-hanwckf
-  DIY_SCRIPT: script/mt798x.sh
+  CONFIG_FILE: config/hanwckf-mt7981
+  DIY_SCRIPT: script/hanwckf-mt798x.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_ARTIFACT: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: mt7981-hanwckf
+  FIRMWARE_TAG: hanwckf-mt7981
   TZ: Asia/Shanghai
 
 jobs:
