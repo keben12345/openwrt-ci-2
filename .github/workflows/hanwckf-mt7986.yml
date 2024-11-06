@@ -1,4 +1,4 @@
-name: mt7986-hanwckf
+name: hanwckf-mt7986
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
@@ -7,14 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x.git
   REPO_BRANCH: openwrt-21.02
-  CONFIG_FILE: config/mt7986-hanwckf
-  DIY_SCRIPT: script/mt798x.sh
+  CONFIG_FILE: config/hanwckf-mt7986
+  DIY_SCRIPT: script/hanwckf-mt798x.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_ARTIFACT: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: mediatek-mt7986
+  FIRMWARE_TAG: hanwckf-mt7986
   TZ: Asia/Shanghai
 
 jobs:
@@ -156,7 +156,6 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           ### 📒 固件信息
-          - 💻 这是 ${{ env.FIRMWARE_TAG }} 使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.23.1
