@@ -1,4 +1,4 @@
-name: mt798x-23.05-closed
+name: padavanonly-mt798x-23.05
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
