@@ -14,7 +14,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: mt7986-23.05
+  FIRMWARE_TAG: mt798x-23.05
   TZ: Asia/Shanghai
 
 jobs:
@@ -153,7 +153,7 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           ### 📒 固件信息
-          - 💻 这是mt7986平台使用的 OpenWrt 固件
+          - 💻 这是mt798x平台使用的 OpenWrt 闭源驱动固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.23.1
