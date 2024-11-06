@@ -1,4 +1,4 @@
-name: padavanonly-mt798x-23.05
+name: padavanonly-mt7986-23.05
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
@@ -7,14 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x-23.05.git
   REPO_BRANCH: openwrt-23.05
-  CONFIG_FILE: config/mt798x-23.05
+  CONFIG_FILE: config/mt7986-23.05-padavanonly
   DIY_SCRIPT: script/mt798x-23.05.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: mt798x-23.05
+  FIRMWARE_TAG: mt7986-23.05
   TZ: Asia/Shanghai
 
 jobs:
@@ -78,7 +78,7 @@ jobs:
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-mt798x-23.05
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-mt7986-23.05
         prefix: ${{ env.OPENWRT_PATH }}
     
     - name: Install Feeds(安装feeds)
@@ -153,7 +153,7 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           ### 📒 固件信息
-          - 💻 这是mt7981平台使用的 OpenWrt 固件
+          - 💻 这是mt7986平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.23.1
