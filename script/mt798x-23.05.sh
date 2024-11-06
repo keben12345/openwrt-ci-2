@@ -6,7 +6,10 @@ mv $GITHUB_WORKSPACE/patch/m798x-23.05-padavanonly/defset $OPENWRT_PATH/package/
 chmod a+rwx package/emortal/default-settings/files/99-default-settings
 sed -i 's#downloads.immortalwrt.org#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 
+rm -rf feeds/packages/lang/golang
+git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
-#下载5g模块
 #git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 #rm -rf feeds/packages/net/quectel-cm
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
+git clone --depth=1 https://github.com/sbwml/luci-app-mosdns.git package/mosdns
