@@ -13,3 +13,4 @@ git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/
 #rm -rf feeds/packages/net/quectel-cm
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth=1 https://github.com/sbwml/luci-app-mosdns.git package/mosdns
+git clone --depth=1 https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
