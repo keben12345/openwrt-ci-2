@@ -1,4 +1,4 @@
-name: mt798x-immortalwrt
+name: mt798x-immortalwrt-official
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
@@ -14,7 +14,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_ARTIFACT: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: mt798x-immortalwrt
+  FIRMWARE_TAG: mt798x-immortalwrt-official
   TZ: Asia/Shanghai
 
 jobs:
@@ -79,7 +79,7 @@ jobs:
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-mt798x
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-mt798x-official
         prefix: ${{ env.OPENWRT_PATH }}
     
     - name: Install Feeds(安装feeds)
@@ -169,7 +169,6 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           ### 📒 固件信息
-          - 💻 这是 ${{ env.FIRMWARE_TAG }} 使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.23.1
