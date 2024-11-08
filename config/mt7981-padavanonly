@@ -224,16 +224,6 @@ CONFIG_PACKAGE_libstdcpp=y
 CONFIG_PACKAGE_libudev-zero=y
 CONFIG_PACKAGE_libuuid=y
 CONFIG_PACKAGE_lua-cjson=y
-CONFIG_PACKAGE_luci-app-eqos-mtk=y
-CONFIG_PACKAGE_luci-app-mtwifi-cfg=y
-CONFIG_PACKAGE_luci-app-turboacc-mtk=y
-CONFIG_PACKAGE_luci-app-upnp=y
-CONFIG_PACKAGE_luci-i18n-eqos-mtk-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-mtwifi-cfg-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-turboacc-mtk-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=y
-CONFIG_PACKAGE_luci-theme-argon=y
-# CONFIG_PACKAGE_luci-theme-bootstrap-mod is not set
 CONFIG_PACKAGE_mii_mgr=y
 CONFIG_PACKAGE_miniupnpd=y
 CONFIG_PACKAGE_mtkhqos_util=y
@@ -275,23 +265,21 @@ CONFIG_first_card_name="MT7981"
 # CONFIG_MTK_RLM_CAL_CACHE_SUPPORT is not set
 # CONFIG_MTK_SNIFFER_RADIOTAP_SUPPORT is not set
 
+CONFIG_PACKAGE_luci-theme-argon=y
+# CONFIG_PACKAGE_luci-theme-bootstrap-mod is not set
+CONFIG_PACKAGE_luci-app-eqos-mtk=y
+CONFIG_PACKAGE_luci-app-mtwifi-cfg=y
+CONFIG_PACKAGE_luci-app-turboacc-mtk=y
+CONFIG_PACKAGE_luci-app-upnp=y
+CONFIG_PACKAGE_luci-i18n-eqos-mtk-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-mtwifi-cfg-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-turboacc-mtk-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=y
+
+# CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-ng is not set
+# CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-webui is not set
+# CONFIG_PACKAGE_luci-app-filetransfer is not set
 # CONFIG_PACKAGE_luci-app-ksmbd is not set
 # CONFIG_PACKAGE_luci-app-usb-printer is not set
 # CONFIG_PACKAGE_luci-app-usbmodem is not set
 # CONFIG_PACKAGE_luci-app-wrtbwmon is not set
-
-CONFIG_PACKAGE_luci-app-argon-config=y
-CONFIG_PACKAGE_luci-app-autoreboot=y
-CONFIG_PACKAGE_luci-app-ramfree=y
-CONFIG_PACKAGE_luci-i18n-argon-config-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-autoreboot-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-ramfree-zh-cn=y
-
-CONFIG_PACKAGE_luci-app-vsftpd=y
-CONFIG_PACKAGE_luci-i18n-vsftpd-zh-cn=y
-CONFIG_PACKAGE_luci-app-store=y
-CONFIG_PACKAGE_luci-app-modem=y
-CONFIG_PACKAGE_luci-i18n-modem-zh-cn=y
-CONFIG_PACKAGE_luci-lib-taskd=y
-CONFIG_PACKAGE_luci-lib-xterm=y
-CONFIG_PACKAGE_taskd=y
