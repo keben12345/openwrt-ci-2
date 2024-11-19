@@ -9,8 +9,8 @@ sed -i 's#downloads.immortalwrt.org#mirror.nju.edu.cn/immortalwrt#g' package/emo
 git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
-rm -rf feeds/packages/net/adguardhome
-mv package/small-package/adguardhome feeds/packages/net/adguardhome
+#rm -rf feeds/packages/net/adguardhome
+#mv package/small-package/adguardhome feeds/packages/net/adguardhome
 rm -rf package/small-package
 
 #git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
@@ -24,7 +24,7 @@ rm -rf package/small-package
 # git clone --depth=1 https://github.com/fw876/helloworld.git package/ssr
 
 # iStore
-#git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
+git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
 #git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
 #git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
 #mv package/nas-packages/network/services/* package/nas-packages/
