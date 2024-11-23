@@ -10,6 +10,17 @@ git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclas
 mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
 
+#下载5g模块
+git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
+sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
+sed -i 's/\"network\"/\"modem\"/g' package/5g-modem/luci-app-modem/luasrc/controller/modem.lua
+rm -rf feeds/packages/net/quectel-cm
+rm -rf feeds/packages/kernel/fibocom-qmi-wwan
+rm -rf feeds/packages/kernel/quectel-qmi-wwan
+rm -rf feeds/luci/protocols/luci-proto-quectel
+rm -rf feeds/nss_packages/wwan
+
 # iStore
 git clone --depth=1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
 mv package/extra-ipk/linkease package/linkease
