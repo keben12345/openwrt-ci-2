@@ -28,4 +28,10 @@ mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 #rm -rf feeds/packages/net/adguardhome
 #mv package/small-package/adguardhome feeds/packages/net/adguardhome
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
+mv package/small-package/luci-app-ddnsto package/luci-app-ddnsto
+mv package/small-package/ddnsto package/ddnsto
 rm -rf package/small-package
+
+git clone --depth=1 https://github.com/coolsnowwolf/lede.git package/lede
+mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
+rm -rf package/lede
