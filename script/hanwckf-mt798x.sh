@@ -23,6 +23,8 @@ git clone --depth=1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/e
 mv package/extra-ipk/linkease package/linkease
 rm -rf package/extra-ipk
 
+rm -rf feeds/packages/lang/golang
+git clone --depth=1 https://github.com/kenzok8/golang feeds/packages/lang/golang
 git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
