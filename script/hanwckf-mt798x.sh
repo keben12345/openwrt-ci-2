@@ -1,5 +1,5 @@
-sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.6.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/AX6000/g' package/base-files/files/bin/config_generate
 #sed -i 's/ImmortalWrt/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #sed -i 's/ImmortalWrt/AX3000t/g' package/mtk/applications/luci-app-mtwifi-cfg/root/usr/share/luci-app-mtwifi-cfg/wireless-mtk.js
@@ -23,13 +23,16 @@ git clone --depth=1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/e
 mv package/extra-ipk/linkease package/linkease
 rm -rf package/extra-ipk
 
+git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 #rm -rf feeds/packages/net/adguardhome
 #mv package/small-package/adguardhome feeds/packages/net/adguardhome
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
-mv package/small-package/luci-app-ddnsto package/luci-app-ddnsto
-mv package/small-package/ddnsto package/ddnsto
+mv package/small-package/luci-app-alist package/luci-app-alist
+mv package/small-package/alist package/alist
+rm -rf feeds/packages/net/alist
+rm -rf feeds/luci/applications/luci-app-alist
 rm -rf package/small-package
 
 git clone --depth=1 https://github.com/coolsnowwolf/lede.git package/lede
