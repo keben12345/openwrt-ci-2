@@ -14,8 +14,10 @@ git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-p
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 #rm -rf feeds/packages/net/adguardhome
 #mv package/small-package/adguardhome feeds/packages/net/adguardhome
-mv package/small-package/luci-app-UUGameAcc package/luci-app-UUGameAcc
+#mv package/small-package/luci-app-UUGameAcc package/luci-app-UUGameAcc
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
+rm -rf feeds/packages/net/alist
+mv package/small-package/alist feeds/packages/net/alist
 rm -rf package/small-package
 
 #下载5g模块
