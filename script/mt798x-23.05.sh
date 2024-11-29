@@ -9,7 +9,12 @@ mv $GITHUB_WORKSPACE/patch/m798x-23.05-padavanonly/defset $OPENWRT_PATH/package/
 chmod a+rwx package/emortal/default-settings/files/99-default-settings
 sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 
-git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
+rm -rf feeds/packages/lang/golang
+git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+#git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
+#git clone --depth=1 https://github.com/sbwml/luci-app-mosdns.git package/mosdns
+git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
+#git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 #rm -rf feeds/packages/net/adguardhome
@@ -25,17 +30,10 @@ git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-
 sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
 sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
 sed -i 's/\"network\"/\"modem\"/g' package/5g-modem/luci-app-modem/luasrc/controller/modem.lua
-rm -rf feeds/packages/net/quectel-cm
-rm -rf feeds/packages/kernel/fibocom-qmi-wwan
-rm -rf feeds/packages/kernel/quectel-qmi-wwan
-rm -rf feeds/luci/protocols/luci-proto-quectel
-
-rm -rf feeds/packages/lang/golang
-git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
-#git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
-#git clone --depth=1 https://github.com/sbwml/luci-app-mosdns.git package/mosdns
-#git clone --depth=1 https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
-#git clone --depth=1 https://github.com/fw876/helloworld.git package/ssr
+#rm -rf feeds/packages/net/quectel-cm
+#rm -rf feeds/packages/kernel/fibocom-qmi-wwan
+#rm -rf feeds/packages/kernel/quectel-qmi-wwan
+#rm -rf feeds/luci/protocols/luci-proto-quectel
 
 # iStore
 git clone --depth=1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
