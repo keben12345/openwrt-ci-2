@@ -14,7 +14,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_ARTIFACT: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: hanwckf-mt7986-science
+  FIRMWARE_TAG: hanwckf-mt798x-science
   TZ: Asia/Shanghai
 
 jobs:
