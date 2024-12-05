@@ -21,12 +21,12 @@ git clone --depth=1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/e
 mv package/extra-ipk/linkease package/linkease
 rm -rf package/extra-ipk
 
-git clone --depth=1 https://github.com/selfcan/luci-app-homebox.git package/luci-app-homebox
 git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/small-package/homebox package/homebox
+mv package/small-package/luci-app-netspeedtest package/luci-app-netspeedtest
 #mv package/small-package/luci-app-alist package/luci-app-alist
 #mv package/small-package/alist package/alist
 #rm -rf feeds/packages/net/alist
