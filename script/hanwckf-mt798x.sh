@@ -26,6 +26,7 @@ git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-ap
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
+mv package/small-package/homebox package/homebox
 #mv package/small-package/luci-app-alist package/luci-app-alist
 #mv package/small-package/alist package/alist
 #rm -rf feeds/packages/net/alist
