@@ -4,6 +4,9 @@ sed -i 's/ImmortalWrt/Router/g' package/base-files/files/bin/config_generate
 sed -i "s/ImmortalWrt/WiFi6/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
 
+#红米ax6000改512MB闪存
+sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
+
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
 git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
