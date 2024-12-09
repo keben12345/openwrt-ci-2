@@ -11,7 +11,10 @@ git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon.git package/lu
 git clone --depth=1 https://github.com/Siha06/my-openwrt-packages.git package/my-openwrt-packages
 
 git clone --depth=1 -b openwrt-23.05 https://github.com/immortalwrt/luci.git package/imm-luci23
-mv package/imm-luci23/applications/luci-app-accesscontrol feeds/luci/applications/luci-app-accesscontrol
-mv package/imm-luci23/applications/luci-app-autoreboot feeds/luci/applications/luci-app-autoreboot
-mv package/imm-luci23/applications/luci-app-ramfree feeds/luci/applications/luci-app-ramfree
+mv package/imm-luci23/applications/luci-app-accesscontrol package/luci-app-accesscontrol
+sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-accesscontrol/Makefile
+mv package/imm-luci23/applications/luci-app-autoreboot package/luci-app-autoreboot
+sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-autoreboot/Makefile
+mv package/imm-luci23/applications/luci-app-ramfree package/luci-app-ramfree
+sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-ramfree/Makefile
 rm -rf package/imm-luci23
