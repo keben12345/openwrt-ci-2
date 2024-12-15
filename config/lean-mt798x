@@ -123,3 +123,6 @@ CONFIG_boost-variant-release=y
 # CONFIG_PACKAGE_shadowsocks-libev-ss-local is not set
 # CONFIG_PACKAGE_shadowsocks-libev-ss-redir is not set
 # CONFIG_PACKAGE_shadowsocks-libev-ss-server is not set
+
+CONFIG_PACKAGE_kmod-mtd-rw=y
+CONFIG_PACKAGE_luci-app-store=y
