@@ -1,26 +1,33 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/luci2/bin/config_generate
+sed -i 's/LEDE/OpenWrt/g' package/base-files/files/bin/config_generate
+sed -i 's/LEDE/OpenWrt/g' package/base-files/luci2/bin/config_generate
+#sed -i "s/luci-theme-bootstrap/luci-theme-design/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 
-mv $GITHUB_WORKSPACE/patch/lean/defset $OPENWRT_PATH/package/lean/default-settings/files/zzz-default-settings
-mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
-sed -i "s/luci-theme-bootstrap/luci-theme-design/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
+#mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
+#mv $GITHUB_WORKSPACE/patch/lean/defset package/lean/default-settings/files/zzz-default-settings
 
-# 修改版本为编译日期
-# date_version=$(date +"%y.%m.%d")
-# orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
-# sed -i "s/${orig_version}/R${date_version} by5und4y/g" package/lean/default-settings/files/zzz-default-settings
+#git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
+git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+#git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
 
-# Clear the login password
-# sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' openwrt/package/lean/default-settings/files/zzz-default-settings
+# iStore
+git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
+git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
+git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
+mv package/nas-packages/network/services/* package/nas-packages/
+rm -rf package/nas-packages/network
 
-# rm -rf feeds/packages/lang/golang
-# git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-# git clone --depth=1 https://github.com/kenzok8/small.git package/small
-# rm -rf feeds/luci/applications/luci-app-mosdns
-# rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*}
-# rm -rf feeds/packages/utils/v2dat
-# rm -rf package/small/luci-app-bypass
-# rm -rf feeds/luci/themes/luci-theme-argon
-# rm -rf feeds/luci/applications/luci-app-argon-config
+#下载5g模块
+#git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+#sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
+#sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
+#sed -i 's/\"network\"/\"modem\"/g' package/5g-modem/luci-app-modem/luasrc/controller/modem.lua
 
-# git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon feeds/luci/themes/luci-theme-argon
-# git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-app-argon-config feeds/luci/applications/luci-app-argon-config
+rm -rf feeds/luci/themes/luci-theme-argon
+rm -rf feeds/luci/applications/luci-app-argon-config
+git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-app-argon-config.git feeds/luci/applications/luci-app-argon-config
+git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
