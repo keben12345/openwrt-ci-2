@@ -93,10 +93,10 @@ jobs:
 
     - name: Load Custom Script（加载自定义脚本）
       run: |
+        mv $CONFIG_FILE $OPENWRT_PATH/.config
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
-        mv $CONFIG_FILE $OPENWRT_PATH/.config
 
     - name: SSH链接管理
       uses: P3TERX/ssh2actions@v1.0.0
