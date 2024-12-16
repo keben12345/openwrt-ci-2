@@ -14,7 +14,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_ARTIFACT: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: hanwckf-mt7986
+  FIRMWARE_TAG: hanwckf-mt798x
   TZ: Asia/Shanghai
 
 jobs:
@@ -142,7 +142,7 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_ARTIFACT == 'true'
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.FIRMWARE_TAG }}-${{ env.SOURCE_AUTHOR }}-${{ env.FILE_DATE }}
+        name: ${{ env.FIRMWARE_TAG }}-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
 
     - name: Upload Firmware To Release(发布固件)
