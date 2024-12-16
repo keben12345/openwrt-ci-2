@@ -10,12 +10,12 @@ env:
   CONFIG_FILE: config/hanwckf-mt7981
   DIY_SCRIPT: script/hanwckf-mt798x.sh
   CLASH_KERNEL: amd64
-  SSH_ACTIONS: true
+  SSH_ACTIONS: false
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_ARTIFACT: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: hanwckf-mt7981
+  FIRMWARE_TAG: hanwckf-mt798x
   TZ: Asia/Shanghai
 
 jobs:
@@ -164,7 +164,6 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           ### 📒 固件信息
-          - 💻 这是 ${{ env.FIRMWARE_TAG }} 使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.23.1
