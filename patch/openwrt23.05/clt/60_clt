@@ -8,3 +8,8 @@ sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's/3/7/g' /etc/config/autoreboot
 sed -i 's/5/3/g' /etc/config/autoreboot
 sed -i 's/0/1/g' /etc/config/autoreboot
+
+mv /etc/99-msd_lite /etc/hotplug.d/iface/99-msd_lite
+mv /etc/99-udpxy /etc/hotplug.d/iface/99-udpxy
+chmod a+rwx /etc/hotplug.d/iface/99-msd_lite
+chmod a+rwx /etc/hotplug.d/iface/99-udpxy
