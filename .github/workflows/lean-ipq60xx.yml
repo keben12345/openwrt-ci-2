@@ -8,14 +8,14 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede.git
   REPO_BRANCH: master
-  CONFIG_FILE: config/lean-ipq-wifi
-  DIY_SCRIPT: script/lean-ipq.sh
+  CONFIG_FILE: config/lean-ipq-nowifi
+  DIY_SCRIPT: script/lean.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: ipq60xx-wifi
+  FIRMWARE_TAG: ipq60xx-nowifi
   TZ: Asia/Shanghai
 
 jobs:
@@ -133,12 +133,6 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    - name: Apply patches
-      run: |
-        mv $GITHUB_WORKSPACE/patch/lean/defset $OPENWRT_PATH/package/lean/default-settings/files/zzz-default-settings
-        mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
-        mv $GITHUB_WORKSPACE/patch/lean/mac80211.sh $OPENWRT_PATH/package/kernel/mac80211/files/lib/wifi/mac80211.sh
-
     - name: Load Custom Script
       run: |
         chmod +x $DIY_SCRIPT
@@ -196,7 +190,7 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
-        name: R${{ env.DATE }} for ${{ env.SOURCE_AUTHOR }}-${{ env.FIRMWARE_TAG }}
+        name: R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
         allowUpdates: true
         tag: ${{ env.FIRMWARE_TAG }}
         token: ${{ secrets.GITHUB_TOKEN }}
