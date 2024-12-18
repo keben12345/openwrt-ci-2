@@ -6,6 +6,9 @@ mv $GITHUB_WORKSPACE/patch/openwrt23.05/clt/mac80211.sh package/kernel/mac80211/
 mv $GITHUB_WORKSPACE/patch/openwrt23.05/clt/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 mv $GITHUB_WORKSPACE/patch/openwrt23.05/clt/60_clt package/base-files/files/etc/uci-defaults/60_clt
 
+mv $GITHUB_WORKSPACE/patch/lean/99-msd_lite package/base-files/files/etc/99-msd_lite
+mv $GITHUB_WORKSPACE/patch/lean/99-udpxy package/base-files/files/etc/99-udpxy
+
 git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone --depth=1 https://github.com/Siha06/my-openwrt-packages.git package/my-openwrt-packages
 mv $GITHUB_WORKSPACE/patch/openwrt23.05/clt/argon/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
