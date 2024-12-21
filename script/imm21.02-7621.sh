@@ -6,10 +6,10 @@ sed -i 's/ImmortalWrt/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211
 mv $GITHUB_WORKSPACE/patch/imm21.02/defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
 
 #安装最新openclash
-rm -rf feeds/luci/applications/luci-app-openclash
-git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
-mv package/openclash/luci-app-openclash feeds/luci/applications/
-rm -rf package/openclash
+#rm -rf feeds/luci/applications/luci-app-openclash
+#git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
+#mv package/openclash/luci-app-openclash feeds/luci/applications/
+#rm -rf package/openclash
 
 # 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 rm -rf feeds/packages/lang/golang
