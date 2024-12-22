@@ -5,6 +5,7 @@ sed -i 's/ImmortalWrt/RAX3000M/g' package/base-files/files/bin/config_generate
 
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/hanwckf/mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
+mv $GITHUB_WORKSPACE/patch/hanwckf/23_def package/base-files/files/etc/uci-defaults/23_def
 
 #红米ax6000改512MB闪存
 #sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
