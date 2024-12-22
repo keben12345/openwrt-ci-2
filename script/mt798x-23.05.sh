@@ -7,18 +7,15 @@ mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/ban
 mv $GITHUB_WORKSPACE/patch/m798x-23.05-padavanonly/defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
 sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 
-## 修改DTS的ubi为490MB的0x1ea00000
-#sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
-## 修改DTS的spi_nand的spi-max-frequency为52MHz，52000000
-#sed -i 's/spi-max-frequency = <20000000>/spi-max-frequency = <52000000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
-
 rm -rf feeds/packages/lang/golang
 git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+rm -rf feeds/luci/applications/luci-app-passwall
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
+#git clone --depth 1 https://github.com/sbwml/luci-app-mosdns.git package/mosdns
+#git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
+#git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
-#git clone --depth=1 https://github.com/sbwml/luci-app-mosdns.git package/mosdns
-#git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
-#git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 #rm -rf feeds/packages/net/adguardhome
@@ -44,13 +41,12 @@ git clone --depth=1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/e
 mv package/extra-ipk/linkease package/linkease
 rm -rf package/extra-ipk
 
-git clone --depth=1 https://github.com/coolsnowwolf/lede.git package/lede
-mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
-mv package/lede/package/lean/leigod-acc package/leigod-acc
-rm -rf package/lede
+#git clone --depth=1 https://github.com/coolsnowwolf/lede.git package/lede
+#mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
+#mv package/lede/package/lean/leigod-acc package/leigod-acc
+#rm -rf package/lede
 
-rm -rf feeds/luci/applications/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
-cd package/passwall
-git checkout 4.78-4
-git checkout 4.78-4
+## 修改DTS的ubi为490MB的0x1ea00000
+#sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
+## 修改DTS的spi_nand的spi-max-frequency为52MHz，52000000
+#sed -i 's/spi-max-frequency = <20000000>/spi-max-frequency = <52000000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
