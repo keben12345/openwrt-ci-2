@@ -1,6 +1,10 @@
 CONFIG_TARGET_mediatek=y
 CONFIG_TARGET_mediatek_mt7981=y
-CONFIG_TARGET_mediatek_mt7981_DEVICE_360-t7-108M=y
+CONFIG_TARGET_MULTI_PROFILE=y
+CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE_mt7981-360-t7-108M=y
+CONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7981_DEVICE_mt7981-360-t7-108M=""
+CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE_nokia_ea0326gmp=y
+CONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7981_DEVICE_nokia_ea0326gmp=""
 CONFIG_DEVEL=y
 CONFIG_TOOLCHAINOPTS=y
 CONFIG_BUSYBOX_CUSTOM=y
@@ -283,6 +287,8 @@ CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-passwall2-zh-cn=y
 CONFIG_PACKAGE_luci-app-passwall=y
+# CONFIG_PACKAGE_luci-app-passwall_Iptables_Transparent_Proxy is not set
+CONFIG_PACKAGE_luci-app-passwall_Nftables_Transparent_Proxy=y
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Haproxy is not set
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Hysteria=y
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_NaiveProxy is not set
@@ -297,14 +303,13 @@ CONFIG_PACKAGE_luci-app-passwall_INCLUDE_SingBox=y
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus=y
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_tuic_client=y
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray_Geodata=y
-CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray_Geoview=y
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray_Plugin=y
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray=y
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray_Plugin is not set
-# end of Configuration
 
 CONFIG_PACKAGE_luci-app-passwall2=y
-CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_IPv6_Nat=y
+# CONFIG_PACKAGE_luci-app-passwall2_Iptables_Transparent_Proxy is not set
+CONFIG_PACKAGE_luci-app-passwall2_Nftables_Transparent_Proxy=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Haproxy is not set
 CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Hysteria=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_NaiveProxy is not set
@@ -318,4 +323,3 @@ CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Simple_Obfs=y
 CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_SingBox=y
 CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_tuic_client=y
 CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_V2ray_Plugin=y
-
