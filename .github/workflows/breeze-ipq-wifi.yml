@@ -6,9 +6,9 @@ on:
 
 env:
   REPO_URL: https://github.com/LiBwrt-op/openwrt-6.x.git
-  REPO_BRANCH: main
+  REPO_BRANCH: openwrt-24.10
   CONFIG_FILE: config/breeze-ipq-wifi
-  DIY_SCRIPT: script/breeze-ipq.sh
+  DIY_SCRIPT: script/tiktok.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -63,7 +63,7 @@ jobs:
     - name: Clone Source Code(克隆源代码)
       run: |
         df -hT $GITHUB_WORKSPACE
-        git clone -b $REPO_BRANCH --single-branch $REPO_URL openwrt
+        git clone --depth 1 -b $REPO_BRANCH --single-branch $REPO_URL openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
@@ -95,13 +95,20 @@ jobs:
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
-    - name: Apply patches   
+
+    - name: edit md5（编辑内核值）
       run: |
-        mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
-        mv $GITHUB_WORKSPACE/patch/breeze-ipq/defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
+        rm -rf $OPENWRT_PATH/.vermagic
+        mv $GITHUB_WORKSPACE/vm/vermagic-breeze $OPENWRT_PATH/vermagic
+        cd $OPENWRT_PATH
+        sed -i '130d' include/kernel-defaults.mk
+        sed -i '130i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '29d' package/kernel/linux/Makefile
+        sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
     - name: Download DL Package(下载DL软件包)
       run: |
+        mv $CONFIG_FILE $OPENWRT_PATH/.config
         cd $OPENWRT_PATH
         make defconfig
         cat .config
@@ -150,16 +157,13 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
-        name: R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
+        name: R${{ env.DATE }} for ${{ env.SOURCE_AUTHOR }}-${{ env.FIRMWARE_TAG }}
         allowUpdates: true
         tag: ${{ env.FIRMWARE_TAG }}
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
-          **This is OpenWrt Firmware for ${{ env.SOURCE_AUTHOR }}-${{ env.FIRMWARE_TAG }}**
           ### 📒 固件信息(带WIFI)
-          - 这是带WIFI以及NSS的6.6内核固件
-          - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.13.1
