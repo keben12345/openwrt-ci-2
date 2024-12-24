@@ -32,6 +32,8 @@ mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
 rm -rf feeds/packages/net/alist
 mv package/small-package/alist feeds/packages/net/alist
+#rm -rf feeds/luci/applications/luci-app-homeproxy
+#mv package/small-package/luci-app-homeproxy package/luci-app-homeproxy
 rm -rf package/small-package
 
 #下载5g模块
