@@ -16,7 +16,7 @@ rm -rf package/openclash
 
 # 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 rm -rf feeds/packages/lang/golang
-git clone --depth=1 https://github.com/kenzok8/golang feeds/packages/lang/golang
+git clone --depth 1 https://github.com/kenzok8/golang feeds/packages/lang/golang
 #删除自带的老旧依赖，ssr-plus，passwall
 rm -rf feeds/packages/net/{brook,chinadns-ng,dns2socks,dns2tcp,hysteria,ipt2socks,microsocks,naiveproxy}
 rm -rf feeds/packages/net/{pdnsd-alt,simple-obfs,sing-box,tcping,trojan*,tuic-client,v2ray*,xray*,mosdns,redsocks2}
@@ -52,3 +52,13 @@ rm -rf package/small-package
 git clone --depth=1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
 mv package/extra-ipk/linkease package/linkease
 rm -rf package/extra-ipk
+
+git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23pkg
+mv package/imm23pkg/net/frp package/frp
+rm -rf package/imm23pkg
+rm -rf feeds/packages/net/frp
+
+git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
+mv package/imm23luci/applications/luci-app-frpc package/luci-app-frpc
+rm -rf package/imm23luci
+rm -rf feeds/luci/applications/luci-app-frpc
