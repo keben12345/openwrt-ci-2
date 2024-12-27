@@ -42,5 +42,3 @@ git clone --depth=1 https://github.com/coolsnowwolf/lede.git package/lede
 mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
 mv package/lede/package/lean/leigod-acc package/leigod-acc
 rm -rf package/lede
-
-cat target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
