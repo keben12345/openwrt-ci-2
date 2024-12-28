@@ -7,6 +7,9 @@ mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 
 mv $GITHUB_WORKSPACE/patch/hanwckf/iptables/Makefile package/network/utils/iptables/Makefile
 mv $GITHUB_WORKSPACE/patch/hanwckf/iptables/*.patch package/network/utils/iptables/patches/
+mv $GITHUB_WORKSPACE/patch/hanwckf/libnftnl/Makefile package/libs/libnftnl/Makefile
+mkdir package/libs/libnftnl/patches
+mv $GITHUB_WORKSPACE/patch/hanwckf/libnftnl/*.patch package/libs/libnftnl/patches/001-libnftnl-add-fullcone-expression-support.patch
 
 #红米ax6000改512MB闪存
 #sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
