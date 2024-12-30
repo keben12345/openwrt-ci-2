@@ -19,7 +19,7 @@ rm -rf package/openclash
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
 git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
 git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
-
+rm -rf feeds/packages/net/ua2f
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
