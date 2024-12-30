@@ -55,7 +55,7 @@ detect_mtwifi() {
 					set wireless.default_${dev}.device=${dev}
 					set wireless.default_${dev}.network=lan
 					set wireless.default_${dev}.mode=ap
-					set wireless.default_${dev}.ssid=TK888
+					set wireless.default_${dev}.ssid=${ssid}
 					set wireless.default_${dev}.encryption=psk2+ccmp
 					set wireless.default_${dev}.key=TK888.5G
 EOF
