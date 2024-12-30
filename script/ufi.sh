@@ -12,8 +12,8 @@ mv package/imm-luci/applications/luci-app-diskman package/mypkg/luci-app-diskman
 mv package/imm-luci/applications/luci-app-ramfree package/mypkg/luci-app-ramfree
 rm -rf package/imm-luci
 
-git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git feeds/luci/applications/luci-app-argon-config
-git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
+git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
+git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/paswall-app
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/paswall-pkg
