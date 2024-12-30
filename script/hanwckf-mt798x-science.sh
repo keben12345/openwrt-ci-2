@@ -4,12 +4,8 @@ sed -i 's/ImmortalWrt/Routert/g' package/base-files/files/bin/config_generate
 sed -i "s/ImmortalWrt/WiFi6/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 #mv $GITHUB_WORKSPACE/patch/hanwckf/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
-
-mv $GITHUB_WORKSPACE/patch/hanwckf/iptables/Makefile package/network/utils/iptables/Makefile
-mv $GITHUB_WORKSPACE/patch/hanwckf/iptables/*.patch package/network/utils/iptables/patches/
-mv $GITHUB_WORKSPACE/patch/hanwckf/libnftnl/Makefile package/libnftnl/Makefile
-mkdir package/libnftnl/patches
-mv $GITHUB_WORKSPACE/patch/hanwckf/libnftnl/*.patch package/libnftnl/001-libnftnl-add-fullcone-expression-support.patch
+mv $GITHUB_WORKSPACE/patch/hanwckf/mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
+mv $GITHUB_WORKSPACE/patch/hanwckf/23_def package/base-files/files/etc/uci-defaults/23_def
 
 #红米ax6000改512MB闪存
 #sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
@@ -42,11 +38,16 @@ rm -rf package/passwall-packages/shadowsocksr-libev
 #rm -rf package/helloworld/shadowsocks-rust
 #rm -rf package/helloworld/shadowsocksr-libev
 
-git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
-git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
-mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
+#git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
+
 rm -rf feeds/packages/net/adguardhome
+rm -rf feeds/packages/net/smartdns
+rm -rf feeds/luci/applications/luci-app-smartdns
+git clone --depth 1 https://github.com/kenzok8/small-package.git package/small-package
+mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/adguardhome feeds/packages/net/adguardhome
+mv package/small-package/luci-app-smartdns package/luci-app-smartdns
+mv package/small-package/smartdns feeds/packages/net/smartdns
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/small-package/luci-app-alist package/luci-app-alist
 mv package/small-package/alist package/alist
