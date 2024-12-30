@@ -27,7 +27,7 @@ rm -rf feeds/packages/devel/gn
 rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns}
 
-#git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
+git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
