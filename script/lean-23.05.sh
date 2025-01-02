@@ -13,10 +13,16 @@ mv $GITHUB_WORKSPACE/patch/lean/defset package/lean/default-settings/files/zzz-d
 #sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
 #sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
 
+#UA2F校园网
+git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
+git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
+git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
+rm -rf feeds/packages/net/ua2f
+
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-argon-config
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git  package/luci-app-argon-config
-git clone  --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 
 #rm -rf package/luci-app-amlogic
 #git clone https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
