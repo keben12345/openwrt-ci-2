@@ -59,3 +59,4 @@ mv package/kz8-small/alist package/alist
 mv package/kz8-small/lucky package/lucky
 mv package/kz8-small/luci-app-lucky package/luci-app-lucky
 mv package/kz8-small/smartdns package/smartdns
+rm -rf package/kz8-small
