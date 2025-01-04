@@ -55,6 +55,7 @@ rm -rf feeds/packages/net/alist
 rm -rf feeds/luci/applications/luci-app-alist
 rm -rf package/small-package
 
+git clone --depth=1 https://github.com/mingxiaoyu/luci-app-phtunnel.git package/phtunnel
 # iStore
 git clone --depth=1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
 mv package/extra-ipk/linkease package/linkease
