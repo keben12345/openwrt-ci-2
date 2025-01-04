@@ -17,9 +17,9 @@ mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
 
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
-git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
-git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
-rm -rf feeds/packages/net/ua2f
+#git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
+#git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
+#rm -rf feeds/packages/net/ua2f
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
@@ -30,16 +30,19 @@ git clone --depth=1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/e
 mv package/extra-ipk/linkease package/linkease
 rm -rf package/extra-ipk
 
+git clone --depth=1 https://github.com/mingxiaoyu/luci-app-phtunnel.git package/phtunnel
 git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
+mv package/small-package/adguardhome package/adguardhome
+#mv package/small-package/luci-app-alist package/luci-app-alist
+#mv package/small-package/alist package/alist
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/small-package/homebox package/homebox
 mv package/small-package/luci-app-netspeedtest package/luci-app-netspeedtest
-#mv package/small-package/luci-app-alist package/luci-app-alist
-#mv package/small-package/alist package/alist
 #rm -rf feeds/packages/net/alist
 #rm -rf feeds/luci/applications/luci-app-alist
+rm -rf feeds/packages/net/adguardhome
 rm -rf package/small-package
 
 git clone --depth=1 https://github.com/coolsnowwolf/lede.git package/lede
