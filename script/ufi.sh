@@ -10,6 +10,7 @@ mv package/imm-luci/applications/luci-app-cpufreq package/mypkg/luci-app-cpufreq
 mv package/imm-luci/applications/luci-app-dockerman feeds/luci/applications/luci-app-dockerman
 mv package/imm-luci/applications/luci-app-diskman package/mypkg/luci-app-diskman
 mv package/imm-luci/applications/luci-app-ramfree package/mypkg/luci-app-ramfree
+mv package/imm-luci/applications/luci-app-ramfree package/mypkg/luci-app-nps
 rm -rf package/imm-luci
 
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
@@ -23,6 +24,7 @@ mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/luci-app-fileassistant package/luci-app-fileassistant
 mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/kz8-small/luci-app-macvlan package/luci-app-macvlan
+mv package/kz8-small/nps package/nps
 mv package/kz8-small/luci-app-partexp package/luci-app-partexp
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
