@@ -10,7 +10,7 @@ mv package/imm-luci/applications/luci-app-cpufreq package/mypkg/luci-app-cpufreq
 mv package/imm-luci/applications/luci-app-dockerman feeds/luci/applications/luci-app-dockerman
 mv package/imm-luci/applications/luci-app-diskman package/mypkg/luci-app-diskman
 mv package/imm-luci/applications/luci-app-ramfree package/mypkg/luci-app-ramfree
-mv package/imm-luci/applications/luci-app-ramfree package/mypkg/luci-app-nps
+mv package/imm-luci/applications/luci-app-nps package/mypkg/luci-app-nps
 rm -rf package/imm-luci
 
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
