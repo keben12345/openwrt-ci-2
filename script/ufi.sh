@@ -14,6 +14,7 @@ mv package/imm-luci/applications/luci-app-nps package/mypkg/luci-app-nps
 mv package/imm-luci/applications/luci-app-zerotier package/mypkg/luci-app-zerotier
 rm -rf package/imm-luci
 
+git clone --depth 1 https://github.com/Siha06/my-openwrt-packages.git package/siha06
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
