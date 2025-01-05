@@ -11,6 +11,7 @@ mv package/imm-luci/applications/luci-app-dockerman feeds/luci/applications/luci
 mv package/imm-luci/applications/luci-app-diskman package/mypkg/luci-app-diskman
 mv package/imm-luci/applications/luci-app-ramfree package/mypkg/luci-app-ramfree
 mv package/imm-luci/applications/luci-app-nps package/mypkg/luci-app-nps
+mv package/imm-luci/applications/luci-app-zerotier package/mypkg/luci-app-zerotier
 rm -rf package/imm-luci
 
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
@@ -20,8 +21,8 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/pa
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/paswall-pkg
 
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
+mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
-mv package/kz8-small/luci-app-fileassistant package/luci-app-fileassistant
 mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/kz8-small/luci-app-macvlan package/luci-app-macvlan
 mv package/kz8-small/nps package/nps
