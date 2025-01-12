@@ -84,6 +84,8 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
+        git checkout v24.10.0-rc3
+        mv $GITHUB_WORKSPACE/patch/immortalwrt24.10/feeds.conf.default feeds.conf.default 
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -163,7 +165,7 @@ jobs:
         body: |
           ### 📒 固件信息
           - 这是基于官方immortalwrt-24.10源码编译的固件
-          - 💻 这是 X86 平台使用的 OpenWrt-rootfs 固件
+          - 💻 这是 X86 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.23.1
