@@ -33,11 +33,11 @@ git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/lu
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
 
 #新版ssr-libev和ss-rust缺少依赖，所以延用旧版，删除新版
-rm -rf package/passwall-packages/shadowsocks-rust
-rm -rf package/passwall-packages/shadowsocksr-libev
-rm -rf package/helloworld/shadowsocks-rust
-rm -rf package/helloworld/shadowsocksr-libev
-
+#rm -rf package/passwall-packages/shadowsocks-rust
+#rm -rf package/passwall-packages/shadowsocksr-libev
+#rm -rf package/helloworld/shadowsocks-rust
+#rm -rf package/helloworld/shadowsocksr-libev
+rm -rf feeds/packages/net/shadowsocks-rust
 
 rm -rf feeds/packages/net/v2ray-geodata
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
