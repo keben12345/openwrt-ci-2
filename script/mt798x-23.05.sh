@@ -2,40 +2,34 @@ sed -i 's/192.168.6.1/192.168.23.1/g' package/base-files/files/bin/config_genera
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/Router/g' package/base-files/files/bin/config_generate
 #sed -i 's/ImmortalWrt/AX3000/g' package/mtk/applications/luci-app-mtwifi-cfg/root/usr/share/luci-app-mtwifi-cfg/wireless-mtk.js
-sed -i "s/ImmortalWrt/WiFi6/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
+sed -i "s/ImmortalWrt/WiFi/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/m798x-23.05-padavanonly/defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
 sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 
-sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
+#sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
 
 rm -rf feeds/packages/lang/golang
 git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 rm -rf feeds/packages/devel/gn
+rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 
-find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
-find ./ | grep Makefile | grep mosdns | xargs rm -f
-
+#find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
+#find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 #git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
-#git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
-#rm -rf feeds/packages/net/adguardhome
-#mv package/small-package/adguardhome feeds/packages/net/adguardhome
-#mv package/small-package/luci-app-UUGameAcc package/luci-app-UUGameAcc
+mv package/small-package/adguardhome feeds/packages/net/adguardhome
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
-rm -rf feeds/packages/net/alist
 mv package/small-package/alist feeds/packages/net/alist
-#rm -rf feeds/luci/applications/luci-app-homeproxy
-#mv package/small-package/luci-app-homeproxy package/luci-app-homeproxy
 rm -rf package/small-package
 
 #下载5g模块
@@ -49,14 +43,14 @@ sed -i 's/\"network\"/\"modem\"/g' package/5g-modem/luci-app-modem/luasrc/contro
 #rm -rf feeds/luci/protocols/luci-proto-quectel
 
 # iStore
-git clone --depth=1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
+git clone --depth 1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
 mv package/extra-ipk/linkease package/linkease
 rm -rf package/extra-ipk
 
-#git clone --depth=1 https://github.com/coolsnowwolf/lede.git package/lede
-#mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
-#mv package/lede/package/lean/leigod-acc package/leigod-acc
-#rm -rf package/lede
+git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/imm21-luci
+mv package/imm21-luci/applications/luci-app-v2ray-server package/luci-app-v2ray-server
+sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-v2ray-server/Makefile
+rm -rf package/imm21-luci
 
 ## 修改DTS的ubi为490MB的0x1ea00000
 #sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
