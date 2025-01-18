@@ -9,19 +9,25 @@ sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emo
 
 #sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
 
+# 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 rm -rf feeds/packages/lang/golang
-git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+git clone --depth 1 https://github.com/kenzok8/golang feeds/packages/lang/golang
+#删除自带的老旧依赖，ssr-plus，passwall
+rm -rf feeds/packages/net/{brook,chinadns-ng,dns2socks,dns2tcp,hysteria,ipt2socks,microsocks,naiveproxy}
+rm -rf feeds/packages/net/{pdnsd-alt,simple-obfs,sing-box,tcping,trojan*,tuic-client,v2ray*,xray*,mosdns,redsocks2}
+rm -rf feeds/packages/net/{ssocks,shadow-tls}
 rm -rf feeds/packages/devel/gn
-rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
-rm -rf feeds/luci/applications/luci-app-passwall
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
+rm -rf feeds/packages/utils/v2dat
+rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns}
+
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
 
 #find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 #find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+#git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 #git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 
