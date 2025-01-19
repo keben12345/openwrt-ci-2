@@ -52,7 +52,7 @@ echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
 sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
 echo "DISTRIB_DESCRIPTION='OpenWrt '" >> /etc/openwrt_release
 #echo "DISTRIB_DESCRIPTION='TikTok专用 '" >> /etc/openwrt_release
-sed -i 's/24.10.0-rc1/24.10-SNAPSHOT/g'  /etc/opkg/distfeeds.conf
+#sed -i 's/24.10.0-rc1/24.10-SNAPSHOT/g'  /etc/opkg/distfeeds.conf
 
 sed -i '/log-facility/d' /etc/dnsmasq.conf
 echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
