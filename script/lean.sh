@@ -17,6 +17,8 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/lu
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
+git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
+
 # iStore
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
 git clone --depth 1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
