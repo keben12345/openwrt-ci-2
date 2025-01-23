@@ -585,6 +585,53 @@ const methods = {
 
 			return { result: ports };
 		}
+	},
+
+	getCoreInfo: {
+		call: function() {
+			let fd;
+			let result = {};
+
+			fd = popen('soc-status cpu_freq');
+			result.cpufreq = trim(fd.read('all'));
+			fd.close();
+
+			fd = popen('soc-status cpu_governor');
+			result.governor = trim(fd.read('all'));
+			fd.close();
+
+			return result;
+		}
+	},
+
+	getCoreTemp: {
+		call: function() {
+			let fd;
+			let result = {};
+
+			fd = popen('soc-status cpu_temp');
+			result.cpu = trim(fd.read('all'));
+			fd.close();
+
+			fd = popen('soc-status wifi_temp');
+			result.wifi = trim(fd.read('all'));
+			fd.close();
+
+			return result;
+		}
+	},
+
+	getCoreUsage: {
+		call: function() {
+			let fd;
+			let result = {};
+
+			fd = popen('soc-status cpu_usage');
+			result.cpu = trim(fd.read('all'));
+			fd.close();
+
+			return result;
+		}
 	}
 };
 
