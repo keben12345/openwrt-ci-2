@@ -84,7 +84,7 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        cat feeds.conf.default
+        mv $GITHUB_WORKSPACE/patch/openwrt-24.10/feeds.conf.default feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -95,9 +95,9 @@ jobs:
         mkdir $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin
         mv $GITHUB_WORKSPACE/patch/op-status/soc-status $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin/
         chmod a+rwx $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin/soc-status
-        mv $GITHUB_WORKSPACE/patch/op-status/luci $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/
+        mv $GITHUB_WORKSPACE/patch/op-status/24.10/luci $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/
         mv $GITHUB_WORKSPACE/patch/op-status/10_system.js $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/
-        mv $GITHUB_WORKSPACE/patch/op-status/luci-mod-status.json $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/
+        mv $GITHUB_WORKSPACE/patch/op-status/24.10/luci-mod-status.json $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/
 
     - name: Load Custom Script(加载自定义脚本)
       run: |
