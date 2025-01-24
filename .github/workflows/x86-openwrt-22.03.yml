@@ -1,20 +1,20 @@
-name: r2s-immortalwrt-21.02
+name: x86-openwrt-22.03
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
-  REPO_BRANCH: openwrt-21.02
-  CONFIG_FILE: config/r2s
-  DIY_SCRIPT: script/r2s.sh
+  REPO_URL: https://github.com/openwrt/openwrt.git
+  REPO_BRANCH: openwrt-22.03
+  CONFIG_FILE: config/x86-openwrt-22.03
+  DIY_SCRIPT: script/x86-openwrt-22.03.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: r2s-immortalwrt-21.02
+  FIRMWARE_TAG: x86-openwrt-22.03
   TZ: Asia/Shanghai
 
 jobs:
@@ -78,14 +78,14 @@ jobs:
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-r2s
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-x86
         prefix: ${{ env.OPENWRT_PATH }}
 
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        git checkout v21.02.7
-        git checkout v21.02.7
+        git checkout v22.03.7
+        git checkout v22.03.7
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -102,12 +102,12 @@ jobs:
     - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vm/r2s-imm21027 $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vm/x86-openwrt-22.03 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
-        sed -i '109d' include/kernel-defaults.mk
-        sed -i '109i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
-        sed -i '27d' package/kernel/linux/Makefile
-        sed -i '27i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
+        sed -i '121d' include/kernel-defaults.mk
+        sed -i '121i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '29d' package/kernel/linux/Makefile
+        sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
     - name: Download DL Package
       run: |
@@ -144,7 +144,8 @@ jobs:
       run: |
         cd $OPENWRT_PATH/bin/targets/*/*
         cat sha256sums
-        cp $OPENWRT_PATH/.config full.config
+        mv -f $OPENWRT_PATH/bin/packages/*/*/*.ipk packages
+        tar -zcf Packages.tar.gz packages
         rm -rf packages feeds.buildinfo version.buildinfo
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
@@ -152,7 +153,7 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_FIRMWARE == 'true'
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.FIRMWARE_TAG }}-${{ env.SOURCE_AUTHOR }}-${{ env.FILE_DATE }}
+        name: ${{ env.FIRMWARE_TAG }}-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
 
     - name: Upload Firmware To Release(发布固件)
@@ -166,8 +167,8 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           ### 📒 固件信息
-          - 这是基于官方immortalwrt-21.02源码编译的固件
-          - 💻 这是 r2s 平台使用的 OpenWrt 固件
+          - 这是基于官方openwrt-22.03源码编译的固件
+          - 💻 这是 x86 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.23.1
