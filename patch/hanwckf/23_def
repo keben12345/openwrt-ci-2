@@ -1,6 +1,0 @@
-sed -i '/ula_prefix/d' /etc/config/network
-sed -i 's/60/64/g' /etc/config/network
-sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
-
-sed -i 's/root::0:0:99999:7:::/root:$1$wKsL1h.7$rqVC6MhBRN3YHpLj2KDNr.:20079:0:99999:7:::/g' /etc/shadow
-sed -i 's/root:::0:99999:7:::/root:$1$wKsL1h.7$rqVC6MhBRN3YHpLj2KDNr.:20079:0:99999:7:::/g' /etc/shadow
