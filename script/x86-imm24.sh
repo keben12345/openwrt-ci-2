@@ -5,6 +5,12 @@ sed -i 's#mirrors.vsean.net/openwrt#mirrors.pku.edu.cn/immortalwrt#g' package/em
 mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-mydef.sh package/base-files/files/etc/uci-defaults/199-mydef.sh
 
+#完全删除luci版本
+sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+#添加编译日期
+sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
+sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
+
 # iStore
 git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
 git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
