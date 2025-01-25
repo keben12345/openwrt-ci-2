@@ -5,7 +5,13 @@ sed -i "s/ImmortalWrt/WiFi6/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.
 
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 #mv $GITHUB_WORKSPACE/patch/hanwckf/mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
-#mv $GITHUB_WORKSPACE/patch/hanwckf/23_def package/base-files/files/etc/uci-defaults/23_def
+mv $GITHUB_WORKSPACE/patch/hanwckf/199_mydef package/base-files/files/etc/uci-defaults/199_mydef
+
+#完全删除luci版本
+sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+#添加编译日期
+sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
+sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
 #红米ax6000改512MB闪存
 #sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
