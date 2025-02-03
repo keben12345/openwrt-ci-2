@@ -57,7 +57,8 @@ detect_mtwifi() {
 					set wireless.default_${dev}.mode=ap
 					set wireless.default_${dev}.ssid=${ssid}
 					set wireless.default_${dev}.encryption=psk2+ccmp
-					set wireless.default_${dev}.key=86880959189
+					set wireless.default_MT7981_1_1.key=70651365Yu
+					set wireless.default_MT7981_1_2.key=86880959189
 EOF
 				uci -q commit wireless
 			}
