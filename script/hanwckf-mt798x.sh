@@ -15,14 +15,17 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/
 
 #红米ax6000改512MB闪存
 #sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
-sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
+#sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
 git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
 mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
 
+rm -rf feeds/packages/net/ddns-go
+rm -rf feeds/luci/applications/luci-app-ddns-go
 git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
+git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
 #git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
