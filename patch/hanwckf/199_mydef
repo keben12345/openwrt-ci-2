@@ -14,6 +14,10 @@ uci del dhcp.lan.ra_flags
 uci add_list dhcp.lan.ra_flags='none'
 uci set dhcp.lan.dns_service='0'
 
+uci set network.wan.proto='pppoe'
+uci set network.wan.username='037606332332'
+uci set network.wan.password='332332'
+
 uci commit
 
 #sed -i 's/root::0:0:99999:7:::/root:$1$wKsL1h.7$rqVC6MhBRN3YHpLj2KDNr.:20079:0:99999:7:::/g' /etc/shadow
