@@ -43,9 +43,11 @@ detect_mtwifi() {
 					set wireless.${dev}.phy=${ifname}
 					set wireless.${dev}.band=${band}
 					set wireless.${dev}.dbdc_main=${dbdc_main}
-					set wireless.${dev}.channel=auto
+					set wireless.MT7981_1_1.channel=3
+					set wireless.MT7981_1_2.channel=40
 					set wireless.${dev}.txpower=100
-					set wireless.${dev}.htmode=${htmode}
+					set wireless.MT7981_1_1.htmode=HE40
+					set wireless.MT7981_1_2.htmode=HE80
 					set wireless.${dev}.country=CN
 					set wireless.${dev}.mu_beamformer=1
 					set wireless.${dev}.noscan=${htbsscoex}
@@ -57,7 +59,7 @@ detect_mtwifi() {
 					set wireless.default_${dev}.mode=ap
 					set wireless.default_${dev}.ssid=${ssid}
 					set wireless.default_${dev}.encryption=psk2+ccmp
-					set wireless.default_MT7981_1_1.key=70651365Yu
+					set wireless.default_MT7981_1_1.key=86880959Liu
 					set wireless.default_MT7981_1_2.key=86880959189
 EOF
 				uci -q commit wireless
