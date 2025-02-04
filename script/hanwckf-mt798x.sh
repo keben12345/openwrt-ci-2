@@ -1,6 +1,7 @@
 sed -i 's/192.168.1.1/192.168.13.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.13.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-sed -i 's/ImmortalWrt/Router/g' package/base-files/files/bin/config_generate
+#sed -i 's/ImmortalWrt/Router/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i "s/ImmortalWrt/WiFi6/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
@@ -23,9 +24,17 @@ mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
 
 rm -rf feeds/packages/net/ddns-go
+rm -rf feeds/packages/net/socat
 rm -rf feeds/luci/applications/luci-app-ddns-go
+rm -rf feeds/luci/applications/luci-app-socat
 git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
+git clone --depth 1 https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy-package
+mv package/sirpdboy-package/luci-app-socat package/luci-app-socat
+rm -rf package/sirpdboy-package
+git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23pkg
+mv package/imm23pkg/net/socat feeds/packages/net/socat
+rm -rf package/imm23pkg
 
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
 #git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
