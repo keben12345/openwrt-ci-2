@@ -6,12 +6,9 @@ uci delete ttyd.@ttyd[0].interface
 # 设置所有网口可连接 SSH
 uci set dropbear.@dropbear[0].Interface=''
 
+uci del network.wan6
 uci set network.lan.ip6assign=64
 uci del network.globals.ula_prefix
-uci del dhcp.lan.ra_slaac
-uci del dhcp.lan.dhcpv6
-uci del dhcp.lan.ra_flags
-uci add_list dhcp.lan.ra_flags='none'
 uci set dhcp.lan.dns_service='0'
 
 uci set network.wan.proto='pppoe'
