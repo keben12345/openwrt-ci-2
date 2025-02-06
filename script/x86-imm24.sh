@@ -26,6 +26,7 @@ git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
+git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
 
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
@@ -37,3 +38,10 @@ mv package/kz8-small/luci-app-netspeedtest package/luci-app-netspeedtest
 mv package/kz8-small/homebox package/homebox
 mv package/kz8-small/luci-app-poweroff package/luci-app-poweroff
 rm -rf package/kz8-small
+
+git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
+mv package/imm23luci/applications/luci-app-adbyby-plus package/luci-app-adbyby-plus
+rm -rf package/imm23luci
+git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23packages
+mv package/imm23packages/net/adbyby package/adbyby
+rm -rf package/imm23packages
