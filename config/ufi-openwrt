@@ -119,4 +119,3 @@ CONFIG_PACKAGE_luci-app-filemanager=y
 
 CONFIG_PACKAGE_luci-app-openclash=y
 CONFIG_PACKAGE_luci-app-alist=y
-CONFIG_PACKAGE_luci-app-dockerman=y
