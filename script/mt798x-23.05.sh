@@ -36,8 +36,9 @@ git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 #git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
+git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
 
-git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
+git clone --depth 1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/adguardhome feeds/packages/net/adguardhome
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
