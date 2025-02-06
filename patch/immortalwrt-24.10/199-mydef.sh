@@ -36,13 +36,16 @@ uci set dropbear.@dropbear[0].Interface=''
 #其他网络设置
 
 uci set network.lan.ip6ifaceid='eui64'
+
+uci set network.lan.ipaddr=192.168.2.2
+uci set network.lan.gateway=192.168.2.1
+uci set network.lan.dns=210.21.196.6
+uci set dhcp.lan.ignore=1
+
 uci commit
 
-# 设置编译作者信息
-#FILE_PATH="/etc/openwrt_release"
-#NEW_DESCRIPTION="OpenWrt V25.1.13"
-#sed -i "s/DISTRIB_DESCRIPTION='[^']*'/DISTRIB_DESCRIPTION='$NEW_DESCRIPTION'/" "$FILE_PATH"
-
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
+
+/etc/init.d/network restart
 
 exit 0
