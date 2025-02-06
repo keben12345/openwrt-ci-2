@@ -19,6 +19,7 @@ mv package/imm-luci/applications/luci-app-nps package/mypkg/luci-app-nps
 mv package/imm-luci/applications/luci-app-zerotier package/mypkg/luci-app-zerotier
 rm -rf package/imm-luci
 
+git clone --depth 1 https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
 git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
 git clone --depth 1 https://github.com/Siha06/my-openwrt-packages.git package/siha06
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
@@ -31,8 +32,6 @@ git clone --depth 1 https://github.com/morytyann/OpenWrt-mihomo.git package/miho
 rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
 rm -rf feeds/packages/utils/v2dat
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
-mv package/kz8-small/alist package/alist
-mv package/kz8-small/luci-app-alist package/luci-app-alist
 mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
