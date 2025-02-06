@@ -84,7 +84,7 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        git checkout v24.10.0-rc3
+        git checkout v24.10.0
         mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/feeds.conf.default feeds.conf.default 
         ./scripts/feeds update -a
         ./scripts/feeds install -a
