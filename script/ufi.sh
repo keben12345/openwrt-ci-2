@@ -20,7 +20,6 @@ mv package/imm-luci/applications/luci-app-nps package/mypkg/luci-app-nps
 mv package/imm-luci/applications/luci-app-zerotier package/mypkg/luci-app-zerotier
 rm -rf package/imm-luci
 
-git clone --depth 1 https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
 git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
 git clone --depth 1 https://github.com/Siha06/my-openwrt-packages.git package/siha06
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
@@ -30,7 +29,7 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/p
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/paswall-pkg
 git clone --depth 1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
 
-rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
+rm -rf feeds/packages/net/{adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
 rm -rf feeds/packages/utils/v2dat
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
@@ -46,8 +45,8 @@ mv package/kz8-small/luci-app-webrestriction package/luci-app-webrestriction
 rm -rf package/kz8-small
 
 # iStore
-git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
-git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
-git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
+git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
+git clone --depth 1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
+git clone --depth 1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
 mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
