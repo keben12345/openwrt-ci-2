@@ -32,7 +32,11 @@ git clone --depth 1 https://github.com/morytyann/OpenWrt-mihomo.git package/luci
 #find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-
+#安装最新openclash
+rm -rf feeds/luci/applications/luci-app-openclash
+git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
+mv package/openclash/luci-app-openclash feeds/luci/applications/
+rm -rf package/openclash
 #git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
 
