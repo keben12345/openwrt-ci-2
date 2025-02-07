@@ -24,17 +24,9 @@ mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
 
 rm -rf feeds/packages/net/ddns-go
-rm -rf feeds/packages/net/socat
 rm -rf feeds/luci/applications/luci-app-ddns-go
-rm -rf feeds/luci/applications/luci-app-socat
 git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
-git clone --depth 1 https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy-package
-mv package/sirpdboy-package/luci-app-socat package/luci-app-socat
-rm -rf package/sirpdboy-package
-git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23pkg
-mv package/imm23pkg/net/socat feeds/packages/net/socat
-rm -rf package/imm23pkg
 
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
 #git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
