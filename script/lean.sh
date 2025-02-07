@@ -17,8 +17,6 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/lu
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
-git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
-
 # iStore
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
 git clone --depth 1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
@@ -32,21 +30,6 @@ rm -rf package/nas-packages/network
 #sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
 #sed -i 's/\"network\"/\"modem\"/g' package/5g-modem/luci-app-modem/luasrc/controller/modem.lua
 
-rm -rf feeds/luci/themes/luci-theme-argon
-rm -rf feeds/luci/applications/luci-app-argon-config
-git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
-git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
-
-git clone --depth 1 https://github.com/kenzok8/openwrt-packages package/oppkg
-mv package/oppkg/luci-app-alist package/luci-app-alist
-rm -rf package/oppkg
-
-#UA2F校园网
-git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
-git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
-git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
-rm -rf feeds/packages/net/ua2f
-
 #find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 #find ./ | grep Makefile | grep mosdns | xargs rm -f
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
@@ -58,8 +41,18 @@ rm -rf feeds/luci/applications/{luci-app-alist,luci-app-lucky}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
-mv package/kz8-small/alist package/alist
 mv package/kz8-small/lucky package/lucky
 mv package/kz8-small/luci-app-lucky package/luci-app-lucky
 mv package/kz8-small/smartdns package/smartdns
 rm -rf package/kz8-small
+
+git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
+git clone --depth 1 -b lua https://github.com/sbwml/luci-app-alist package/alist
+rm -rf feeds/luci/themes/luci-theme-argon
+git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
+
+#UA2F校园网
+git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
+git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
+git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
+rm -rf feeds/packages/net/ua2f
