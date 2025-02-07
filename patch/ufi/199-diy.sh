@@ -18,9 +18,9 @@ sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i '/core/d' /etc/opkg/distfeeds.conf
 sed -i '/openstick/d' /etc/opkg/distfeeds.conf
 sed -i 's#downloads.openwrt.org/snapshots#mirrors.pku.edu.cn/openwrt/releases/24.10.0#g' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz immortawrt_base https://mirrors.pku.edu.cn/openwrt/releases/24.10.0/packages/aarch64_generic/base' /etc/opkg/customfeeds.conf
-sed -i '$a src/gz immortawrt_packages https://mirrors.pku.edu.cn/openwrt/releases/24.10.0/packages/aarch64_generic/packages' /etc/opkg/customfeeds.conf
-sed -i '$a src/gz immortawrt_luci https://mirrors.pku.edu.cn/openwrt/releases/24.10.0/packages/aarch64_generic/luci' /etc/opkg/customfeeds.conf
+sed -i '$a src/gz immortawrt_base https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.0/packages/aarch64_generic/base' /etc/opkg/customfeeds.conf
+sed -i '$a src/gz immortawrt_packages https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.0/packages/aarch64_generic/packages' /etc/opkg/customfeeds.conf
+sed -i '$a src/gz immortawrt_luci https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.0/packages/aarch64_generic/luci' /etc/opkg/customfeeds.conf
 
 /etc/init.d/network restart
 
