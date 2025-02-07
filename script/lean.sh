@@ -47,10 +47,11 @@ git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
 git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
 rm -rf feeds/packages/net/ua2f
 
-find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
-find ./ | grep Makefile | grep mosdns | xargs rm -f
+#find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
+#find ./ | grep Makefile | grep mosdns | xargs rm -f
+#git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+
 rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns,lucky}
 rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/luci/applications/{luci-app-alist,luci-app-lucky}
