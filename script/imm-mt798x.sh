@@ -22,6 +22,7 @@ git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/lu
 rm -rf feeds/packages/lang/golang
 rm -rf feeds/packages/net/{pdnsd-alt,shadowsocks-rust,simple-obfs,sing-box,tcping,trojan*,tuic-client,v2ray*,xray*,mosdns}
 git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/sbwml/luci-app-mosdns.git package/mosdns
