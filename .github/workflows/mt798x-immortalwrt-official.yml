@@ -85,8 +85,6 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        git checkout v23.05.4
-        git checkout v23.05.4
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -97,10 +95,6 @@ jobs:
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
-
-    - name: Apply patches   
-      run: |
-        mv $GITHUB_WORKSPACE/patch/immortalwrt-23.05/defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
 
     - name: Download DL Package(下载DL软件包)
       run: |
@@ -114,7 +108,7 @@ jobs:
     - name: edit md5(编辑内核值）
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vermagic-mt798x-imm2305 $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/mt798x-imm2305 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '121d' include/kernel-defaults.mk
         sed -i '121i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
