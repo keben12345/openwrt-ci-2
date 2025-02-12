@@ -1,4 +1,4 @@
-name: mt798x-immortalwrt-official
+name: mt798x-immortalwrt-24.10
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
