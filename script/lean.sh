@@ -6,6 +6,9 @@ sed -i 's/LEDE/OpenWrt/g' package/base-files/luci2/bin/config_generate
 sed -i 's/LEDE/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #sed -i "s/luci-theme-bootstrap/luci-theme-design/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 
+sed -i '/openwrt_release/d' package/lean/default-settings/files/zzz-default-settings
+sed -i '/tencent.com/d' package/lean/default-settings/files/zzz-default-settings
+sed -i '/shadow/d' package/lean/default-settings/files/zzz-default-settings
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/lean/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
 
