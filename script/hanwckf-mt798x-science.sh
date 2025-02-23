@@ -5,7 +5,7 @@ sed -i "s/ImmortalWrt/WiFi6/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 
 #mv $GITHUB_WORKSPACE/patch/hanwckf/mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
-#mv $GITHUB_WORKSPACE/patch/hanwckf/199_mydef package/base-files/files/etc/uci-defaults/199_mydef
+mv $GITHUB_WORKSPACE/patch/hanwckf/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
 
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
@@ -22,6 +22,10 @@ rm -rf feeds/luci/applications/luci-app-openclash
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
 mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
+#下载5g模块
+git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
+sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
 
 # 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 rm -rf feeds/packages/lang/golang
@@ -68,7 +72,8 @@ rm -rf feeds/luci/applications/luci-app-alist
 rm -rf package/small-package
 
 git clone --depth 1 https://github.com/mingxiaoyu/luci-app-phtunnel.git package/phtunnel
-git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
+#git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
+
 # iStore
 git clone --depth 1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
 mv package/extra-ipk/linkease package/linkease
