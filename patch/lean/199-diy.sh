@@ -26,6 +26,7 @@ echo "DISTRIB_DESCRIPTION='OpenWrt '" >> /etc/openwrt_release
 sed -i '/core/d' /etc/opkg/distfeeds.conf
 sed -i '/smpackage/d' /etc/opkg/distfeeds.conf
 sed -i 's#downloads.openwrt.org#mirror.nju.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
+sed -i 's#packages/aarch64_cortex-a53/luci#packages-18.06-k5.4/aarch64_cortex-a53/luci#g' /etc/opkg/distfeeds.conf
 
 /etc/init.d/network restart
 
