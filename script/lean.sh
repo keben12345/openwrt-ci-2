@@ -10,7 +10,7 @@ sed -i '/openwrt_release/d' package/lean/default-settings/files/zzz-default-sett
 sed -i '/tencent.com/d' package/lean/default-settings/files/zzz-default-settings
 sed -i '/shadow/d' package/lean/default-settings/files/zzz-default-settings
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
-mv $GITHUB_WORKSPACE/patch/lean/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
+mv $GITHUB_WORKSPACE/patch/lean/199-diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
 
 #git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
