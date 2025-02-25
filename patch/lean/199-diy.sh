@@ -12,7 +12,7 @@ uci commit luci
 
 #其他网络设置
 uci set network.lan.ip6ifaceid='eui64'
-uci set network.lan.ipaddr=192.168.5.1
+#uci set network.lan.ipaddr=192.168.5.1
 uci commit network
 
 uci commit
