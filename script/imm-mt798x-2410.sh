@@ -14,8 +14,6 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/
 #git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 #rm -rf feeds/packages/net/quectel-cm
 
-git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
-
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
