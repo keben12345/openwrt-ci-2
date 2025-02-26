@@ -14,7 +14,7 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/
 
 # 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 rm -rf feeds/packages/lang/golang
-git clone --depth 1 https://github.com/kenzok8/golang feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 #删除自带的老旧依赖，ssr-plus，passwall
 rm -rf feeds/packages/net/{chinadns-ng,dns2socks,dns2tcp,geoview,hysteria,ipt2socks,microsocks,naiveproxy}
 rm -rf feeds/packages/net/{pdnsd-alt,shadowsocks-rust,simple-obfs,sing-box,tcping,trojan*,tuic-client,v2ray*,xray*,mosdns}
@@ -40,7 +40,7 @@ rm -rf package/openclash
 #git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone --depth 1 https://github.com/AutoCONFIG/luci-app-rustdesk-server.git package/luci-app-rustdesk-server
 
-rm -rf feeds/packages/net/adguardhome
+rm -rf feeds/packages/net/{adguardhome,alist}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/adguardhome feeds/packages/net/adguardhome
