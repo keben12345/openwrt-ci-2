@@ -28,8 +28,7 @@ rm -rf feeds/luci/applications/luci-app-ddns-go
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 #UA2F校园网
 git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
-git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
-git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
+git clone https://github.com/Zxilly/UA2F.git package/UA2F
 rm -rf feeds/packages/net/ua2f
 
 git clone --depth 1 https://github.com/mchome/luci-app-dogcom.git package/luci-app-dogcom
