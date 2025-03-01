@@ -3,7 +3,7 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/l
 #sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 #sed -i 's/ImmortalWrt/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-mv $GITHUB_WORKSPACE/patch/imm21.02/defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
+mv $GITHUB_WORKSPACE/patch/imm21.02/199-diy $OPENWRT_PATH/package/emortal/default-settings/files/199-diy
 
 #安装最新openclash
 #rm -rf feeds/luci/applications/luci-app-openclash
