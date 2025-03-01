@@ -38,7 +38,7 @@ rm -rf package/nas-packages/network
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 
-rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns,lucky}
+rm -rf feeds/packages/net/{adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns,lucky}
 rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/luci/applications/{luci-app-alist,luci-app-lucky}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
@@ -50,6 +50,7 @@ mv package/kz8-small/smartdns package/smartdns
 rm -rf package/kz8-small
 
 git clone --depth 1 -b lua https://github.com/sbwml/luci-app-alist package/alist
+rm -rf package/alist/alist
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 
