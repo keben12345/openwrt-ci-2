@@ -1,10 +1,10 @@
 CONFIG_TARGET_mediatek=y
 CONFIG_TARGET_mediatek_mt7981=y
 CONFIG_TARGET_MULTI_PROFILE=y
-CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE_xiaomi_mi-router-ax3000t=y
-CONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7981_DEVICE_xiaomi_mi-router-ax3000t=""
-CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE_xiaomi_mi-router-ax3000t-an8855=y
-CONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7981_DEVICE_xiaomi_mi-router-ax3000t-an8855=""
+CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE_nokia_ea0326gmp=y
+CONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7981_DEVICE_nokia_ea0326gmp=""
+CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE_xiaomi_mi-router-wr30u-112m=y
+CONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7981_DEVICE_xiaomi_mi-router-wr30u-112m=""
 CONFIG_DEVEL=y
 CONFIG_TOOLCHAINOPTS=y
 CONFIG_BUSYBOX_CUSTOM=y
@@ -272,23 +272,17 @@ CONFIG_PACKAGE_kmod-batman-adv=y
 CONFIG_PACKAGE_kmod-wireguard=y
 CONFIG_PACKAGE_luci-app-eqos-mtk=y
 CONFIG_PACKAGE_luci-app-mtwifi-cfg=y
-CONFIG_PACKAGE_luci-app-filetransfer=y
+# CONFIG_PACKAGE_luci-app-filetransfer is not set
 CONFIG_PACKAGE_luci-app-turboacc-mtk=y
 CONFIG_PACKAGE_luci-app-upnp=y
-CONFIG_PACKAGE_luci-i18n-eqos-mtk-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-filetransfer-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-mtwifi-cfg-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-turboacc-mtk-zh-cn=y
 CONFIG_PACKAGE_luci-theme-argon=y
 # CONFIG_PACKAGE_luci-theme-bootstrap-mod is not set
 
 # CONFIG_PACKAGE_luci-app-usb-printer is not set
 # CONFIG_PACKAGE_luci-app-samba4 is not set
 
-CONFIG_PACKAGE_luci-app-autoreboot=y
-CONFIG_PACKAGE_luci-app-ramfree=y
+# CONFIG_PACKAGE_luci-app-autoreboot is not set
+# CONFIG_PACKAGE_luci-app-ramfree is not set
 CONFIG_PACKAGE_luci-app-ttyd=y
 
-CONFIG_PACKAGE_UA2F=y
-CONFIG_PACKAGE_luci-app-ua2f=y
+CONFIG_PACKAGE_luci-app-oaf=y
