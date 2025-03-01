@@ -17,6 +17,9 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/
 #红米ax6000改512MB闪存
 #sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
 #sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
+sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0xdd00000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-nokia-ea0326gmp.dts
+
+
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
 git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
@@ -35,6 +38,7 @@ rm -rf feeds/packages/net/ua2f
 
 git clone --depth 1 https://github.com/mchome/luci-app-dogcom.git package/luci-app-dogcom
 git clone --depth 1 https://github.com/mchome/openwrt-dogcom.git package/openwrt-dogcom
+git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/oaf
 
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
