@@ -6,7 +6,7 @@ on:
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
-  REPO_BRANCH: openwrt-21.02
+  REPO_BRANCH: openwrt-18.06-k5.4
   CONFIG_FILE: config/k2t-imm21.02
   DIY_SCRIPT: script/imm21.02-7621.sh
   CLASH_KERNEL: amd64
