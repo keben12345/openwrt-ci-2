@@ -29,3 +29,8 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git p
 git clone --depth 1 https://github.com/sbwml/luci-app-mosdns.git package/mosdns
 git clone --depth 1 https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
+
+rm -rf feeds/packages/lang/rust
+git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/imm24pkg
+mv package/imm24pkg/net/lang/rust feeds/packages/lang/rust
+rm -rf package/imm24pkg
