@@ -31,6 +31,6 @@ git clone --depth 1 https://github.com/rufengsuixing/luci-app-adguardhome.git pa
 git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 
 rm -rf feeds/packages/lang/rust
-git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/immpkg
+git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/immpkg
 mv package/immpkg/lang/rust feeds/packages/lang/rust
 rm -rf package/immpkg
