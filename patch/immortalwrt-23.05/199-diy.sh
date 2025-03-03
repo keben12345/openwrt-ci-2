@@ -24,6 +24,8 @@ uci set wireless.default_radio0.key=TK888.5G
 uci set wireless.default_radio1.key=TK888.5G
 uci commit wireless
 
+uci commit
+
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 #sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
