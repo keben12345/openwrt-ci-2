@@ -33,6 +33,6 @@ sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/
 sed -i 's/root::0:0:99999:7:::/root:$5$GM0RGt.Zmu3FWIw7$mkH5wfffgcbUCDbe1ojIuzlNoSTkv7RfmgEzmiHtFhD:20150:0:99999:7:::/g' /etc/shadow
 sed -i 's/root:::0:99999:7:::/root:$5$GM0RGt.Zmu3FWIw7$mkH5wfffgcbUCDbe1ojIuzlNoSTkv7RfmgEzmiHtFhD:20150:0:99999:7:::/g' /etc/shadow
 
-#/etc/init.d/network restart
+/etc/init.d/network restart
 
 exit 0
