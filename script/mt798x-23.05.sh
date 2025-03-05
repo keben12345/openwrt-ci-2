@@ -62,6 +62,11 @@ git clone --depth 1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/e
 mv package/extra-ipk/linkease package/linkease
 rm -rf package/extra-ipk
 
+rm -rf feeds/packages/lang/rust
+git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/immpkg
+mv package/immpkg/lang/rust feeds/packages/lang/rust
+rm -rf package/immpkg
+
 git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/imm21-luci
 mv package/imm21-luci/applications/luci-app-v2ray-server package/luci-app-v2ray-server
 sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-v2ray-server/Makefile
