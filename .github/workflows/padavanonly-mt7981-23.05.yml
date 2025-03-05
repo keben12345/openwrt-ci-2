@@ -7,7 +7,7 @@ on:
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x-23.05.git
   REPO_BRANCH: openwrt-23.05
-  CONFIG_FILE: config/rax3000m-23.05-padavanonly
+  CONFIG_FILE: config/mt7981-23.05-padavanonly
   DIY_SCRIPT: script/mt798x-23.05.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
