@@ -1,8 +1,10 @@
+#添加TurboAcc
+curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-#sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's#mirrors.vsean.net/openwrt#mirrors.pku.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
-#mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
+mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
 git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
 mv package/openclash-core/master/meta/clash-linux-amd64.tar.gz package/base-files/files/etc/clash-linux-amd64.tar.gz
@@ -41,6 +43,7 @@ rm -rf feeds/packages/devel/gn
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
 
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/luci-app-eqosplus
 
 rm -rf feeds/packages/net/adguardhome
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/kz8-small
