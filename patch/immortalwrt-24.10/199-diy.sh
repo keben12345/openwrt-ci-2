@@ -12,9 +12,9 @@ uci commit
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 
-tar -zxf /etc/clash-linux-amd64.tar.gz -C /etc/openclash/core/
-mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
-rm -rf /etc/clash-linux-amd64.tar.gz
+#tar -zxf /etc/clash-linux-amd64.tar.gz -C /etc/openclash/core/
+#mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
+#rm -rf /etc/clash-linux-amd64.tar.gz
 
 #/etc/init.d/network restart
 
