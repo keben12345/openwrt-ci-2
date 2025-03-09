@@ -37,6 +37,8 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git p
 rm -rf feeds/packages/devel/gn
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
 
+git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+
 rm -rf feeds/packages/net/adguardhome
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
