@@ -14,6 +14,9 @@ sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-stat
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
+#下载5g模块
+git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+
 # iStore
 git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
 git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
