@@ -11,6 +11,7 @@ uci set dropbear.@dropbear[0].Interface=''
 uci commit
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
+sed -i 's#downloads.immortalwrt.org#mirrors.nju.pku.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 
 tar -zxf /etc/clash-linux-amd64.tar.gz -C /etc/openclash/core/
 mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
