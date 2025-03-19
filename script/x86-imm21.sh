@@ -69,9 +69,11 @@ rm -rf package/small-package
 git clone --depth 1 https://github.com/mingxiaoyu/luci-app-phtunnel.git package/phtunnel
 
 # iStore
-git clone --depth 1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
-mv package/extra-ipk/linkease package/linkease
-rm -rf package/extra-ipk
+git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
+git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
+git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
+mv package/nas-packages/network/services/* package/nas-packages/
+rm -rf package/nas-packages/network
 
 rm -rf feeds/packages/net/frp
 git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23pkg
