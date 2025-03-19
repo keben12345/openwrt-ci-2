@@ -50,23 +50,26 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 #git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/oaf
+git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/luci-app-eqosplus
+git clone --depth 1 https://github.com/mingxiaoyu/luci-app-phtunnel.git package/phtunnel
 
 rm -rf feeds/packages/net/adguardhome
-rm -rf feeds/packages/net/smartdns
-rm -rf feeds/luci/applications/luci-app-smartdns
-git clone --depth 1 https://github.com/kenzok8/small-package.git package/small-package
-mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
-mv package/small-package/adguardhome feeds/packages/net/adguardhome
-mv package/small-package/luci-app-smartdns package/luci-app-smartdns
-mv package/small-package/smartdns feeds/packages/net/smartdns
-mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
-mv package/small-package/luci-app-alist package/luci-app-alist
-mv package/small-package/alist package/alist
 rm -rf feeds/packages/net/alist
 rm -rf feeds/luci/applications/luci-app-alist
-rm -rf package/small-package
+git clone --depth=1 https://github.com/kenzok8/small-package.git package/kz8-small
+mv package/kz8-small/adguardhome package/adguardhome
+mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
+mv package/kz8-small/alist package/alist
+mv package/kz8-small/luci-app-alist package/luci-app-alist
+mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
+mv package/kz8-small/luci-app-partexp package/luci-app-partexp
+mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
+mv package/kz8-small/wrtbwmon package/wrtbwmon
+mv package/kz8-small/luci-app-netspeedtest package/luci-app-netspeedtest
+mv package/kz8-small/homebox package/homebox
+mv package/kz8-small/luci-app-poweroff package/luci-app-poweroff
+rm -rf package/kz8-small
 
-git clone --depth 1 https://github.com/mingxiaoyu/luci-app-phtunnel.git package/phtunnel
 
 # iStore
 git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
