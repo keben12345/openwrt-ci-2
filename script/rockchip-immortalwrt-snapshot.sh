@@ -28,9 +28,9 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/lu
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 
-git clone --depth 1 https://github.com/yichya/luci-app-xray.git package/luci-app-xray
-git clone --depth 1 https://github.com/Thaolga/openwrt-nekobox.git package/openwrt-nekobox
-git clone --depth 1 https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
+#git clone --depth 1 https://github.com/yichya/luci-app-xray.git package/luci-app-xray
+#git clone --depth 1 https://github.com/Thaolga/openwrt-nekobox.git package/openwrt-nekobox
+#git clone --depth 1 https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
 
 rm -rf package/helloworld/gn
 rm -rf feeds/packages/devel/gn
