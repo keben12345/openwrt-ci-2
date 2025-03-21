@@ -42,13 +42,6 @@ rm -rf feeds/packages/utils/v2dat
 
 git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 
-# iStore
-git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
-git clone --depth 1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
-git clone --depth 1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
-mv package/nas-packages/network/services/* package/nas-packages/
-rm -rf package/nas-packages/network
-
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 #git clone --depth 1 -b js https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
 #git clone --depth 1 https://github.com/Siha06/my-openwrt-packages.git package/my-openwrt-packages
