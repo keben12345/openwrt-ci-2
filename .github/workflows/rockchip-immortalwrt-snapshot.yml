@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: master
   CONFIG_FILE: config/rockchip-immortalwrt-snapshot
-  DIY_SCRIPT: script/rockchip-immortalwrt-snapshot
+  DIY_SCRIPT: script/rockchip-immortalwrt-snapshot.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
