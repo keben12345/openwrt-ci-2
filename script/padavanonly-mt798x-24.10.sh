@@ -4,9 +4,12 @@ sed -i 's/ImmortalWrt/Router/g' package/base-files/files/bin/config_generate
 sed -i "s/ImmortalWrt/WiFi/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
+git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
+mv package/openclash-core/master/meta/clash-linux-arm64.tar.gz package/base-files/files/etc/clash-linux-arm64.tar.gz
+rm -rf package/openclash-core
 
-mv $GITHUB_WORKSPACE/patch/mt798x-23.05-padavanonly/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
-#mv $GITHUB_WORKSPACE/patch/mt798x-23.05-padavanonly/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+mv $GITHUB_WORKSPACE/patch/padavanonly/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
+#mv $GITHUB_WORKSPACE/patch/padavanonly/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #添加编译日期
@@ -34,7 +37,7 @@ git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
-git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
+git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
 mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
 #git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
