@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x-24.10.git
   REPO_BRANCH: 2410
   CONFIG_FILE: config/mt7986-24.10-padavanonly
-  DIY_SCRIPT: script/mt798x-24.10.sh
+  DIY_SCRIPT: script/padavanonly-mt798x-24.10.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
