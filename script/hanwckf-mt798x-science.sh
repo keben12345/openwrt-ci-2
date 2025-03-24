@@ -53,6 +53,7 @@ rm -rf package/passwall-packages/shadowsocks-rust
 rm -rf package/passwall-packages/shadowsocksr-libev
 rm -rf package/helloworld/shadowsocks-rust
 rm -rf package/helloworld/shadowsocksr-libev
+rm -rf package/helloworld/gn
 
 rm -rf feeds/packages/net/v2ray-geodata
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
