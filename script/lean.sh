@@ -49,6 +49,8 @@ mv package/kz8-small/luci-app-lucky package/luci-app-lucky
 mv package/kz8-small/smartdns package/smartdns
 rm -rf package/kz8-small
 
+git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/eqosplus
+
 git clone --depth 1 -b lua https://github.com/sbwml/luci-app-alist package/alist
 rm -rf package/alist/alist
 rm -rf feeds/luci/themes/luci-theme-argon
