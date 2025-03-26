@@ -10,9 +10,12 @@ uci commit
 
 #sed -i 's/root::0:0:99999:7:::/root:$1$R43zhcLV$dwxtXXFI7TdIRcVKl.w3N1:20158:0:99999:7:::/g' /etc/shadow
 
-tar -zxf /etc/clash-linux-arm64.tar.gz -C /etc/openclash/core/
-mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
-rm -rf /etc/clash-linux-arm64.tar.gz
+OPENCLASH_FILE="/etc/config/openclash"
+if [ -f "$OPENCLASH_FILE" ]; then
+    tar -zxf /etc/clash-linux-arm64.tar.gz -C /etc/openclash/core/
+    mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
+    rm -rf /etc/clash-linux-arm64.tar.gz
+fi
 
 #/etc/init.d/network restart
 
