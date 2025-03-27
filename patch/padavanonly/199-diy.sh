@@ -8,9 +8,10 @@ uci delete ttyd.@ttyd[0].interface
 uci set dropbear.@dropbear[0].Interface=''
 
 #其他网络设置
-#uci set network.lan.ipaddr=192.168.6.1
+uci set network.lan.ipaddr=192.168.23.1
 #uci del network.lan.ip6assign
-#uci commit network
+uci commit network
+
 #uci del dhcp.lan.ra
 #uci del dhcp.lan.dhcpv6
 #uci del dhcp.lan.ndp
