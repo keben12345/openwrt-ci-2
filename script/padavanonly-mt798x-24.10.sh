@@ -43,12 +43,17 @@ rm -rf package/openclash
 #git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone --depth 1 https://github.com/AutoCONFIG/luci-app-rustdesk-server.git package/luci-app-rustdesk-server
 
-rm -rf feeds/packages/net/{adguardhome,alist}
+rm -rf feeds/packages/net/{adguardhome,alist,tailscale}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/small-package
-mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/adguardhome feeds/packages/net/adguardhome
-mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
+mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/alist feeds/packages/net/alist
+mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
+mv package/small-package/tailscale package/tailscale
+mv package/small-package/luci-app-tailscale package/luci-app-tailscale
+mv package/small-package/wrtbwmon package/wrtbwmon
+mv package/small-package/luci-app-wrtbwmon package/luci-app-wrtbwmon
+
 rm -rf package/small-package
 
 #下载5g模块
@@ -61,19 +66,26 @@ git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-
 #rm -rf feeds/luci/protocols/luci-proto-quectel
 
 # iStore
-git clone --depth 1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
-mv package/extra-ipk/linkease package/linkease
-rm -rf package/extra-ipk
-
-rm -rf feeds/packages/lang/rust
-git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/immpkg
-mv package/immpkg/lang/rust feeds/packages/lang/rust
-rm -rf package/immpkg
+#git clone --depth 1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
+#mv package/extra-ipk/linkease package/linkease
+#rm -rf package/extra-ipk
+# iStore
+git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
+git clone --depth 1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
+git clone --depth 1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
+mv package/nas-packages/network/services/* package/nas-packages/
+rm -rf package/nas-packages/network
 
 git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/imm21-luci
+mv package/imm21-luci/applications/luci-app-accesscontrol package/luci-app-accesscontrol
 mv package/imm21-luci/applications/luci-app-v2ray-server package/luci-app-v2ray-server
+sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-accesscontrol/Makefile
 sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-v2ray-server/Makefile
 rm -rf package/imm21-luci
+#git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci.git package/imm23-luci
+#mv package/imm23-luci/applications/luci-app-accesscontrol package/luci-app-accesscontrol
+#sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-accesscontrol/Makefile
+#rm -rf package/imm23-luci
 
 ## 修改DTS的ubi为490MB的0x1ea00000
 #sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
