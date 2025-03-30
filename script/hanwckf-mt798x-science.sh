@@ -56,7 +56,7 @@ rm -rf package/passwall-packages/shadowsocks-rust
 rm -rf package/passwall-packages/shadowsocksr-libev
 rm -rf package/helloworld/shadowsocks-rust
 rm -rf package/helloworld/shadowsocksr-libev
-rm -rf package/helloworld/gn
+#rm -rf package/helloworld/gn
 
 rm -rf feeds/packages/net/v2ray-geodata
 find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
