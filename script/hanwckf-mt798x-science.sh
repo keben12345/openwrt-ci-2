@@ -66,18 +66,21 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/oaf
 
 rm -rf feeds/packages/net/adguardhome
+rm -rf feeds/packages/net/alist
+rm -rf feeds/luci/applications/luci-app-alist
 rm -rf feeds/packages/net/smartdns
 rm -rf feeds/luci/applications/luci-app-smartdns
+rm -rf feeds/packages/net/tailscale
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/adguardhome feeds/packages/net/adguardhome
+mv package/small-package/luci-app-smartdns package/luci-app-tailscale
+mv package/small-package/smartdns feeds/packages/net/tailscale
 mv package/small-package/luci-app-smartdns package/luci-app-smartdns
 mv package/small-package/smartdns feeds/packages/net/smartdns
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/small-package/luci-app-alist package/luci-app-alist
 mv package/small-package/alist package/alist
-rm -rf feeds/packages/net/alist
-rm -rf feeds/luci/applications/luci-app-alist
 rm -rf package/small-package
 
 git clone --depth 1 https://github.com/mingxiaoyu/luci-app-phtunnel.git package/phtunnel
@@ -97,3 +100,7 @@ git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package
 mv package/imm23luci/applications/luci-app-frpc feeds/luci/applications/luci-app-frpc
 rm -rf package/imm23luci
 
+git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
+mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
+mv package/lede/package/lean/leigod-acc package/leigod-acc
+rm -rf package/lede
