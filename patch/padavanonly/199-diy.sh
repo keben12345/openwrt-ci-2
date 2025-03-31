@@ -8,9 +8,9 @@ uci delete ttyd.@ttyd[0].interface
 uci set dropbear.@dropbear[0].Interface=''
 
 #其他网络设置
-uci set network.lan.ipaddr=192.168.23.1
+#uci set network.lan.ipaddr=192.168.23.1
 #uci del network.lan.ip6assign
-uci commit network
+#uci commit network
 
 #uci del dhcp.lan.ra
 #uci del dhcp.lan.dhcpv6
@@ -35,10 +35,14 @@ sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/
 #sed -i 's/root::0:0:99999:7:::/root:$5$GM0RGt.Zmu3FWIw7$mkH5wfffgcbUCDbe1ojIuzlNoSTkv7RfmgEzmiHtFhD:20150:0:99999:7:::/g' /etc/shadow
 #sed -i 's/root:::0:99999:7:::/root:$5$GM0RGt.Zmu3FWIw7$mkH5wfffgcbUCDbe1ojIuzlNoSTkv7RfmgEzmiHtFhD:20150:0:99999:7:::/g' /etc/shadow
 
-tar -zxf /etc/clash-linux-arm64.tar.gz -C /etc/openclash/core/
-mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
-rm -rf /etc/clash-linux-arm64.tar.gz
+OPENCLASH_FILE="/etc/config/openclash"
+if [ -f "$OPENCLASH_FILE" ]; then
+    tar -zxf /etc/clash-linux-arm64.tar.gz -C /etc/openclash/core/
+    mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
+    rm -rf /etc/clash-linux-arm64.tar.gz
+fi
 
-/etc/init.d/network restart
+
+#/etc/init.d/network restart
 
 exit 0
