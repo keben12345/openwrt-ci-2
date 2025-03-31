@@ -4,9 +4,11 @@ sed -i 's/ImmortalWrt/Router/g' package/base-files/files/bin/config_generate
 sed -i "s/ImmortalWrt/WiFi/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
-git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-mv package/openclash-core/master/meta/clash-linux-arm64.tar.gz package/base-files/files/etc/clash-linux-arm64.tar.gz
-rm -rf package/openclash-core
+if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
+    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
+    mv package/openclash-core/master/meta/clash-linux-arm64.tar.gz package/base-files/files/etc/clash-linux-arm64.tar.gz
+    rm -rf package/openclash-core
+fi
 
 mv $GITHUB_WORKSPACE/patch/padavanonly/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
 #mv $GITHUB_WORKSPACE/patch/padavanonly/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
@@ -23,7 +25,7 @@ git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/l
 rm rm -rf feeds/packages/net/{chinadns-ng,dns2socks,dns2tcp,geoview,hysteria,ipt2socks,microsocks,naiveproxy,pdnsd-alt,shadowsocks-rust,shadowsocksr-libev,simple-obfs,sing-box,ssocks,tcping,trojan*,tuic-client,v2ray*,xray*,mosdns}
 #rm -rf feeds/packages/devel/gn
 rm -rf feeds/packages/utils/v2dat
-rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns}
+rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-mosdns}
 
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
