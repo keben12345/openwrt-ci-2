@@ -96,6 +96,14 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
+    - name: 更新安装modem
+      run: |
+        cd $OPENWRT_PATH
+        echo >> feeds.conf.default
+        echo 'src-git modem https://github.com/FUjr/modem_feeds.git;main' >> feeds.conf.default
+        ./scripts/feeds update modem
+        ./scripts/feeds install -a -f -p modem
+
     - name: Load Custom Script（加载自定义脚本）
       run: |
         chmod +x $DIY_SCRIPT
