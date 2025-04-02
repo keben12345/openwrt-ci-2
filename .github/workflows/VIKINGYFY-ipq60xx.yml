@@ -9,7 +9,6 @@ env:
   REPO_BRANCH: main
   CONFIG_FILE: config/VIKINGYFY-ipq60xx
   DIY_SCRIPT: script/VIKINGYFY.sh
-  DIY_SCRIPT-2: script/VIKINGYFY-2.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -93,10 +92,8 @@ jobs:
     - name: Load Custom Script(加载自定义脚本)
       run: |
         chmod +x $DIY_SCRIPT
-        chmod +x $DIY_SCRIPT-2
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
-        $GITHUB_WORKSPACE/$DIY_SCRIPT-2
 
     - name: edit md5（编辑内核值）
       run: |
