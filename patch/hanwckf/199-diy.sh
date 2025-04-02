@@ -17,17 +17,17 @@ if [ -f "$OPENCLASH_FILE" ]; then
     rm -rf /etc/clash-linux-arm64.tar.gz
 fi
 
-#uci del dhcp.lan.ra
-#uci del dhcp.lan.ra_slaac
-#uci del dhcp.lan.ra_flags
-#uci del dhcp.lan.dhcpv6
-#uci del dhcp.lan.dns_service
-#uci commit dhcp
-#uci del network.wan6
-#uci del network.lan.ip6assign
-#uci del network.globals.ula_prefix
-#uci commit network
-#uci commit
+uci del dhcp.lan.ra
+uci del dhcp.lan.ra_slaac
+uci del dhcp.lan.ra_flags
+uci del dhcp.lan.dhcpv6
+uci del dhcp.lan.dns_service
+uci commit dhcp
+uci del network.wan6
+uci del network.lan.ip6assign
+uci del network.globals.ula_prefix
+uci commit network
+uci commit
 
 /etc/init.d/network restart
 
