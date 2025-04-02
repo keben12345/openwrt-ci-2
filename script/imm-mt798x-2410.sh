@@ -11,8 +11,8 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
 #下载5g模块
-#git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-#rm -rf feeds/packages/net/quectel-cm
+git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+rm -rf feeds/packages/net/quectel-cm
 
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
