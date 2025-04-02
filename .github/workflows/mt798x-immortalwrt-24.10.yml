@@ -91,18 +91,11 @@ jobs:
       run: |
         cd $OPENWRT_PATH
         git checkout v24.10.0
+        mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/mt798x-feeds feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-
-    - name: 更新安装modem
-      run: |
-        cd $OPENWRT_PATH
-        echo >> feeds.conf.default
-        echo 'src-git modem https://github.com/FUjr/modem_feeds.git;main' >> feeds.conf.default
-        ./scripts/feeds update modem
-        ./scripts/feeds install -a -f -p modem
 
     - name: Load Custom Script（加载自定义脚本）
       run: |
