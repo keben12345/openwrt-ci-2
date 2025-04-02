@@ -1,0 +1,77 @@
+CONFIG_TARGET_qualcommax=y
+CONFIG_TARGET_qualcommax_ipq60xx=y
+CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_redmi_ax5-jdcloud=y
+# CONFIG_ATH11K_MEM_PROFILE_1G is not set
+CONFIG_ATH11K_MEM_PROFILE_512M=y
+CONFIG_LUCI_LANG_zh_Hans=y
+CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
+CONFIG_PACKAGE_block-mount=y
+CONFIG_PACKAGE_kmod-fs-exportfs=y
+CONFIG_PACKAGE_kmod-fs-f2fs=y
+CONFIG_PACKAGE_kmod-fs-ntfs3=y
+CONFIG_PACKAGE_kmod-fs-xfs=y
+CONFIG_PACKAGE_kmod-fs-btrfs=y
+CONFIG_PACKAGE_kmod-fs-exfat=y
+CONFIG_PACKAGE_kmod-fs-ntfs=y
+CONFIG_PACKAGE_kmod-fs-ntfs3=y
+CONFIG_PACKAGE_kmod-fs-vfat=y
+CONFIG_PACKAGE_kmod-fuse=y
+CONFIG_PACKAGE_kmod-tun=y
+CONFIG_PACKAGE_kmod-mtd-rw=y
+CONFIG_PACKAGE_kmod-nft-socket=y
+CONFIG_PACKAGE_kmod-wireguard=y
+
+CONFIG_PACKAGE_autocore=y
+CONFIG_PACKAGE_bash=y
+CONFIG_PACKAGE_blkid=y
+# CONFIG_PACKAGE_coremark is not set
+CONFIG_PACKAGE_htop=y
+CONFIG_PACKAGE_cfdisk=y
+CONFIG_PACKAGE_fdisk=y
+CONFIG_PACKAGE_sgdisk=y
+CONFIG_PACKAGE_ip-full=y
+CONFIG_PACKAGE_lsblk=y
+CONFIG_PACKAGE_luci-compat=y
+CONFIG_PACKAGE_luci-lua-runtime=y
+CONFIG_PACKAGE_wpad-openssl=y
+CONFIG_PACKAGE_parted=y
+CONFIG_PACKAGE_smartmontools=y
+CONFIG_PACKAGE_tar=y
+
+CONFIG_PACKAGE_kmod-usb-net-rndis=m
+CONFIG_PACKAGE_kmod-usb-storage=m
+CONFIG_PACKAGE_kmod-usb-storage-extras=m
+CONFIG_PACKAGE_kmod-usb3=m
+# CONFIG_PACKAGE_luci-app-homeproxy is not set
+# CONFIG_PACKAGE_luci-app-samba4 is not set
+CONFIG_PACKAGE_luci-theme-argon=y
+CONFIG_PACKAGE_luci-app-autoreboot=y
+CONFIG_PACKAGE_luci-app-cpufreq=y
+# CONFIG_PACKAGE_luci-app-diskman is not set
+CONFIG_PACKAGE_luci-app-filemanager=y
+CONFIG_PACKAGE_luci-app-ramfree=y
+CONFIG_PACKAGE_luci-app-ttyd=y
+
+
+CONFIG_PACKAGE_luci-app-mosdns=y
+CONFIG_PACKAGE_luci-app-nikki=y
+CONFIG_PACKAGE_luci-app-openclash=y
+CONFIG_PACKAGE_luci-app-passwall=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Geoview=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Haproxy=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Hysteria=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_NaiveProxy=y
+# CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Client is not set
+# CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Server is not set
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Rust_Client=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Rust_Server=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client=y
+# CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Server is not set
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Simple_Obfs=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_SingBox=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_tuic_client=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray_Geodata=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray_Plugin=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray_Plugin=y
