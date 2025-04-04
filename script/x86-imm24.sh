@@ -10,7 +10,7 @@ mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-diy.sh package/base-files/files
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-    mv package/openclash-core/master/meta/clash-linux-arm64.tar.gz package/base-files/files/etc/clash-linux-arm64.tar.gz
+    mv package/openclash-core/master/meta/clash-linux-amd64.tar.gz package/base-files/files/etc/clash-linux-amd64.tar.gz
     rm -rf package/openclash-core
 fi
 
@@ -21,7 +21,7 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
 #下载5g模块
-git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+#git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 
 # iStore
 git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
@@ -39,7 +39,7 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 #git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
-git clone --depth 1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
+git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
