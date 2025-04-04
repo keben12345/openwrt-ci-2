@@ -22,10 +22,12 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 #删除自带的老旧依赖，ssr-plus，passwall
-rm rm -rf feeds/packages/net/{chinadns-ng,dns2socks,dns2tcp,geoview,hysteria,ipt2socks,microsocks,naiveproxy,pdnsd-alt,shadowsocks-rust,shadowsocksr-libev,simple-obfs,sing-box,ssocks,tcping,trojan*,tuic-client,v2ray*,xray*,mosdns}
+rm rm -rf feeds/packages/net/{chinadns-ng,dns2socks,dns2tcp,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-rust,shadowsocksr-libev,simple-obfs,sing-box,ssocks,tcping,trojan*,tuic-client,v2ray*,xray*,mosdns}
 #rm -rf feeds/packages/devel/gn
 rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-mosdns}
+find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
+find ./ | grep Makefile | grep mosdns | xargs rm -f
 
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
@@ -33,8 +35,6 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/l
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/nikki
 #git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 
-#find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
-#find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 #安装最新openclash
@@ -50,6 +50,7 @@ git clone --depth 1 https://github.com/kenzok8/small-package.git package/small-p
 mv package/small-package/adguardhome feeds/packages/net/adguardhome
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/alist feeds/packages/net/alist
+mv package/small-package/luci-app-alist package/luci-app-alist
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/small-package/tailscale package/tailscale
 mv package/small-package/luci-app-tailscale package/luci-app-tailscale
@@ -67,10 +68,6 @@ git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-
 #rm -rf feeds/packages/kernel/quectel-qmi-wwan
 #rm -rf feeds/luci/protocols/luci-proto-quectel
 
-# iStore
-#git clone --depth 1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
-#mv package/extra-ipk/linkease package/linkease
-#rm -rf package/extra-ipk
 # iStore
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
 git clone --depth 1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
