@@ -17,7 +17,7 @@ OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
     tar -zxf /etc/clash-linux-amd64.tar.gz -C /etc/openclash/core/
     mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
-    rm -rf /etc/clash-linux-armmd.tar.gz
+    rm -rf /etc/clash-linux-amd64.tar.gz
 fi
 
 # 统计eth接口数量，大于1个则将eth0设为wan其它网口设为lan，只有1个则设置成DHCP模式
