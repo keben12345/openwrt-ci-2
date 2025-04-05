@@ -29,14 +29,12 @@ sed -i 's/12345678/password/g' target/linux/qualcommax/base-files/etc/uci-defaul
 sed -i 's/hybrid/server/g' target/linux/qualcommax/base-files/etc/uci-defaults/991_set-network.sh
 
 #下载5g模块
-git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
-sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
-rm -rf feeds/packages/net/quectel-cm
-rm -rf feeds/packages/kernel/fibocom-qmi-wwan
-rm -rf feeds/packages/kernel/quectel-qmi-wwan
-rm -rf feeds/luci/protocols/luci-proto-quectel
-rm -rf feeds/nss_packages/wwan
+#git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+#rm -rf feeds/packages/net/quectel-cm
+#rm -rf feeds/packages/kernel/fibocom-qmi-wwan
+#rm -rf feeds/packages/kernel/quectel-qmi-wwan
+#rm -rf feeds/luci/protocols/luci-proto-quectel
+#rm -rf feeds/nss_packages/wwan
 
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
@@ -56,17 +54,17 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git  package/oaf
 git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
-mv package/kwrt-packages/uugamebooster package/uugamebooster
-mv package/kwrt-packages/luci-app-uugamebooster package/luci-app-uugamebooster
+#mv package/kwrt-packages/uugamebooster package/uugamebooster
+#mv package/kwrt-packages/luci-app-uugamebooster package/luci-app-uugamebooster
 mv package/kwrt-packages/luci-app-pushbot package/luci-app-pushbot
 rm -rf package/kwrt-packages
 
 #sed -i "s/openwrt-\$(UU_ARCH)\/\$(PKG_VERSION)\/uu.tar.gz?/openwrt-\$(UU_ARCH)\/\$(PKG_VERSION)\//g" package/uugamebooster/Makefile
 #sed -i "s/\$(PKG_NAME)-\$(UU_ARCH)-\$(PKG_VERSION).tar.gz/uu.tar.gz/g" package/uugamebooster/Makefile
 
-rm -rf feeds/packages/net/adguardhome
+#rm -rf feeds/packages/net/adguardhome
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
-mv package/kz8-small/adguardhome package/adguardhome
+#mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/luci-app-easymesh package/luci-app-easymesh
 mv package/kz8-small/luci-app-onliner package/luci-app-onliner
