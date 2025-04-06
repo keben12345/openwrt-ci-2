@@ -36,6 +36,13 @@ sed -i 's/hybrid/server/g' target/linux/qualcommax/base-files/etc/uci-defaults/9
 #rm -rf feeds/luci/protocols/luci-proto-quectel
 #rm -rf feeds/nss_packages/wwan
 
+# iStore
+git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
+git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
+git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
+mv package/nas-packages/network/services/* package/nas-packages/
+rm -rf package/nas-packages/network
+
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
