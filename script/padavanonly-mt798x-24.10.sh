@@ -28,7 +28,6 @@ rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-mosdns}
 find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 find ./ | grep Makefile | grep mosdns | xargs rm -f
-
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
@@ -36,7 +35,7 @@ git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/
 #git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-#git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
@@ -56,17 +55,14 @@ mv package/small-package/tailscale package/tailscale
 mv package/small-package/luci-app-tailscale package/luci-app-tailscale
 mv package/small-package/wrtbwmon package/wrtbwmon
 mv package/small-package/luci-app-wrtbwmon package/luci-app-wrtbwmon
-
 rm -rf package/small-package
 
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-#sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
-#sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
-#rm -rf feeds/packages/net/quectel-cm
-#rm -rf feeds/packages/kernel/fibocom-qmi-wwan
-#rm -rf feeds/packages/kernel/quectel-qmi-wwan
-#rm -rf feeds/luci/protocols/luci-proto-quectel
+rm -rf feeds/packages/net/quectel-cm
+rm -rf feeds/packages/kernel/fibocom-qmi-wwan
+rm -rf feeds/packages/kernel/quectel-qmi-wwan
+rm -rf feeds/luci/protocols/luci-proto-quectel
 
 # iStore
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
