@@ -80,13 +80,17 @@ rm -rf feeds/packages/net/tailscale
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/adguardhome feeds/packages/net/adguardhome
+mv package/small-package/luci-app-alist package/luci-app-alist
+mv package/small-package/alist package/alist
+mv package/small-package/luci-app-easymesh package/luci-app-easymesh
+#mv package/small-package/luci-app-gowebdav package/luci-app-gowebdav
+#mv package/small-package/gowebdav package/gowebdav
+mv package/small-package/luci-app-gecoosac package/luci-app-gecoosac
 mv package/small-package/luci-app-smartdns package/luci-app-tailscale
 mv package/small-package/smartdns feeds/packages/net/tailscale
 mv package/small-package/luci-app-smartdns package/luci-app-smartdns
 mv package/small-package/smartdns feeds/packages/net/smartdns
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
-mv package/small-package/luci-app-alist package/luci-app-alist
-mv package/small-package/alist package/alist
 rm -rf package/small-package
 
 git clone --depth 1 https://github.com/mingxiaoyu/luci-app-phtunnel.git package/phtunnel
@@ -110,3 +114,7 @@ git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
 mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
 mv package/lede/package/lean/leigod-acc package/leigod-acc
 rm -rf package/lede
+git clone --depth 1 -b master https://github.com/coolsnowwolf/luci.git package/lean-luci
+mv package/lean-luci/applications/luci-app-arpbind package/luci-app-arpbind
+sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-arpbind/Makefile
+rm -rf package/lean-luci
