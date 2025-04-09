@@ -30,11 +30,11 @@ uci commit network
 uci commit
 
 #uci set wireless.default_MT7981_1_1.ssid=TK888
-uci set wireless.default_MT7981_1_1.encryption=sae-mixed
+uci set wireless.default_MT7981_1_1.encryption=psk2+ccmp
 uci set wireless.default_MT7981_1_1.key=3305349535
 
 #uci set wireless.default_MT7981_1_2.ssid=TK888
-uci set wireless.default_MT7981_1_2.encryption=sae-mixed
+uci set wireless.default_MT7981_1_2.encryption=psk2+ccmp
 uci set wireless.default_MT7981_1_2.key=3305349535
 uci commit wireless
 
