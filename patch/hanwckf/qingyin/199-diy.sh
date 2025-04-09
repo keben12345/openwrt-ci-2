@@ -55,9 +55,9 @@ if [ -f "$OPENCLASH_FILE" ]; then
 fi
 
 mv /etc/qingyin.sh /lib/qingyin.sh
-chmod a+rwx /lib/qingyin.sh
+chmod 0755 /lib/qingyin.sh
 mv /etc/QINGYINSSIDMAC2.sh /etc/init.d/QINGYINSSIDMAC2.sh
-chmod a+rwx /etc/init.d/QINGYINSSIDMAC2.sh
+chmod 0755 /etc/init.d/QINGYINSSIDMAC2.sh
 
 /etc/init.d/network restart
 
