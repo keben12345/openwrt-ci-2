@@ -18,13 +18,13 @@ uci set dropbear.@dropbear[0].Interface=''
 #uci commit dhcp
 
 #uci set wireless.default_MT7981_1_1.ssid=TK888
-#uci set wireless.default_MT7981_1_1.encryption=psk2+ccmp
-#uci set wireless.default_MT7981_1_1.key=TK888.5G
+uci set wireless.default_MT7981_1_1.encryption=psk2+ccmp
+uci set wireless.default_MT7981_1_1.key=3305349535
 
 #uci set wireless.default_MT7981_1_2.ssid=TK888
-#uci set wireless.default_MT7981_1_2.encryption=psk2+ccmp
-#uci set wireless.default_MT7981_1_2.key=TK888.5G
-#uci commit wireless
+uci set wireless.default_MT7981_1_2.encryption=psk2+ccmp
+uci set wireless.default_MT7981_1_2.key=3305349535
+uci commit wireless
 
 uci commit
 
@@ -32,8 +32,8 @@ sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 #sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
 
-#sed -i 's/root::0:0:99999:7:::/root:$5$GM0RGt.Zmu3FWIw7$mkH5wfffgcbUCDbe1ojIuzlNoSTkv7RfmgEzmiHtFhD:20150:0:99999:7:::/g' /etc/shadow
-#sed -i 's/root:::0:99999:7:::/root:$5$GM0RGt.Zmu3FWIw7$mkH5wfffgcbUCDbe1ojIuzlNoSTkv7RfmgEzmiHtFhD:20150:0:99999:7:::/g' /etc/shadow
+sed -i 's/root::0:0:99999:7:::/root:$5$dIPac/rRjMfbVGLZ$/fUKVBoSCNxgrWHsEww5S61no7B4LISwpjMPvDqS7oB:20187:0:99999:7:::/g' /etc/shadow
+sed -i 's/root:::0:99999:7:::/root:$5$dIPac/rRjMfbVGLZ$/fUKVBoSCNxgrWHsEww5S61no7B4LISwpjMPvDqS7oB:20187:0:99999:7:::/g' /etc/shadow
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
@@ -42,7 +42,8 @@ if [ -f "$OPENCLASH_FILE" ]; then
     rm -rf /etc/clash-linux-arm64.tar.gz
 fi
 
-
-#/etc/init.d/network restart
+mv /etc/QINGYINSSIDMAC1.sh /etc/init.d/QINGYINSSIDMAC1.sh
+chmod a+rwx /etc/init.d/QINGYINSSIDMAC1.sh
+/etc/init.d/network restart
 
 exit 0
