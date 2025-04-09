@@ -74,10 +74,10 @@ rm -rf package/nas-packages/network
 
 git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/imm21-luci
 mv package/imm21-luci/applications/luci-app-accesscontrol package/luci-app-accesscontrol
-mv package/imm21-luci/applications/luci-app-filetransfer package/luci-app-filetransfer
+#mv package/imm21-luci/applications/luci-app-filetransfer package/luci-app-filetransfer
 mv package/imm21-luci/applications/luci-app-v2ray-server package/luci-app-v2ray-server
 sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-accesscontrol/Makefile
-sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-filetransfer/Makefile
+#sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-filetransfer/Makefile
 sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-v2ray-server/Makefile
 rm -rf package/imm21-luci
 #git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci.git package/imm23-luci
