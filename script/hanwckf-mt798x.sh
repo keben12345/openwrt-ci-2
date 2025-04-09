@@ -1,7 +1,7 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-sed -i 's/ImmortalWrt/Routert/g' package/base-files/files/bin/config_generate
-sed -i "s/ImmortalWrt/WiFi/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
+sed -i 's/ImmortalWrt/QINGYIN/g' package/base-files/files/bin/config_generate
+sed -i "s/ImmortalWrt/QINGYIN/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
@@ -18,7 +18,7 @@ mv $GITHUB_WORKSPACE/patch/hanwckf/qingyin/qingyin.sh package/base-files/files/e
 mv $GITHUB_WORKSPACE/patch/hanwckf/qingyin/QINGYINSSIDMAC2.sh package/base-files/files/etc/QINGYINSSIDMAC2.sh
 
 #完全删除luci版本
-sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+#sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #添加编译日期
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
@@ -33,19 +33,18 @@ rm -rf feeds/packages/net/ddns-go
 rm -rf feeds/luci/applications/luci-app-ddns-go
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 #UA2F校园网
-git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
-git clone https://github.com/Zxilly/UA2F.git package/UA2F
+#git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
+#git clone https://github.com/Zxilly/UA2F.git package/UA2F
 #git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
 #git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
 rm -rf feeds/packages/net/ua2f
 
-git clone --depth 1 https://github.com/mchome/luci-app-dogcom.git package/luci-app-dogcom
-git clone --depth 1 https://github.com/mchome/openwrt-dogcom.git package/openwrt-dogcom
+#git clone --depth 1 https://github.com/mchome/luci-app-dogcom.git package/luci-app-dogcom
+#git clone --depth 1 https://github.com/mchome/openwrt-dogcom.git package/openwrt-dogcom
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/oaf
 
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-
 
 # iStore
 git clone --depth=1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
