@@ -54,9 +54,11 @@ if [ -f "$OPENCLASH_FILE" ]; then
     rm -rf /etc/clash-linux-arm64.tar.gz
 fi
 
+mv /etc/qingyin.sh /lib/qingyin.sh
+chmod a+rwx /lib/qingyin.sh
+mv /etc/QINGYINSSIDMAC2.sh /etc/init.d/QINGYINSSIDMAC2.sh
+chmod a+rwx /etc/init.d/QINGYINSSIDMAC2.sh
 
-mv /etc/QINGYINSSIDMAC1.sh /etc/init.d/QINGYINSSIDMAC1.sh
-chmod a+rwx /etc/init.d/QINGYINSSIDMAC1.sh
 /etc/init.d/network restart
 
 exit 0
