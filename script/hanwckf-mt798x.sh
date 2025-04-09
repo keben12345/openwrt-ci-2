@@ -1,24 +1,27 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-sed -i 's/ImmortalWrt/Router/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/Routert/g' package/base-files/files/bin/config_generate
 sed -i "s/ImmortalWrt/WiFi/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
-git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-mv package/openclash-core/master/meta/clash-linux-arm64.tar.gz package/base-files/files/etc/clash-linux-arm64.tar.gz
-rm -rf package/openclash-core
-
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
-mv $GITHUB_WORKSPACE/patch/hanwckf/199_diy.sh package/base-files/files/etc/uci-defaults/199_diy
+
+if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
+    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
+    mv package/openclash-core/master/meta/clash-linux-arm64.tar.gz package/base-files/files/etc/clash-linux-arm64.tar.gz
+    rm -rf package/openclash-core
+fi
+
+#mv $GITHUB_WORKSPACE/patch/hanwckf/mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
+#mv $GITHUB_WORKSPACE/patch/hanwckf/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
+mv $GITHUB_WORKSPACE/patch/hanwckf/qingyin/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
+mv $GITHUB_WORKSPACE/patch/hanwckf/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+mv $GITHUB_WORKSPACE/patch/hanwckf/qingyin/qingyin.sh package/base-files/files/etc/qingyin.sh
+mv $GITHUB_WORKSPACE/patch/hanwckf/qingyin/QINGYINSSIDMAC2.sh package/base-files/files/etc/QINGYINSSIDMAC2.sh
 
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #添加编译日期
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
-
-#红米ax6000改512MB闪存
-#sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
-#sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
-
 
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
@@ -42,8 +45,7 @@ git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/oaf
 
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
-sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
+
 
 # iStore
 git clone --depth=1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
@@ -58,8 +60,9 @@ mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/small-package/homebox package/homebox
 mv package/small-package/luci-app-netspeedtest package/luci-app-netspeedtest
-mv package/small-package/UA2F package/UA2F
-#mv package/small-package/MentoHUST-OpenWrt-ipk package/MentoHUST-OpenWrt-ipk
+mv package/small-package/luci-app-easymesh package/luci-app-easymesh
+mv package/small-package/luci-app-gecoosac package/luci-app-gecoosac
+mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
 rm -rf package/small-package
 
 git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
