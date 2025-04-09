@@ -3,11 +3,6 @@
 'require fs';
 'require rpc';
 
-var callLuciVersion = rpc.declare({
-	object: 'luci',
-	method: 'getVersion'
-});
-
 var callSystemBoard = rpc.declare({
 	object: 'system',
 	method: 'board'
@@ -49,7 +44,7 @@ return baseclass.extend({
 			L.resolveDefault(callCPUInfo(), {}),
 			L.resolveDefault(callCPUUsage(), {}),
 			L.resolveDefault(callTempInfo(), {}),
-			L.resolveDefault(callLuciVersion(), { revision: _('unknown version'), branch: 'LuCI' })
+			fs.lines('/usr/lib/lua/luci/version.lua')
 		]);
 	},
 
@@ -62,7 +57,11 @@ return baseclass.extend({
 		    tempinfo    = data[5],
 		    luciversion = data[6];
 
-		luciversion = luciversion.branch + ' ' + luciversion.revision;
+		luciversion = luciversion.filter(function(l) {
+			return l.match(/^\s*(luciname|luciversion)\s*=/);
+		}).map(function(l) {
+			return l.replace(/^\s*\w+\s*=\s*['"]([^'"]+)['"].*$/, '$1');
+		}).join(' ');
 
 		var datestr = null;
 
@@ -84,7 +83,7 @@ return baseclass.extend({
 			_('Model'),            boardinfo.model + cpubench.cpubench,
 			_('Architecture'),     cpuinfo.cpuinfo || boardinfo.system,
 			_('Target Platform'),  (L.isObject(boardinfo.release) ? boardinfo.release.target : ''),
-			_('Firmware Version'), (L.isObject(boardinfo.release) ? boardinfo.release.description + ' / ' : '') + (luciversion || ''),
+			_('Firmware Version'), 'ImmortalWrt 21.02-SNAPSHOT / 轻音专用 ',
 			_('Kernel Version'),   boardinfo.kernel,
 			_('Local Time'),       datestr,
 			_('Uptime'),           systeminfo.uptime ? '%t'.format(systeminfo.uptime) : null,
