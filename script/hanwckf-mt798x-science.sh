@@ -11,7 +11,10 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
 fi
 
 #mv $GITHUB_WORKSPACE/patch/hanwckf/mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
-mv $GITHUB_WORKSPACE/patch/hanwckf/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
+#mv $GITHUB_WORKSPACE/patch/hanwckf/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
+mv $GITHUB_WORKSPACE/patch/padavanonly/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
+mv $GITHUB_WORKSPACE/patch/hanwckf/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+mv $GITHUB_WORKSPACE/patch/padavanonly/QINGYINSSIDMAC1.sh package/base-files/files/etc/QINGYINSSIDMAC1.sh
 
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
