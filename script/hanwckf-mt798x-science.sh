@@ -3,6 +3,7 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/l
 sed -i 's/ImmortalWrt/Routert/g' package/base-files/files/bin/config_generate
 sed -i "s/ImmortalWrt/WiFi/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
+mv $GITHUB_WORKSPACE/patch/hanwckf/mt7986a-netcore-n60pro.dts target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-netcore-n60.dts
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
@@ -11,11 +12,7 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
 fi
 
 #mv $GITHUB_WORKSPACE/patch/hanwckf/mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
-#mv $GITHUB_WORKSPACE/patch/hanwckf/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
-mv $GITHUB_WORKSPACE/patch/hanwckf/qingyin/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
-mv $GITHUB_WORKSPACE/patch/hanwckf/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
-mv $GITHUB_WORKSPACE/patch/hanwckf/qingyin/qingyin.sh package/base-files/files/etc/qingyin.sh
-mv $GITHUB_WORKSPACE/patch/hanwckf/qingyin/QINGYINSSIDMAC2.sh package/base-files/files/etc/QINGYINSSIDMAC2.sh
+mv $GITHUB_WORKSPACE/patch/hanwckf/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
 
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
@@ -83,8 +80,6 @@ mv package/small-package/adguardhome feeds/packages/net/adguardhome
 mv package/small-package/luci-app-alist package/luci-app-alist
 mv package/small-package/alist package/alist
 mv package/small-package/luci-app-easymesh package/luci-app-easymesh
-#mv package/small-package/luci-app-gowebdav package/luci-app-gowebdav
-#mv package/small-package/gowebdav package/gowebdav
 mv package/small-package/luci-app-gecoosac package/luci-app-gecoosac
 mv package/small-package/luci-app-smartdns package/luci-app-tailscale
 mv package/small-package/smartdns feeds/packages/net/tailscale
