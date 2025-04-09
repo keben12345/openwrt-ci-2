@@ -17,6 +17,18 @@ uci set dropbear.@dropbear[0].Interface=''
 #uci del dhcp.lan.ndp
 #uci commit dhcp
 
+uci del dhcp.lan.ra
+uci del dhcp.lan.ra_slaac
+uci del dhcp.lan.ra_flags
+uci del dhcp.lan.dhcpv6
+uci del dhcp.lan.dns_service
+uci commit dhcp
+uci del network.wan6
+uci del network.lan.ip6assign
+uci del network.globals.ula_prefix
+uci commit network
+uci commit
+
 #uci set wireless.default_MT7981_1_1.ssid=TK888
 uci set wireless.default_MT7981_1_1.encryption=psk2+ccmp
 uci set wireless.default_MT7981_1_1.key=3305349535
@@ -41,6 +53,7 @@ if [ -f "$OPENCLASH_FILE" ]; then
     mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
     rm -rf /etc/clash-linux-arm64.tar.gz
 fi
+
 
 mv /etc/QINGYINSSIDMAC1.sh /etc/init.d/QINGYINSSIDMAC1.sh
 chmod a+rwx /etc/init.d/QINGYINSSIDMAC1.sh
