@@ -1,4 +1,4 @@
-name: clt-7621-openwrt23.05
+name: ea4500-openwrt24.10
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
@@ -6,15 +6,15 @@ on:
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
-  REPO_BRANCH: openwrt-23.05
-  CONFIG_FILE: config/clt-7621-openwrt23.05
-  DIY_SCRIPT: script/clt-7621-openwrt23.05.sh
+  REPO_BRANCH: openwrt-24.10
+  CONFIG_FILE: config/ea4500
+  DIY_SCRIPT: script/ea4500.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: 7621-openwrt-23.05
+  FIRMWARE_TAG: ea4500-openwrt24.10
   TZ: Asia/Shanghai
 
 jobs:
@@ -78,14 +78,15 @@ jobs:
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-mt7621
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-ea4500
         prefix: ${{ env.OPENWRT_PATH }}
 
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        git checkout v23.05.5
-        git checkout v23.05.5
+        git checkout v24.10.0
+        git checkout v24.10.0
+        mv $GITHUB_WORKSPACE/patch/openwrt-24.10/feeds.conf.default feeds.conf.default 
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -100,10 +101,10 @@ jobs:
     - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vm/7621-op23055 $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vm/ea4500-openwrt24.10 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
-        sed -i '121d' include/kernel-defaults.mk
-        sed -i '121i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '130d' include/kernel-defaults.mk
+        sed -i '130i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
         sed -i '29d' package/kernel/linux/Makefile
         sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
@@ -164,8 +165,8 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           ### 📒 固件信息
-          - 这是基于官方openwrt-23.05源码编译的固件
-          - 💻 这是 mt7621 平台使用的 OpenWrt-rootfs 固件
+          - 这是基于官方openwrt-24.10源码编译的固件
+          - 💻 这是 ea4500平台使用的 OpenWrt-rootfs 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.23.1
