@@ -29,6 +29,13 @@ sed -i '/smpackage/d' /etc/opkg/distfeeds.conf
 sed -i 's#downloads.openwrt.org#mirror.nju.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 sed -i 's#24.10.0/packages/aarch64_cortex-a53/luci#18.06-k5.4-SNAPSHOT/packages/aarch64_cortex-a53/luci#g' /etc/opkg/distfeeds.conf
 
+OPENCLASH_FILE="/etc/config/openclash"
+if [ -f "$OPENCLASH_FILE" ]; then
+    tar -zxf /etc/clash-linux-arm64.tar.gz -C /etc/openclash/core/
+    mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
+    rm -rf /etc/clash-linux-arm64.tar.gz
+fi
+
 #/etc/init.d/network restart
 
 exit 0
