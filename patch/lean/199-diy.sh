@@ -11,9 +11,9 @@ uci set dropbear.@dropbear[0].Interface=''
 #uci commit luci
 
 #其他网络设置
-uci set network.lan.ip6ifaceid='eui64'
+#uci set network.lan.ip6ifaceid='eui64'
 #uci set network.lan.ipaddr=192.168.5.1
-uci commit network
+#uci commit network
 
 uci commit
 
@@ -29,6 +29,6 @@ sed -i '/smpackage/d' /etc/opkg/distfeeds.conf
 sed -i 's#downloads.openwrt.org#mirror.nju.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 sed -i 's#24.10.0/packages/aarch64_cortex-a53/luci#18.06-k5.4-SNAPSHOT/packages/aarch64_cortex-a53/luci#g' /etc/opkg/distfeeds.conf
 
-/etc/init.d/network restart
+#/etc/init.d/network restart
 
 exit 0
