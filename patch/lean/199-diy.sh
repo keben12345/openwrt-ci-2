@@ -7,8 +7,8 @@ uci delete ttyd.@ttyd[0].interface
 # 设置所有网口可连接 SSH
 uci set dropbear.@dropbear[0].Interface=''
 
-uci set luci.main.mediaurlbase=/luci-static/design
-uci commit luci
+#uci set luci.main.mediaurlbase=/luci-static/design
+#uci commit luci
 
 #其他网络设置
 uci set network.lan.ip6ifaceid='eui64'
