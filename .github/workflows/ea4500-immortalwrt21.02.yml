@@ -1,12 +1,12 @@
-name: ea4500-openwrt24.10
+name: ea4500-immortalwrt21.02
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/openwrt/openwrt.git
-  REPO_BRANCH: openwrt-24.10
+  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
+  REPO_BRANCH: openwrt-21.02
   CONFIG_FILE: config/ea4500
   DIY_SCRIPT: script/openwrt.sh
   CLASH_KERNEL: amd64
@@ -14,7 +14,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: ea4500-openwrt24.10
+  FIRMWARE_TAG: ea4500-immortalwrt21.02
   TZ: Asia/Shanghai
 
 jobs:
@@ -84,9 +84,6 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        git checkout v24.10.0
-        git checkout v24.10.0
-        mv $GITHUB_WORKSPACE/patch/openwrt-24.10/feeds.conf.default feeds.conf.default 
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -103,10 +100,10 @@ jobs:
         rm -rf $OPENWRT_PATH/.vermagic
         mv $GITHUB_WORKSPACE/vm/ea4500-openwrt24.10 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
-        sed -i '130d' include/kernel-defaults.mk
-        sed -i '130i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
-        sed -i '29d' package/kernel/linux/Makefile
-        sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
+        sed -i '109d' include/kernel-defaults.mk
+        sed -i '109i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '27d' package/kernel/linux/Makefile
+        sed -i '27i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
     - name: Download DL Package
       run: |
@@ -165,7 +162,7 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           ### 📒 固件信息
-          - 这是基于官方openwrt-24.10源码编译的固件
+          - 这是基于官方immortalwrt-21.02源码编译的固件
           - 💻 这是 ea4500平台使用的 OpenWrt-rootfs 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
