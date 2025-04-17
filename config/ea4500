@@ -1,6 +1,5 @@
 CONFIG_TARGET_kirkwood=y
-CONFIG_TARGET_kirkwood_generic=y
-CONFIG_TARGET_kirkwood_generic_DEVICE_linksys_ea4500=y
+CONFIG_TARGET_kirkwood_DEVICE_linksys_ea4500=y
 
 CONFIG_PACKAGE_base-files=y
 CONFIG_PACKAGE_block-mount=y
