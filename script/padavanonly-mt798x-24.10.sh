@@ -1,5 +1,5 @@
-sed -i 's/192.168.6.1/192.168.23.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+#sed -i 's/192.168.6.1/192.168.23.1/g' package/base-files/files/bin/config_generate
+#sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/Router/g' package/base-files/files/bin/config_generate
 sed -i "s/ImmortalWrt/WiFi/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
@@ -45,14 +45,14 @@ rm -rf package/openclash
 #git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone --depth 1 https://github.com/AutoCONFIG/luci-app-rustdesk-server.git package/luci-app-rustdesk-server
 
-rm -rf feeds/packages/net/{adguardhome,alist,tailscale}
+#rm -rf feeds/packages/net/{adguardhome,alist,tailscale}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/small-package
-mv package/small-package/adguardhome feeds/packages/net/adguardhome
-mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
-mv package/small-package/alist feeds/packages/net/alist
-mv package/small-package/luci-app-alist package/luci-app-alist
+#mv package/small-package/adguardhome feeds/packages/net/adguardhome
+#mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
+#mv package/small-package/alist feeds/packages/net/alist
+#mv package/small-package/luci-app-alist package/luci-app-alist
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
-mv package/small-package/tailscale package/tailscale
+#mv package/small-package/tailscale package/tailscale
 mv package/small-package/luci-app-tailscale package/luci-app-tailscale
 mv package/small-package/wrtbwmon package/wrtbwmon
 mv package/small-package/luci-app-wrtbwmon package/luci-app-wrtbwmon
