@@ -68,3 +68,4 @@ rm -rf package/imm23luci
 git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23packages
 mv package/imm23packages/net/adbyby package/adbyby
 rm -rf package/imm23packages
+sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-adbyby-plus/Makefile
