@@ -7,7 +7,9 @@ sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emo
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
     mv package/openclash-core/master/meta/clash-linux-arm64.tar.gz package/base-files/files/etc/clash-linux-arm64.tar.gz
+    tar -zxf package/base-files/files/etc/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
     rm -rf package/openclash-core
+    rm -rf package/base-files/files/etc/clash-linux-arm64.tar.gz
 fi
 
 mv $GITHUB_WORKSPACE/patch/padavanonly/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
