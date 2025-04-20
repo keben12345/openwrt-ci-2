@@ -1,10 +1,6 @@
 CONFIG_TARGET_mediatek=y
 CONFIG_TARGET_mediatek_mt7986=y
-CONFIG_TARGET_MULTI_PROFILE=y
-CONFIG_TARGET_DEVICE_mediatek_mt7986_DEVICE_jdcloud_re-cp-03=y
-CONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7986_DEVICE_jdcloud_re-cp-03=""
-CONFIG_TARGET_DEVICE_mediatek_mt7986_DEVICE_xiaomi_redmi-router-ax6000=y
-CONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7986_DEVICE_xiaomi_redmi-router-ax6000=""
+CONFIG_TARGET_mediatek_mt7986_DEVICE_netcore_n60=y
 CONFIG_DEVEL=y
 CONFIG_TOOLCHAINOPTS=y
 CONFIG_BUSYBOX_CUSTOM=y
@@ -271,40 +267,41 @@ CONFIG_first_card_name="MT7986"
 # CONFIG_MTK_RLM_CAL_CACHE_SUPPORT is not set
 # CONFIG_MTK_SNIFFER_RADIOTAP_SUPPORT is not set
 
-CONFIG_PACKAGE_tar=y
-CONFIG_PACKAGE_luci-app-eqos-mtk=y
+# CONFIG_PACKAGE_luci-app-eqos-mtk is not set
+CONFIG_PACKAGE_luci-app-firewall=y
 CONFIG_PACKAGE_luci-app-mtwifi-cfg=y
 CONFIG_PACKAGE_luci-app-turboacc-mtk=y
 CONFIG_PACKAGE_luci-app-upnp=y
-CONFIG_PACKAGE_luci-i18n-eqos-mtk-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-mtwifi-cfg-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-turboacc-mtk-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=y
 CONFIG_PACKAGE_luci-theme-argon=y
 # CONFIG_PACKAGE_luci-theme-bootstrap-mod is not set
-CONFIG_PACKAGE_luci-theme-argon=y
-CONFIG_PACKAGE_luci-app-argon-config=y
-CONFIG_PACKAGE_luci-i18n-argon-config-zh-cn=y
+
+CONFIG_PACKAGE_kmod-wireguard=y
+CONFIG_PACKAGE_tar=y
 
 CONFIG_PACKAGE_luci-app-autoreboot=y
 CONFIG_PACKAGE_luci-app-ramfree=y
 CONFIG_PACKAGE_luci-app-ttyd=y
-CONFIG_PACKAGE_luci-i18n-arpbind-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-autoreboot-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-ramfree-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
 
-CONFIG_PACKAGE_luci-app-alist=y
-CONFIG_PACKAGE_luci-app-zerotier=y
+# CONFIG_PACKAGE_luci-app-ksmbd is not set
+CONFIG_PACKAGE_luci-app-samba4=y
+
+CONFIG_PACKAGE_usbmuxd=y
+CONFIG_PACKAGE_usbutils=y
+CONFIG_PACKAGE_libimobiledevice=y
+CONFIG_PACKAGE_kmod-usb-net-rndis=y
+CONFIG_PACKAGE_kmod-usb-storage=y
+CONFIG_PACKAGE_kmod-usb-storage-extras=y
+CONFIG_PACKAGE_kmod-usb3=y
 
 CONFIG_PACKAGE_luci-app-openclash=y
+CONFIG_PACKAGE_luci-app-ddns-go=y
+CONFIG_PACKAGE_luci-app-unblockneteasemusic=y
 
-CONFIG_PACKAGE_kmod-rkp-ipid=y
-CONFIG_PACKAGE_ua2f=y
-CONFIG_PACKAGE_iptables-mod-filter=y
-CONFIG_PACKAGE_iptables-mod-ipopt=y
-CONFIG_PACKAGE_iptables-mod-u32=y
-CONFIG_PACKAGE_iptables-mod-conntrack-extra=y
-CONFIG_PACKAGE_kmod-ipt-u32=y
-CONFIG_PACKAGE_kmod-ipt-ipopt=y
-CONFIG_NETFILTER_NETLINK_GLUE_CT=y
+CONFIG_PACKAGE_kmod-md-mod=y
+CONFIG_PACKAGE_kmod-md-raid0=y
+CONFIG_PACKAGE_kmod-md-raid10=y
+CONFIG_PACKAGE_kmod-md-raid1=y
+CONFIG_PACKAGE_kmod-oaf=y
+CONFIG_PACKAGE_luci-app-store=y
+CONFIG_PACKAGE_luci-app-quickstart=y
+CONFIG_PACKAGE_luci-i18n-quickstart-zh-cn=y
