@@ -49,11 +49,8 @@ sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
-    tar -zxf /etc/clash-linux-arm64.tar.gz -C /etc/openclash/core/
-    mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
-    rm -rf /etc/clash-linux-arm64.tar.gz
+    mv /etc/clash /etc/openclash/core/clash_meta
 fi
-
 
 #mv /etc/QINGYINSSIDMAC1.sh /etc/init.d/QINGYINSSIDMAC1.sh
 #chmod a+rwx /etc/init.d/QINGYINSSIDMAC1.sh
