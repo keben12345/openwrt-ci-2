@@ -27,8 +27,8 @@ git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclas
 mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
 
-rm -rf feeds/packages/net/ddns-go
-rm -rf feeds/luci/applications/luci-app-ddns-go
+#rm -rf feeds/packages/net/ddns-go
+#rm -rf feeds/luci/applications/luci-app-ddns-go
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 #UA2F校园网
 #git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
