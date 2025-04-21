@@ -49,7 +49,7 @@ sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
-    mv /etc/clash /etc/openclash/core/clash_meta
+    mv /etc/my-clash /etc/openclash/core/clash_meta
 fi
 
 #mv /etc/QINGYINSSIDMAC1.sh /etc/init.d/QINGYINSSIDMAC1.sh
