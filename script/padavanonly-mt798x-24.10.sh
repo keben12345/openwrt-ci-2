@@ -6,10 +6,9 @@ mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-    mv package/openclash-core/master/meta/clash-linux-arm64.tar.gz package/base-files/files/etc/clash-linux-arm64.tar.gz
-    tar -zxf package/base-files/files/etc/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
+    tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
+    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
     rm -rf package/openclash-core
-    rm -rf package/base-files/files/etc/clash-linux-arm64.tar.gz
 fi
 
 mv $GITHUB_WORKSPACE/patch/padavanonly/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
