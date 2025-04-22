@@ -12,6 +12,7 @@ uci commit
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.nju.pku.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz kmod https://mirror.nju.edu.cn/immortalwrt/releases/23.05.4/targets/x86/64/kmods/5.15.167-1-c5f84ade92103ce978361a1c59890df1' /etc/opkg/customfeeds.conf
 
 # 根据网卡数量配置网络
 eth_count=0
