@@ -9,7 +9,7 @@ mv $GITHUB_WORKSPACE/patch/immortalwrt-23.05/199-x86.sh package/base-files/files
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-    tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
+    tar -zxf package/openclash-core/master/meta/clash-linux-amd64.tar.gz -C package/base-files/files/etc/
     mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
     rm -rf package/openclash-core
 fi
@@ -65,7 +65,7 @@ mv package/kwrt-packages/luci-theme-material3 package/luci-theme-material3
 mv package/kwrt-packages/luci-app-npc package/luci-app-npc
 rm -rf package/kwrt-packages
 
-rm -rf feeds/packages/lang/ruby
+rm -rf feeds/packages/lang/rust
 git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/imm24packages
 mv package/imm24packages/lang/rust feeds/packages/lang/rust
 rm -rf package/imm24packages
