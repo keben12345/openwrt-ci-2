@@ -59,6 +59,11 @@ mv package/kwrt-packages/luci-theme-material3 package/luci-theme-material3
 mv package/kwrt-packages/luci-app-npc package/luci-app-npc
 rm -rf package/kwrt-packages
 
+rm -rf feeds/packages/lang/ruby
+git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/imm24packages
+mv package/imm24packages/lang/ruby feeds/packages/lang/ruby
+rm -rf package/imm24packages
+
 git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
 mv package/imm23luci/applications/luci-app-adbyby-plus package/luci-app-adbyby-plus
 rm -rf package/imm23luci
