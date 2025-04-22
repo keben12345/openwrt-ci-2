@@ -56,6 +56,7 @@ rm -rf package/kz8-small
 git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
 mv package/kwrt-packages/luci-theme-design package/luci-theme-design
 mv package/kwrt-packages/luci-theme-material3 package/luci-theme-material3
+mv package/kwrt-packages/luci-app-npc package/luci-app-npc
 rm -rf package/kwrt-packages
 
 git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
