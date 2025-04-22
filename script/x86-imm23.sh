@@ -61,7 +61,7 @@ rm -rf package/kwrt-packages
 
 rm -rf feeds/packages/lang/ruby
 git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/imm24packages
-mv package/imm24packages/lang/ruby feeds/packages/lang/ruby
+mv package/imm24packages/lang/rust feeds/packages/lang/rust
 rm -rf package/imm24packages
 
 git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
