@@ -13,6 +13,10 @@ uci commit
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.nju.pku.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 
+OPENCLASH_FILE="/etc/config/openclash"
+if [ -f "$OPENCLASH_FILE" ]; then
+    mv /etc/my-clash /etc/openclash/core/clash_meta
+fi
 
 #uci commit dhcp
 #uci commit network
