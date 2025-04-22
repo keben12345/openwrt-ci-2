@@ -33,6 +33,11 @@ sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/
 sed -i 's/root::0:0:99999:7:::/root:$5$GM0RGt.Zmu3FWIw7$mkH5wfffgcbUCDbe1ojIuzlNoSTkv7RfmgEzmiHtFhD:20150:0:99999:7:::/g' /etc/shadow
 sed -i 's/root:::0:99999:7:::/root:$5$GM0RGt.Zmu3FWIw7$mkH5wfffgcbUCDbe1ojIuzlNoSTkv7RfmgEzmiHtFhD:20150:0:99999:7:::/g' /etc/shadow
 
+OPENCLASH_FILE="/etc/config/openclash"
+if [ -f "$OPENCLASH_FILE" ]; then
+    mv /etc/my-clash /etc/openclash/core/clash_meta
+fi
+
 /etc/init.d/network restart
 
 exit 0
