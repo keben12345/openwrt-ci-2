@@ -10,7 +10,8 @@ mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-x86.sh package/base-files/files
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-    mv package/openclash-core/master/meta/clash-linux-amd64.tar.gz package/base-files/files/etc/clash-linux-amd64.tar.gz
+    tar -zxf package/openclash-core/master/meta/clash-linux-amd64.tar.gz -C package/base-files/files/etc/
+    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
     rm -rf package/openclash-core
 fi
 
