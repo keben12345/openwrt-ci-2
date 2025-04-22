@@ -48,7 +48,10 @@ else
     uci set dhcp.lan.ignore='1'
 fi
 
-#ls /sys/class/net | grep -E '^eth[0-9]+$' | grep -v '^eth0$' | sed 's/^/uci add_list network.cfg030f15.ports=/' | sh
+OPENCLASH_FILE="/etc/config/openclash"
+if [ -f "$OPENCLASH_FILE" ]; then
+    mv /etc/my-clash /etc/openclash/core/clash_meta
+fi
 
 uci commit dhcp
 uci commit network
