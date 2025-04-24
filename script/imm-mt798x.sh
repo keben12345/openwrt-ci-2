@@ -30,8 +30,11 @@ git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-
 #rm -rf feeds/packages/net/quectel-cm
 
 rm -rf feeds/packages/lang/golang
-rm -rf feeds/packages/devel/gn
-rm -rf feeds/packages/net/{chinadns-ng,dns2socks,dns2tcp,geoview,hysteria,ipt2socks,microsocks,naiveproxy,pdnsd-alt,shadowsocks-rust,shadowsocksr-libev,simple-obfs,sing-box,ssocks,tcping,trojan*,tuic-client,v2ray*,xray*,mosdns}
+rm -rf feeds/packages/net/v2ray-geodata
+rm -rf feeds/packages/net/mosdns
+rm -rf feeds/packages/net/{chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust}
+rm -rf feeds/packages/net/{shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
+rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
 git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
