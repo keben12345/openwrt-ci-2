@@ -102,7 +102,7 @@ jobs:
     - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vm/imm21027-mt7621 $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vm/imm2102-k2t $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '109d' include/kernel-defaults.mk
         sed -i '109i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
