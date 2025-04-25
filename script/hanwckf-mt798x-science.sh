@@ -42,7 +42,7 @@ rm -rf feeds/packages/lang/golang
 git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 #删除自带的老旧依赖，ssr-plus，passwall
 rm -rf feeds/packages/net/{chinadns-ng,dns2socks,dns2tcp,hysteria,ipt2socks,microsocks,naiveproxy}
-rm -rf feeds/packages/net/{simple-obfs,sing-box,tcping,trojan*,tuic-client,v2ray*,xray*,mosdns,redsocks2}
+rm -rf feeds/packages/net/{simple-obfs,sing-box,tcping,trojan,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin,redsocks2}
 rm -rf feeds/packages/net/{ssocks,shadow-tls}
 rm -rf feeds/packages/devel/gn
 rm -rf feeds/packages/utils/v2dat
@@ -61,8 +61,9 @@ rm -rf package/helloworld/shadowsocksr-libev
 #rm -rf package/helloworld/gn
 
 rm -rf feeds/packages/net/v2ray-geodata
-find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
-find ./ | grep Makefile | grep mosdns | xargs rm -f
+rm -rf feeds/packages/net/mosdns
+#find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
+#find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
