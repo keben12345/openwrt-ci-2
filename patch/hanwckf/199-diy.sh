@@ -27,6 +27,6 @@ uci del network.globals.ula_prefix
 uci commit network
 uci commit
 
-#/etc/init.d/network restart
+/etc/init.d/network restart
 
 exit 0
