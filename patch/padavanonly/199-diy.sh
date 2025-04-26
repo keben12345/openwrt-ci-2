@@ -54,6 +54,6 @@ fi
 
 #mv /etc/QINGYINSSIDMAC1.sh /etc/init.d/QINGYINSSIDMAC1.sh
 #chmod a+rwx /etc/init.d/QINGYINSSIDMAC1.sh
-#/etc/init.d/network restart
+/etc/init.d/network restart
 
 exit 0
