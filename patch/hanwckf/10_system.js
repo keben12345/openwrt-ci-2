@@ -80,7 +80,6 @@ return baseclass.extend({
 
 		var fields = [
 			_('Hostname'),         boardinfo.hostname,
-			_('Target Platform'),  (L.isObject(boardinfo.release) ? boardinfo.release.target : ''),
 			_('Firmware Version'), 'ImmortalWrt-21.02 / TikTok专用 ',
 			_('Kernel Version'),   boardinfo.kernel,
 			_('Local Time'),       datestr,
