@@ -16,7 +16,8 @@ fi
 mv $GITHUB_WORKSPACE/patch/hanwckf/199-diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
 
 #完全删除luci版本
-sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+#sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+mv $GITHUB_WORKSPACE/patch/hanwckf/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #添加编译日期
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
@@ -29,7 +30,7 @@ rm -rf package/openclash
 
 #rm -rf feeds/packages/net/ddns-go
 #rm -rf feeds/luci/applications/luci-app-ddns-go
-git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
+#git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 #UA2F校园网
 #git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
 #git clone https://github.com/Zxilly/UA2F.git package/UA2F
