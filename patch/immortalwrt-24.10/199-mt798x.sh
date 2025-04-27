@@ -12,7 +12,7 @@ uci commit
 
 sed -i '/modem/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
-sed -i 's#downloads.immortalwrt.org#mirrors.nju.pku.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
+sed -i 's#downloads.immortalwrt.org#mirrors.nju.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
