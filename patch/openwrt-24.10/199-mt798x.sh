@@ -7,7 +7,6 @@ uci delete ttyd.@ttyd[0].interface
 uci set dropbear.@dropbear[0].Interface=''
 
 #其他网络设置
-src/gz opkg https://opkg.888608.xyz/openwrt-24.10/aarch64_cortex-a53
 uci commit
 
 sed -i '/modem/d' /etc/opkg/distfeeds.conf
@@ -21,10 +20,22 @@ if [ -f "$OPENCLASH_FILE" ]; then
     mv /etc/my-clash /etc/openclash/core/clash_meta
 fi
 
+# wifi设置
+uci set wireless.default_radio0.ssid=CUDY
+uci set wireless.default_radio1.ssid=CUDY-5G
+uci set wireless.default_radio0.encryption=psk2+ccmp
+uci set wireless.default_radio1.encryption=psk2+ccmp
+uci set wireless.default_radio0.key=XLNB6666
+uci set wireless.default_radio1.key=XLNB6666
+uci commit wireless
+uci set network.lan.netmask='255.0.0.0'
+uci commit network
+uci commit
+
 #uci commit dhcp
 #uci commit network
 #uci commit
-#/etc/init.d/network restart
+/etc/init.d/network restart
 #/etc/init.d/odhcpd restart
 
 exit 0
