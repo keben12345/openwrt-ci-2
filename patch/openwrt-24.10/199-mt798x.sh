@@ -14,6 +14,7 @@ sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 #sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz kmods https://downloads.openwrt.org/releases/24.10.0/targets/mediatek/filogic/kmods/6.6.73-1-d649d775435da5a8637f7a955a80d331' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz opkg https://opkg.888608.xyz/openwrt-24.10/aarch64_cortex-a53' /etc/opkg/customfeeds.conf
+sed -i 's/https/http/g' /etc/opkg/distfeeds.conf
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
