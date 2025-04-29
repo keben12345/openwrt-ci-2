@@ -80,7 +80,7 @@ return baseclass.extend({
 
 		var fields = [
 			_('Hostname'),         boardinfo.hostname,
-			_('Firmware Version'), 'ImmortalWrt-21.02 / TikTok专用 ',
+			_('Firmware Version'), 'ImmortalWrt-21.02 / TikTok专用防关联路由器 / 虾米定制版 ',
 			_('Kernel Version'),   boardinfo.kernel,
 			_('Local Time'),       datestr,
 			_('Uptime'),           systeminfo.uptime ? '%t'.format(systeminfo.uptime) : null,
