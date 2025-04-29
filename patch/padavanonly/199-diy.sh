@@ -44,8 +44,8 @@ sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 #sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
 
-sed -i 's/root::0:0:99999:7:::/root:$1$OHJL9cD0$V/T65I0aa.EHq85kuLDZr.:0:0:99999:7:::/g' /etc/shadow
-sed -i 's/root:::0:99999:7:::/root:$1$OHJL9cD0$V/T65I0aa.EHq85kuLDZr.:0:0:99999:7:::/g' /etc/shadow
+sed -i 's/root::0:0:99999:7:::/root:$1$OHJL9cD0$V\/T65I0aa.EHq85kuLDZr.:0:0:99999:7:::/g' /etc/shadow
+sed -i 's/root:::0:99999:7:::/root:$1$OHJL9cD0$V\/T65I0aa.EHq85kuLDZr.:0:0:99999:7:::/g' /etc/shadow
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
