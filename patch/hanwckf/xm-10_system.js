@@ -83,7 +83,7 @@ return baseclass.extend({
 			_('Model'),            boardinfo.model + cpubench.cpubench,
 			_('Architecture'),     cpuinfo.cpuinfo || boardinfo.system,
 			_('Target Platform'),  (L.isObject(boardinfo.release) ? boardinfo.release.target : ''),
-			_('Firmware Version'), (L.isObject(boardinfo.release) ? boardinfo.release.description + ' / ' : '') + (luciversion || ''),
+			_('Firmware Version'), 'TikTok专用防关联路由器 / 虾米定制版',
 			_('Kernel Version'),   boardinfo.kernel,
 			_('Local Time'),       datestr,
 			_('Uptime'),           systeminfo.uptime ? '%t'.format(systeminfo.uptime) : null,
