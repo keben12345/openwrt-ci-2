@@ -93,7 +93,6 @@ jobs:
 
     - name: Load Custom Script（加载自定义脚本）
       run: |
-        mv $CONFIG_FILE $OPENWRT_PATH/.config
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
@@ -107,6 +106,7 @@ jobs:
 
     - name: Download DL Package(下载DL软件包)
       run: |
+        mv $CONFIG_FILE $OPENWRT_PATH/.config
         cd $OPENWRT_PATH
         make defconfig
         make download -j8
