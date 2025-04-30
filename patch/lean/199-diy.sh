@@ -31,9 +31,7 @@ sed -i 's#24.10.0/packages/aarch64_cortex-a53/luci#18.06-k5.4-SNAPSHOT/packages/
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
-    tar -zxf /etc/clash-linux-arm64.tar.gz -C /etc/openclash/core/
-    mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
-    rm -rf /etc/clash-linux-arm64.tar.gz
+    mv /etc/my-clash /etc/openclash/core/clash_meta
 fi
 
 #/etc/init.d/network restart
