@@ -11,7 +11,7 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     rm -rf package/openclash-core
 fi
 
-mv $GITHUB_WORKSPACE/patch/hanwckf/199-mydiy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
+mv $GITHUB_WORKSPACE/patch/hanwckf/199-mydiy package/base-files/files/etc/uci-defaults/zz-diy.sh
 mv $GITHUB_WORKSPACE/patch/hanwckf/mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 
 #完全删除luci版本
@@ -31,6 +31,6 @@ rm -rf package/openclash
 rm -rf feeds/packages/net/ddns-go
 rm -rf feeds/luci/applications/luci-app-ddns-go
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
-sed -i 's/6.8.0/6.8.1/g' package/luci-app-ddns-go/ddns-go/Makefile
-sed -i 's/48522ad055a843dcd0e594f3c333334f5bfd112b8cc648b0708ae57b76c8de93/0588c8a0b95c7b7a079d4655a8d5e2897ca3258fea71570adc84441934d11ffb/g' package/luci-app-ddns-go/ddns-go/Makefile
-sed -i 's/c68080bc1faba658ca8ed41ed8b9be500413cfa2/a0b54749579565af6019c06fd9bfd4e7790d403e/g' package/luci-app-ddns-go/ddns-go/Makefile
+sed -i 's/6.9.1/6.8.1/g' package/luci-app-ddns-go/ddns-go/Makefile
+sed -i 's/d5c50785f8900968df70fe29b39c146f121b0c2a510d1de45d935d5c7df3c385/0588c8a0b95c7b7a079d4655a8d5e2897ca3258fea71570adc84441934d11ffb/g' package/luci-app-ddns-go/ddns-go/Makefile
+sed -i 's/3039c7755989f0f0c976a3fbcbc0122cd5033268/a0b54749579565af6019c06fd9bfd4e7790d403e/g' package/luci-app-ddns-go/ddns-go/Makefile
