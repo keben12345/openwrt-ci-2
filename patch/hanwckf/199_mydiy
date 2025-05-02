@@ -17,8 +17,8 @@ uci set network.wan.password='332332'
 
 uci commit
 
-#sed -i 's/root::0:0:99999:7:::/root:$1$wKsL1h.7$rqVC6MhBRN3YHpLj2KDNr.:20079:0:99999:7:::/g' /etc/shadow
-#sed -i 's/root:::0:99999:7:::/root:$1$wKsL1h.7$rqVC6MhBRN3YHpLj2KDNr.:20079:0:99999:7:::/g' /etc/shadow
+sed -i 's/root::0:0:99999:7:::/root:$1$uqDPdTlT$M6M5orrncaHsn.z.RWRcL\/:0:0:99999:7:::/g' /etc/shadow
+sed -i 's/root:::0:99999:7:::/root:$1$uqDPdTlT$M6M5orrncaHsn.z.RWRcL\/:0:0:99999:7:::/g' /etc/shadow
 
 /etc/init.d/network restart
 #sleep 2
