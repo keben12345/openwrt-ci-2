@@ -27,10 +27,6 @@ git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclas
 mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
 
-#sed -i '$a src-git ddnsgo https://github.com/sirpdboy/luci-app-ddns-go.git^aebe633d73045665253e03de5bf7a160f9133e3b' feeds.conf.default
 rm -rf feeds/packages/net/ddns-go
 rm -rf feeds/luci/applications/luci-app-ddns-go
-git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
-sed -i 's/6.9.1/6.8.1/g' package/luci-app-ddns-go/ddns-go/Makefile
-sed -i 's/d5c50785f8900968df70fe29b39c146f121b0c2a510d1de45d935d5c7df3c385/0588c8a0b95c7b7a079d4655a8d5e2897ca3258fea71570adc84441934d11ffb/g' package/luci-app-ddns-go/ddns-go/Makefile
-sed -i 's/3039c7755989f0f0c976a3fbcbc0122cd5033268/a0b54749579565af6019c06fd9bfd4e7790d403e/g' package/luci-app-ddns-go/ddns-go/Makefile
+git clone --depth 1 https://github.com/5und4y2023/luci-app-ddns-go.git package/luci-app-ddns-go
