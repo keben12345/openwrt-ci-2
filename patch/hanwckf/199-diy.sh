@@ -8,13 +8,6 @@ uci set dropbear.@dropbear[0].Interface=''
 
 uci commit
 
-#sed -i 's/root::0:0:99999:7:::/root:$1$R43zhcLV$dwxtXXFI7TdIRcVKl.w3N1:20158:0:99999:7:::/g' /etc/shadow
-
-OPENCLASH_FILE="/etc/config/openclash"
-if [ -f "$OPENCLASH_FILE" ]; then
-    mv /etc/my-clash /etc/openclash/core/clash_meta
-fi
-
 uci del dhcp.lan.ra
 uci del dhcp.lan.ra_slaac
 uci del dhcp.lan.ra_flags
@@ -26,6 +19,24 @@ uci del network.lan.ip6assign
 uci del network.globals.ula_prefix
 uci commit network
 uci commit
+
+#uci set wireless.default_MT7981_1_1.ssid=xiaoguo
+uci set wireless.default_MT7981_1_1.encryption=psk2+ccmp
+uci set wireless.default_MT7981_1_1.key=a11223344.
+
+#uci set wireless.default_MT7981_1_2.ssid=TK888
+uci set wireless.default_MT7981_1_2.encryption=psk2+ccmp
+uci set wireless.default_MT7981_1_2.key=a11223344.
+uci commit wireless
+uci commit
+
+sed -i 's/root::0:0:99999:7:::/root:$1$0kv2aZ4P$WkI.7M.V1N6WSEDahJwot.:0:0:99999:7:::/g' /etc/shadow
+sed -i 's/root:::0:99999:7:::/root:$1$0kv2aZ4P$WkI.7M.V1N6WSEDahJwot.:0:0:99999:7:::/g' /etc/shadow
+
+OPENCLASH_FILE="/etc/config/openclash"
+if [ -f "$OPENCLASH_FILE" ]; then
+    mv /etc/my-clash /etc/openclash/core/clash_meta
+fi
 
 /etc/init.d/network restart
 
