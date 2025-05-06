@@ -69,6 +69,7 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 #git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/oaf
+git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/luci-app-netspeedtest
 
 rm -rf feeds/packages/net/adguardhome
 rm -rf feeds/packages/net/alist
