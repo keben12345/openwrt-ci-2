@@ -57,8 +57,8 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/l
 #新版ssr-libev和ss-rust缺少依赖，所以延用旧版，删除新版
 rm -rf package/passwall-packages/shadowsocks-rust
 rm -rf package/passwall-packages/shadowsocksr-libev
-rm -rf package/helloworld/shadowsocks-rust
-rm -rf package/helloworld/shadowsocksr-libev
+#rm -rf package/helloworld/shadowsocks-rust
+#rm -rf package/helloworld/shadowsocksr-libev
 #rm -rf package/helloworld/gn
 
 rm -rf feeds/packages/net/v2ray-geodata
