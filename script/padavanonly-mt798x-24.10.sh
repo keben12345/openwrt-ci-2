@@ -50,6 +50,7 @@ rm -rf package/openclash
 
 #git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone --depth 1 https://github.com/AutoCONFIG/luci-app-rustdesk-server.git package/luci-app-rustdesk-server
+git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/luci-app-netspeedtest
 
 #rm -rf feeds/packages/net/{adguardhome,alist,tailscale}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/small-package
