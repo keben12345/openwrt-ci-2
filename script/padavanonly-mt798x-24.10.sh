@@ -6,7 +6,7 @@ mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 #sed -E '/^DEVICE_PACKAGES/ s/(\s*)([^ ]*ksmbd[^ ]*)(\s*)/ /g; s/  +/ /g; s/ $//' target/linux/mediatek/image/mt7981.mk
 sed -i 's/luci-app-ksmbd luci-i18n-ksmbd-zh-cn ksmbd-utils/kmod-usb-storage-extras/g' target/linux/mediatek/image/mt7981.mk
-sed -i 's/luci-app-usb-printer/kmod-usb-storage/g' target/linux/mediatek/image/mt7981.mk
+sed -i 's/luci-app-usb-printer luci-i18n-usb-printer-zh-cn/kmod-usb-storage/g' target/linux/mediatek/image/mt7981.mk
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
