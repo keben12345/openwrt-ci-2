@@ -86,7 +86,7 @@ jobs:
         cd $OPENWRT_PATH
         git checkout v22.03.7
         git checkout v22.03.7
-        mv $GITHUB_WORKSPACE/patch/openwrt-22.04/feeds.conf.default feeds.conf.default 
+        mv $GITHUB_WORKSPACE/patch/openwrt-22.03/feeds.conf.default feeds.conf.default 
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
