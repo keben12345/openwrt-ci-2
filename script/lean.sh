@@ -43,7 +43,7 @@ rm -rf package/nas-packages/network
 #find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 #find ./ | grep Makefile | grep mosdns | xargs rm -f
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-#git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+git clone https://github.com/sbwml/luci-app-mosdns -b v5-lua package/mosdns
 
 rm -rf feeds/packages/net/{chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev}
 rm -rf feeds/packages/net/{simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
