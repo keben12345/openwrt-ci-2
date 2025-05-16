@@ -27,7 +27,7 @@ echo "DISTRIB_DESCRIPTION='OpenWrt '" >> /etc/openwrt_release
 sed -i '/core/d' /etc/opkg/distfeeds.conf
 sed -i '/smpackage/d' /etc/opkg/distfeeds.conf
 sed -i 's#downloads.openwrt.org#mirror.nju.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
-sed -i 's#24.10.0/packages/aarch64_cortex-a53/luci#18.06-k5.4-SNAPSHOT/packages/aarch64_cortex-a53/luci#g' /etc/opkg/distfeeds.conf
+#sed -i 's#24.10.0/packages/aarch64_cortex-a53/luci#18.06-k5.4-SNAPSHOT/packages/aarch64_cortex-a53/luci#g' /etc/opkg/distfeeds.conf
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
