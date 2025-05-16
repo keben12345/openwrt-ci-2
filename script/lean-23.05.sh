@@ -10,7 +10,7 @@ sed -i '/tencent.com/d' package/lean/default-settings/files/zzz-default-settings
 sed -i '/shadow/d' package/lean/default-settings/files/zzz-default-settings
 
 mv $GITHUB_WORKSPACE/patch/lean/199-diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
-
+sed -i 's/0x0580000 0x7280000/0x580000 0x1cc00000>/g' target/linux/mediatek/dts/mt7986a-netcore-n60-pro.dts
 
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-argon-config
