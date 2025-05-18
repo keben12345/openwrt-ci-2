@@ -41,6 +41,7 @@ rm -rf feeds/packages/net/ua2f
 #git clone --depth 1 https://github.com/mchome/luci-app-dogcom.git package/luci-app-dogcom
 #git clone --depth 1 https://github.com/mchome/openwrt-dogcom.git package/openwrt-dogcom
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/oaf
+git clone --depth 1 https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
 
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
