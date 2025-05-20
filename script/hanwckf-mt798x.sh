@@ -48,9 +48,12 @@ git clone --depth 1 https://github.com/5und4y2023/luci-app-ddns-go.git package/l
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 
 # iStore
-git clone --depth=1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
-mv package/extra-ipk/linkease package/linkease
-rm -rf package/extra-ipk
+#git clone --depth 1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
+#mv package/extra-ipk/linkease package/linkease
+#rm -rf package/extra-ipk
+git clone --depth 1 https://github.com/padavanonly/immortalwrt-mt798x.git package/padavanonly
+mv package/padavanonly/package/istore package/istore
+rm -rf package/padavanonly
 
 #adguardhome，alist,frc,需要go版本需要最新的
 git clone --depth=1 https://github.com/mingxiaoyu/luci-app-phtunnel.git package/phtunnel
