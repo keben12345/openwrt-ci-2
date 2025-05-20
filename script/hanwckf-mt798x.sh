@@ -54,6 +54,8 @@ git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-
 git clone --depth 1 https://github.com/padavanonly/immortalwrt-mt798x.git package/padavanonly
 mv package/padavanonly/package/istore package/istore
 rm -rf package/padavanonly
+sed -i 's/0.8.2/0.8.16/g' istore/quickstart/Makefile
+sed -i 's/1fa1e1a3dc248c34fb8b1c4ac441bf45e544fbd12fb33030cbd2bb5a9bcb616b/a156e9e8831072f14b625c3f7c724c405c963aa67e24adb2ce7bf66531b688a1/g' istore/quickstart/Makefile
 
 #adguardhome，alist,frc,需要go版本需要最新的
 git clone --depth=1 https://github.com/mingxiaoyu/luci-app-phtunnel.git package/phtunnel
