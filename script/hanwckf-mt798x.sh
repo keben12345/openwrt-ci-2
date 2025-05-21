@@ -28,9 +28,9 @@ git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclas
 mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
 
-#rm -rf feeds/packages/net/ddns-go
-#rm -rf feeds/luci/applications/luci-app-ddns-go
-#git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
+rm -rf feeds/packages/net/ddns-go
+rm -rf feeds/luci/applications/luci-app-ddns-go
+git clone --depth 1 https://github.com/5und4y2023/luci-app-ddns-go.git package/luci-app-ddns-go
 #UA2F校园网
 git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
 git clone https://github.com/Zxilly/UA2F.git package/UA2F
@@ -42,7 +42,7 @@ rm -rf feeds/packages/net/ua2f
 #git clone --depth 1 https://github.com/mchome/openwrt-dogcom.git package/openwrt-dogcom
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/oaf
 git clone --depth 1 https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
-git clone --depth 1 https://github.com/5und4y2023/luci-app-ddns-go.git package/luci-app-ddns-go
+
 
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
