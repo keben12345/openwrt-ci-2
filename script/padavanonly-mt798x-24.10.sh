@@ -7,6 +7,7 @@ sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emo
 #sed -E '/^DEVICE_PACKAGES/ s/(\s*)([^ ]*ksmbd[^ ]*)(\s*)/ /g; s/  +/ /g; s/ $//' target/linux/mediatek/image/mt7981.mk
 #sed -i 's/luci-app-ksmbd luci-i18n-ksmbd-zh-cn ksmbd-utils/kmod-usb-storage-extras/g' target/linux/mediatek/image/mt7981.mk
 #sed -i 's/luci-app-usb-printer luci-i18n-usb-printer-zh-cn/kmod-usb-storage/g' target/linux/mediatek/image/mt7981.mk
+mv $GITHUB_WORKSPACE/patch/padavanonly/libxcrypt-Makefile feeds/packages/libs/libxcrypt/Makefile
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
