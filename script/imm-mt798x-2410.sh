@@ -13,8 +13,9 @@ fi
 
 #tr3000大分区112m
 # sed -i 's/0x4000000/0x7000000/g' target/linux/mediatek/dts/mt7981b-cudy-tr3000-v1.dts
-#tr3000大分区512m
+#大分区512m
 sed -i 's/0x4000000/0x1ea00000/g' target/linux/mediatek/dts/mt7981b-cudy-tr3000-v1.dts
+sed -i 's/0x0580000 0x7a80000/0x580000 0x1cc00000/g' target/linux/mediatek/dts/mt7986a-netcore-n60-pro.dts
 
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
