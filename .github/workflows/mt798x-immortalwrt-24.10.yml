@@ -97,13 +97,10 @@ jobs:
       run: |
         cd $OPENWRT_PATH
         git checkout v24.10.1
-        mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/mt798x-feeds feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        ./scripts/feeds update modem
-        ./scripts/feeds install -a -f -p modem
 
     - name: Load Custom Script（加载自定义脚本）
       run: |
