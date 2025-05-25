@@ -21,5 +21,16 @@ if [ -f "$OPENCLASH_FILE" ]; then
     mv /etc/my-clash /etc/openclash/core/clash_meta
 fi
 
+# 统计eth接口数量，大于1个则将eth0设为wan其它网口设为lan，只有1个则设置成DHCP模式
+eth_count=$(ls /sys/class/net | grep -c '^eth')
+if [ $eth_count -gt 1 ]; then
+    uci set network.wan.device='eth0'
+    uci set network.wan6.device='eth0'
+    uci del network.cfg030f15.ports
+    ls /sys/class/net | awk '/^eth[0-9]+$/ && $0 != "eth0" {print "uci add_list network.cfg030f15.ports="$0}' | sh   
+else
+    uci set network.lan.proto='dhcp'
+    uci set dhcp.lan.ignore='1'
+fi
 
 exit 0
