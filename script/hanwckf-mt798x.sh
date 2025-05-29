@@ -5,13 +5,6 @@ sed -i "s/ImmortalWrt/WiFi/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.s
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/hanwckf/mt7986a-netcore-n60pro.dts target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-netcore-n60.dts
 
-if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
-    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-    tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
-    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
-    rm -rf package/openclash-core
-fi
-
 #mv $GITHUB_WORKSPACE/patch/hanwckf/mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 mv $GITHUB_WORKSPACE/patch/hanwckf/199-diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
 
