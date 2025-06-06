@@ -48,14 +48,14 @@ git clone https://github.com/sbwml/luci-app-mosdns -b v5-lua package/mosdns
 rm -rf feeds/packages/net/{chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev}
 rm -rf feeds/packages/net/{simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
 rm -rf feeds/packages/net/{dns2socks-rust,dns2tcp,dnsproxy,gn,redsocks2,shadow-tls,trojan,v2ray-core}
-rm -rf feeds/packages/net/mosdns
-rm -rf feeds/luci/applications/{luci-app-alist,luci-app-lucky}
+rm -rf feeds/packages/net/{mosdns,adguardhome}
+rm -rf feeds/luci/applications/{luci-app-alist,luci-app-lucky,luci-app-adguardhome,luci-app-mosdns}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/lucky package/lucky
 mv package/kz8-small/luci-app-lucky package/luci-app-lucky
-mv package/kz8-small/smartdns package/smartdns
+#mv package/kz8-small/smartdns package/smartdns
 rm -rf package/kz8-small
 
 git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/eqosplus
