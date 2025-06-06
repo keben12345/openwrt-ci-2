@@ -16,13 +16,13 @@ uci set dropbear.@dropbear[0].Interface=''
 #uci del dhcp.lan.ndp
 #uci commit dhcp
 
-#uci set wireless.default_radio0.ssid=TK888
-#uci set wireless.default_radio1.ssid=TK888
-#uci set wireless.default_radio0.encryption=psk2+ccmp
-#uci set wireless.default_radio1.encryption=psk2+ccmp
-#uci set wireless.default_radio0.key=TK888.5G
-#uci set wireless.default_radio1.key=TK888.5G
-#uci commit wireless
+uci set wireless.default_radio0.ssid=TikTok-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
+uci set wireless.default_radio1.ssid=TikTok-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
+uci set wireless.default_radio0.encryption=psk2+ccmp
+uci set wireless.default_radio1.encryption=psk2+ccmp
+uci set wireless.default_radio0.key=84131018
+uci set wireless.default_radio1.key=84131018
+uci commit wireless
 
 uci commit
 
@@ -30,14 +30,14 @@ sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 #sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
 
-#sed -i 's/root::0:0:99999:7:::/root:$5$GM0RGt.Zmu3FWIw7$mkH5wfffgcbUCDbe1ojIuzlNoSTkv7RfmgEzmiHtFhD:20150:0:99999:7:::/g' /etc/shadow
-#sed -i 's/root:::0:99999:7:::/root:$5$GM0RGt.Zmu3FWIw7$mkH5wfffgcbUCDbe1ojIuzlNoSTkv7RfmgEzmiHtFhD:20150:0:99999:7:::/g' /etc/shadow
+sed -i 's/root::0:0:99999:7:::/root:$1$ODyHU5Rh$y1MlOS4gBVZD9K7Vvufv0.:0:0:99999:7:::/g' /etc/shadow
+sed -i 's/root:::0:99999:7:::/root:$1$ODyHU5Rh$y1MlOS4gBVZD9K7Vvufv0.:0:0:99999:7:::/g' /etc/shadow
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
     mv /etc/my-clash /etc/openclash/core/clash_meta
 fi
 
-/etc/init.d/network restart
+# /etc/init.d/network restart
 
 exit 0
