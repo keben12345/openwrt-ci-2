@@ -14,7 +14,7 @@ uci del dhcp.lan.ra_flags
 uci del dhcp.lan.dhcpv6
 uci del dhcp.lan.dns_service
 uci commit dhcp
-uci del network.wan6
+# uci del network.wan6
 uci del network.lan.ip6assign
 uci del network.globals.ula_prefix
 uci commit network
