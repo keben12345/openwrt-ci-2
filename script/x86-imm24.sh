@@ -1,7 +1,9 @@
 #添加TurboAcc
-# curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
-sed -i 's/192.168.1.1/192.168.86.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.86.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
+# sed -i 's/192.168.1.1/192.168.86.1/g' package/base-files/files/bin/config_generate
+# sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.86.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.0.0.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 # sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 # sed -i 's/ImmortalWrt/WiFi/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 # sed -i 's#mirrors.vsean.net/openwrt#mirrors.pku.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
@@ -57,7 +59,7 @@ git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/lu
 git clone --depth 1 https://github.com/sirpdboy/luci-app-partexp.git package/luci-app-partexp
 git clone --depth 1 https://github.com/ilxp/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 
-rm -rf feeds/packages/net/adguardhome
+rm -rf feeds/packages/net/{adguardhome,tailscale}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
@@ -70,6 +72,8 @@ mv package/kz8-small/wrtbwmon package/wrtbwmon
 mv package/kz8-small/luci-app-netspeedtest package/luci-app-netspeedtest
 mv package/kz8-small/homebox package/homebox
 mv package/kz8-small/luci-app-poweroff package/luci-app-poweroff
+mv package/kz8-small/luci-app-tailscale package/luci-app-tailscale
+mv package/kz8-small/tailscale package/tailscale
 rm -rf package/kz8-small
 
 git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
