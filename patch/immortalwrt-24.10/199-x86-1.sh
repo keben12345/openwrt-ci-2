@@ -52,7 +52,7 @@ elif [ "$count" -gt 1 ]; then
    # 提取第一个接口作为WAN
    uci set network.wan.device="$wan_ifname"
    # WAN接口默认DHCP
-   uci set network.wan.proto='dhcp'
+   uci set network.wan.proto='pppoe'
    # 设置WAN6绑定网口eth0
    uci set network.wan6=interface
    uci set network.wan6.device="$wan_ifname"
