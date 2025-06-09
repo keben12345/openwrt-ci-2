@@ -6,7 +6,7 @@ uci delete ttyd.@ttyd[0].interface
 # 设置所有网口可连接 SSH
 uci set dropbear.@dropbear[0].Interface=''
 
-uci set network.lan.ipaddr='192.168.0.1'
+# uci set network.lan.ipaddr='192.168.0.1'
 uci set network.lan.ip6assign=64
 uci del network.globals.ula_prefix
 uci set dhcp.lan.dns_service='0'
