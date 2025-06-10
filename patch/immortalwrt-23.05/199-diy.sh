@@ -16,22 +16,23 @@ uci set dropbear.@dropbear[0].Interface=''
 #uci del dhcp.lan.ndp
 #uci commit dhcp
 
-uci set wireless.default_radio0.ssid=$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-TikTok-2.4G
-uci set wireless.default_radio1.ssid=$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-TikTok-5G
-uci set wireless.default_radio0.encryption=psk2+ccmp
-uci set wireless.default_radio1.encryption=psk2+ccmp
-uci set wireless.default_radio0.key=84131018
-uci set wireless.default_radio1.key=84131018
-uci commit wireless
+#uci set wireless.default_radio0.ssid=$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-TikTok-2.4G
+#uci set wireless.default_radio1.ssid=$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-TikTok-5G
+#uci set wireless.default_radio0.encryption=psk2+ccmp
+#uci set wireless.default_radio1.encryption=psk2+ccmp
+#uci set wireless.default_radio0.key=84131018
+#uci set wireless.default_radio1.key=84131018
+#uci commit wireless
 
 uci commit
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz kmod https://mirror.nju.edu.cn/immortalwrt/releases/23.05-SNAPSHOT/targets/mediatek/filogic/kmods/5.15.181-1-dab81cfed92fb4881f7b4fec9f787850' /etc/opkg/distfeeds.conf
 #sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
 
-sed -i 's/root::0:0:99999:7:::/root:$1$ODyHU5Rh$y1MlOS4gBVZD9K7Vvufv0.:0:0:99999:7:::/g' /etc/shadow
-sed -i 's/root:::0:99999:7:::/root:$1$ODyHU5Rh$y1MlOS4gBVZD9K7Vvufv0.:0:0:99999:7:::/g' /etc/shadow
+#sed -i 's/root::0:0:99999:7:::/root:$1$ODyHU5Rh$y1MlOS4gBVZD9K7Vvufv0.:0:0:99999:7:::/g' /etc/shadow
+#sed -i 's/root:::0:99999:7:::/root:$1$ODyHU5Rh$y1MlOS4gBVZD9K7Vvufv0.:0:0:99999:7:::/g' /etc/shadow
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
