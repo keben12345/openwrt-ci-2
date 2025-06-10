@@ -1,7 +1,7 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-#sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
-#sed -i 's/ImmortalWrt/OpenWrt/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/OpenWrt/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 #mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-mt798x.sh package/base-files/files/etc/uci-defaults/199-diy.sh
 
@@ -52,7 +52,11 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/p
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
 
+find ./ | grep Makefile | grep oaf | xargs rm -f
+rm -rf feeds/packages/net/open-app-filter
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+git clone --depth 1 https://github.com/sirpdboy/luci-app-parentcontrol package/luci-app-parentcontrol
+git clone --depth 1 https://github.com/lwb1978/openwrt-gecoosac.git package/openwrt-gecoosac
 git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/luci-app-eqosplus
 
 rm -rf feeds/packages/net/adguardhome
