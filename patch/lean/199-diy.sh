@@ -33,7 +33,6 @@ if [ -f "$OPENCLASH_FILE" ]; then
     mv /etc/my-clash /etc/openclash/core/clash_meta
 fi
 
-mv /etc/QINGYINSSIDMAC1.sh /etc/init.d/QINGYINSSIDMAC1.sh
 chmod 644 /etc/init.d/QINGYINSSIDMAC1.sh
 
 #/etc/init.d/network restart
