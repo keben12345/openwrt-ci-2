@@ -20,7 +20,6 @@ sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/
 #    mv /etc/my-clash /etc/openclash/core/clash_meta
 #fi
 
-mv /etc/QINGYINSSIDMAC1.sh /etc/init.d/QINGYINSSIDMAC1.sh
 chmod 775 /etc/init.d/QINGYINSSIDMAC1.sh
 
 #uci commit dhcp
