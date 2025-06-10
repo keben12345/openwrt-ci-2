@@ -18,11 +18,10 @@ uci set dropbear.@dropbear[0].Interface=''
 uci commit
 
 date_version=$(date +"%Y.%m.%d")
-sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
-echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
-#echo "DISTRIB_REVISION='${date_version}'" >> /etc/openwrt_release
-sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
-echo "DISTRIB_DESCRIPTION='OpenWrt '" >> /etc/openwrt_release
+#sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
+#echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
+#sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
+#echo "DISTRIB_DESCRIPTION='OpenWrt '" >> /etc/openwrt_release
 
 sed -i '/core/d' /etc/opkg/distfeeds.conf
 sed -i '/smpackage/d' /etc/opkg/distfeeds.conf
@@ -33,6 +32,9 @@ OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
     mv /etc/my-clash /etc/openclash/core/clash_meta
 fi
+
+mv /etc/QINGYINSSIDMAC1.sh /etc/init.d/QINGYINSSIDMAC1.sh
+chmod 775 /etc/init.d/QINGYINSSIDMAC1.sh
 
 #/etc/init.d/network restart
 
