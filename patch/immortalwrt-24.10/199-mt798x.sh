@@ -8,6 +8,7 @@ uci set dropbear.@dropbear[0].Interface=''
 
 #其他网络设置
 uci set dhcp.cfg01411c.filter_aaaa='1'
+uci commit dhcp
 uci commit
 
 sed -i '/modem/d' /etc/opkg/distfeeds.conf
