@@ -24,7 +24,7 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     rm -rf package/openclash-core
 fi
 
-mv $GITHUB_WORKSPACE/patch/QINGYIN/QINGYINSSIDMAC1.sh package/base-files/files/etc/QINGYINSSIDMAC1.sh
+mv $GITHUB_WORKSPACE/patch/QINGYIN/QINGYINSSIDMAC1.sh package/base-files/files/etc/init.d/QINGYINSSIDMAC1.sh
 mv $GITHUB_WORKSPACE/patch/QINGYIN/lede-10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
 find ./ | grep Makefile | grep oaf | xargs rm -f
