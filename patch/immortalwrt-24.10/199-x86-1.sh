@@ -17,6 +17,15 @@ sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/
 sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.1/targets/x86/64/kmods/6.6.86-1-a99af258b23725bab7a4c5448b90efca' /etc/opkg/distfeeds.conf
 sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /etc/opkg/customfeeds.conf
 
+sed -i '/immortalwrt_luci/d' /etc/opkg/distfeeds.conf
+sed -i '/immortalwrt_packages/d' /etc/opkg/distfeeds.conf
+sed -i '$a #src/gz immortalwrt_luci https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.1/packages/x86_64/luci' /etc/opkg/distfeeds.conf
+sed -i '$a #src/gz immortalwrt_packages https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.1/packages/x86_64/packages' /etc/opkg/distfeeds.conf
+
+sed -i '$a src/gz openwrt_luci https://mirrors.pku.edu.cn/openwrt/releases/24.10.1/packages/x86_64/luci' /etc/opkg/customfeeds.conf
+sed -i '$a src/gz openwrt_packages https://mirrors.pku.edu.cn/openwrt/releases/24.10.1/packages/x86_64/packages' /etc/opkg/customfeeds.conf
+
+
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
     mv /etc/my-clash /etc/openclash/core/clash_meta
