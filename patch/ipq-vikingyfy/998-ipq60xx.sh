@@ -5,7 +5,7 @@ sed -i '/sqm/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/qualcommax/d' /etc/apk/repositories.d/distfeeds.list
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/apk/repositories.d/distfeeds.list
 sed -i '$a https://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq60xx/packages/packages.adb' /etc/apk/repositories.d/distfeeds.list
-sed -i '$a https://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq60xx/kmods/6.12.30-1-601467766086dd11d1129a2de6906a99/packages.adb' /etc/apk/repositories.d/distfeeds.list
+sed -i '$a https://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq60xx/kmods/6.12.33-1-5d212070dc1bc064bea33e9afb84f20f/packages.adb' /etc/apk/repositories.d/distfeeds.list
 # 设置所有网口可访问网页终端
 uci delete ttyd.@ttyd[0].interface
 
@@ -17,11 +17,6 @@ uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macadd
 uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
 uci commit wireless
 uci commit
-
-OPENCLASH_FILE="/etc/config/openclash"
-if [ -f "$OPENCLASH_FILE" ]; then
-    mv /etc/my-clash /etc/openclash/core/clash_meta
-fi
 
 /etc/init.d/network restart
 
