@@ -8,19 +8,6 @@ mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
 #mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq807x.sh package/base-files/files/etc/uci-defaults/998-ipq807x.sh
 
-#rust报错
-rm -rf feeds/packages/lang/rust
-git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages.git package/imm24-packages
-mv package/imm24-packages/lang/rust feeds/packages/lang/rust
-rm -rf package/imm24-packages
-
-if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
-    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-    tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
-    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
-    rm -rf package/openclash-core
-fi
-
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #添加编译日期
@@ -99,3 +86,5 @@ sed -i 's/START=.*/START=86/g' package/kernel/mac80211/files/qca-nss-pbuf.init
 sed -i '/\/files/d'  feeds/packages/net/tailscale/Makefile
 #修复Coremark编译失败
 sed -i 's/mkdir/mkdir -p/g' feeds/packages/utils/coremark/Makefile
+#rust报错
+sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
