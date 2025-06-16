@@ -3,17 +3,7 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/l
 sed -i 's/ImmortalWrt/Router/g' package/base-files/files/bin/config_generate
 sed -i "s/ImmortalWrt/WiFi/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
-# mv $GITHUB_WORKSPACE/patch/hanwckf/mt7986a-netcore-n60pro.dts target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-netcore-n60.dts
-
-#mv $GITHUB_WORKSPACE/patch/hanwckf/mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 mv $GITHUB_WORKSPACE/patch/hanwckf/199-diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
-
-if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
-    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-    tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
-    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
-    rm -rf package/openclash-core
-fi
 
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
@@ -22,61 +12,6 @@ sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-stat
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
-#安装最新openclash
-rm -rf feeds/luci/applications/luci-app-openclash
-git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
-mv package/openclash/luci-app-openclash feeds/luci/applications/
-rm -rf package/openclash
-
 rm -rf feeds/packages/net/ddns-go
 rm -rf feeds/luci/applications/luci-app-ddns-go
 git clone --depth 1 https://github.com/5und4y2023/luci-app-ddns-go.git package/luci-app-ddns-go
-#UA2F校园网
-git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
-git clone https://github.com/Zxilly/UA2F.git package/UA2F
-#git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
-#git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
-rm -rf feeds/packages/net/ua2f
-
-#git clone --depth 1 https://github.com/mchome/luci-app-dogcom.git package/luci-app-dogcom
-#git clone --depth 1 https://github.com/mchome/openwrt-dogcom.git package/openwrt-dogcom
-git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/oaf
-git clone --depth 1 https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
-
-
-#下载5g模块
-git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-
-# iStore
-#git clone --depth 1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
-#mv package/extra-ipk/linkease package/linkease
-#rm -rf package/extra-ipk
-#git clone --depth 1 https://github.com/padavanonly/immortalwrt-mt798x.git package/padavanonly
-# mv package/padavanonly/package/istore package/istore
-#rm -rf package/padavanonly
-#sed -i 's/0.8.2/0.8.16/g' istore/quickstart/Makefile
-#sed -i 's/1fa1e1a3dc248c34fb8b1c4ac441bf45e544fbd12fb33030cbd2bb5a9bcb616b/a156e9e8831072f14b625c3f7c724c405c963aa67e24adb2ce7bf66531b688a1/g' istore/quickstart/Makefile
-# iStore官方
-git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
-git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
-git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
-mv package/nas-packages/network/services/* package/nas-packages/
-rm -rf package/nas-packages/network
-
-#adguardhome，alist,frc,需要go版本需要最新的
-git clone --depth=1 https://github.com/mingxiaoyu/luci-app-phtunnel.git package/phtunnel
-git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
-git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
-mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
-mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
-mv package/small-package/homebox package/homebox
-mv package/small-package/luci-app-netspeedtest package/luci-app-netspeedtest
-mv package/small-package/luci-app-easymesh package/luci-app-easymesh
-mv package/small-package/luci-app-gecoosac package/luci-app-gecoosac
-mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
-rm -rf package/small-package
-
-git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
-mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
-mv package/lede/package/lean/leigod-acc package/leigod-acc
-rm -rf package/lede
