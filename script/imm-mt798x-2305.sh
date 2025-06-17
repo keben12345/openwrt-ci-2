@@ -1,5 +1,5 @@
-sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.10.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/Router/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/WiFi/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
@@ -11,7 +11,7 @@ sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-stat
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
-mv $GITHUB_WORKSPACE/patch/immortalwrt-23.05/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+# mv $GITHUB_WORKSPACE/patch/immortalwrt-23.05/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
 #红米ax6000改512m闪存
 #sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/' target/linux/mediatek/dts/mt7986a-xiaomi-redmi-router-ax6000.dts
