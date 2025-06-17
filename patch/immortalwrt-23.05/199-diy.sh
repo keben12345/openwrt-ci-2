@@ -28,7 +28,8 @@ uci commit
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz kmod https://mirror.nju.edu.cn/immortalwrt/releases/23.05-SNAPSHOT/targets/mediatek/filogic/kmods/5.15.181-1-dab81cfed92fb4881f7b4fec9f787850' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz kmod https://mirror.nju.edu.cn/immortalwrt/releases/23.05.4/targets/mediatek/filogic/kmods/5.15.167-1-d024313b339f6a16c640db924eb57f35/' /etc/opkg/distfeeds.conf
+#sed -i '$a src/gz kmod https://mirror.nju.edu.cn/immortalwrt/releases/23.05-SNAPSHOT/targets/mediatek/filogic/kmods/5.15.181-1-dab81cfed92fb4881f7b4fec9f787850' /etc/opkg/distfeeds.conf
 #sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
 
 #sed -i 's/root::0:0:99999:7:::/root:$1$ODyHU5Rh$y1MlOS4gBVZD9K7Vvufv0.:0:0:99999:7:::/g' /etc/shadow
