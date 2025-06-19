@@ -56,8 +56,8 @@ git clone --depth 1 -b main https://github.com/linkease/nas-packages-luci.git pa
 mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
 
-rm -rf feeds/packages/net/{adguardhome,mosdns,lucky,tailscale}
-rm -rf feeds/luci/applications/{luci-app-alist,luci-app-adguardhome,luci-app-lucky,luci-app-mosdns,luci-app-tailscale}
+rm -rf feeds/packages/net/{adguardhome,alist,lucky,tailscale}
+rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-alist,luci-app-lucky,luci-app-tailscale}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
