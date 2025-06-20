@@ -12,6 +12,50 @@ sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-stat
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
+if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
+    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
+    tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
+    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
+    rm -rf package/openclash-core
+fi
+#安装最新openclash
+rm -rf feeds/luci/applications/luci-app-openclash
+git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
+mv package/openclash/luci-app-openclash feeds/luci/applications/
+rm -rf package/openclash
+
 rm -rf feeds/packages/net/ddns-go
 rm -rf feeds/luci/applications/luci-app-ddns-go
 git clone --depth 1 https://github.com/5und4y2023/luci-app-ddns-go.git package/luci-app-ddns-go
+
+# iStore官方
+git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
+git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
+git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
+mv package/nas-packages/network/services/* package/nas-packages/
+rm -rf package/nas-packages/network
+
+#adguardhome，alist,frc,需要go版本需要最新的
+# git clone --depth=1 https://github.com/mingxiaoyu/luci-app-phtunnel.git package/phtunnel
+git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
+git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
+mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
+mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
+mv package/small-package/luci-app-easymesh package/luci-app-easymesh
+mv package/small-package/luci-app-gecoosac package/luci-app-gecoosac
+mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
+rm -rf package/small-package
+
+# git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
+# mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
+# mv package/lede/package/lean/leigod-acc package/leigod-acc
+# rm -rf package/lede
+
+#下载5g模块
+# git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+#UA2F校园网
+#git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
+#git clone https://github.com/Zxilly/UA2F.git package/UA2F
+#git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
+#git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
+#rm -rf feeds/packages/net/ua2f
