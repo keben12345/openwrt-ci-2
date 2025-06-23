@@ -49,6 +49,12 @@ rm -rf feeds/packages/net/{shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan
 #find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
+    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
+    tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
+    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
+    rm -rf package/openclash-core
+fi
 
 find ./ | grep Makefile | grep oaf | xargs rm -f
 rm -rf feeds/packages/net/open-app-filter
