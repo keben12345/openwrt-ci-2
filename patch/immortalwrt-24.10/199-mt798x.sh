@@ -53,7 +53,6 @@ uci set firewall.@rule[-1].dest='wan'
 uci set firewall.@rule[-1].name='tk001'
 uci add_list firewall.@rule[-1].proto='all'
 uci set firewall.@rule[-1].target='REJECT'
-done
 
 # 提交配置
 uci commit wireless
