@@ -65,7 +65,7 @@ sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.2/targets/mediatek/filogic/kmods/6.6.93-1-2ccac7a75355327cb6dfb4df1ecb575e' /etc/opkg/distfeeds.conf
 
-mv /etc/my-clash /etc/openclash/core/clash_meta
+cp /etc/my-clash /etc/openclash/core/clash_meta
 
 /etc/init.d/network restart >/dev/null 2>&1
 /etc/init.d/firewall restart >/dev/null 2>&1
