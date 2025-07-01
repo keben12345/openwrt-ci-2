@@ -26,15 +26,15 @@ uci set wireless.wifinet2.ifname='ap1'
 uci set wireless.wifinet2.network='tk001'
 
 # 配置网络接口
-uci set network.wifi${i}=interface
-uci set network.wifi${i}.proto='static'
-uci set network.wifi${i}.device='ap1'
-uci set network.wifi${i}.ipaddr='10.10.1.1'
-uci set network.wifi${i}.netmask='255.255.255.0'
+uci set network.tk001=interface
+uci set network.tk001.proto='static'
+uci set network.tk001.device='ap1'
+uci set network.tk001.ipaddr='10.10.1.1'
+uci set network.tk001.netmask='255.255.255.0'
 
 # 配置DHCP
-uci set dhcp.wifi${i}=dhcp
-uci set dhcp.wifi${i}.interface='tk001'
+uci set dhcp.tk001=dhcp
+uci set dhcp.tk001.interface='tk001'
 
 # 配置防火墙
 uci add firewall zone
