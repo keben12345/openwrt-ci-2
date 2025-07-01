@@ -23,8 +23,8 @@ sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-stat
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
-#mv $GITHUB_WORKSPACE/patch/QINGYIN/QINGYINSSIDMAC1.sh package/base-files/files/etc/init.d/QINGYINSSIDMAC1.sh
-#mv $GITHUB_WORKSPACE/patch/QINGYIN/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+mv $GITHUB_WORKSPACE/patch/QINGYIN/QINGYINSSIDMAC2.sh package/base-files/files/etc/init.d/QINGYINSSIDMAC1.sh
+mv $GITHUB_WORKSPACE/patch/QINGYIN/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
 #下载5g模块
 #git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
