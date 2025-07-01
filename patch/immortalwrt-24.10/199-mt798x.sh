@@ -23,7 +23,7 @@ sed -i '$a src/gz openwrt_telephony https://mirrors.pku.edu.cn/openwrt/releases/
 
 sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_cortex-a53/kiddin9' /etc/opkg/customfeeds.conf
 
-
+chmod 755 /etc/init.d/QINGYINSSIDMAC1.sh
 cp /etc/my-clash /etc/openclash/core/clash_meta
 
 
