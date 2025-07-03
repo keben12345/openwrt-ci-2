@@ -58,6 +58,7 @@ git clone --depth 1 https://github.com/zzsj0928/luci-app-pushbot.git package/luc
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/small-package
 #mv package/small-package/adguardhome feeds/packages/net/adguardhome
 #mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
+mv package/small-package/luci-app-guest-wifi package/luci-app-guest-wifi
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
 #mv package/small-package/tailscale package/tailscale
 mv package/small-package/luci-app-tailscale package/luci-app-tailscale
