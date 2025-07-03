@@ -9,8 +9,8 @@ sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emo
 #sed -i 's/luci-app-usb-printer luci-i18n-usb-printer-zh-cn/kmod-usb-storage/g' target/linux/mediatek/image/mt7981.mk
 # mv $GITHUB_WORKSPACE/patch/padavanonly/libxcrypt-Makefile feeds/packages/libs/libxcrypt/Makefile
 
-rm -rf /include/kernel-6.6
-mv $GITHUB_WORKSPACE/patch/padavanonly/kernel-6.6 include/kernel-6.6
+#rm -rf /include/kernel-6.6
+#mv $GITHUB_WORKSPACE/patch/padavanonly/kernel-6.6 include/kernel-6.6
 mv $GITHUB_WORKSPACE/patch/padavanonly/199-diy-ipv6.sh package/base-files/files/etc/uci-defaults/990-diy.sh
 
 # sed -i 's/0x580000 0x7280000/0x580000 0x1cc00000/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-netcore-n60-pro.dts
