@@ -7,7 +7,7 @@ sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emo
 #sed -E '/^DEVICE_PACKAGES/ s/(\s*)([^ ]*ksmbd[^ ]*)(\s*)/ /g; s/  +/ /g; s/ $//' target/linux/mediatek/image/mt7981.mk
 #sed -i 's/luci-app-ksmbd luci-i18n-ksmbd-zh-cn ksmbd-utils/kmod-usb-storage-extras/g' target/linux/mediatek/image/mt7981.mk
 #sed -i 's/luci-app-usb-printer luci-i18n-usb-printer-zh-cn/kmod-usb-storage/g' target/linux/mediatek/image/mt7981.mk
-# mv $GITHUB_WORKSPACE/patch/padavanonly/libxcrypt-Makefile feeds/packages/libs/libxcrypt/Makefile
+mv $GITHUB_WORKSPACE/patch/padavanonly/libxcrypt-Makefile feeds/packages/libs/libxcrypt/Makefile
 
 #rm -rf /include/kernel-6.6
 #mv $GITHUB_WORKSPACE/patch/padavanonly/kernel-6.6 include/kernel-6.6
