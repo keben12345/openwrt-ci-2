@@ -52,7 +52,7 @@ for i in $(seq 1 $num); do
     uci set wireless.wifinet${wifinet_num}=wifi-iface
     uci set wireless.wifinet${wifinet_num}.device="$wireless_dev"
     uci set wireless.wifinet${wifinet_num}.mode='ap'
-    uci set wireless.wifinet${wifinet_num}.ssid="${mymac}-WiFi-${i}"
+    uci set wireless.wifinet${wifinet_num}.ssid="dh-${i}"
     uci set wireless.wifinet${wifinet_num}.encryption='psk2+ccmp'
     uci set wireless.wifinet${wifinet_num}.key="$wifipassword"
     # uci set wireless.wifinet${wifinet_num}.ifname="ap${i}"
