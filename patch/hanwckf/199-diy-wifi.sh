@@ -98,10 +98,7 @@ uci commit firewall
 sed -i 's/root::0:0:99999:7:::/root:$1$iOzd6YV5$fFw/2Cd.2prhGTiuCPCj0.:0:0:99999:7:::/g' /etc/shadow
 sed -i 's/root:::0:99999:7:::/root:$1$iOzd6YV5$fFw/2Cd.2prhGTiuCPCj0.:0:0:99999:7:::/g' /etc/shadow
 
-OPENCLASH_FILE="/etc/config/openclash"
-if [ -f "$OPENCLASH_FILE" ]; then
-    mv /etc/my-clash /etc/openclash/core/clash_meta
-fi
+mv /etc/my-clash /etc/openclash/core/clash_meta
 
 /etc/init.d/network restart >/dev/null 2>&1
 /etc/init.d/firewall restart >/dev/null 2>&1
