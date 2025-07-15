@@ -13,12 +13,6 @@ sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-stat
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
-if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
-    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-    tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
-    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
-    rm -rf package/openclash-core
-fi
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
 git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
