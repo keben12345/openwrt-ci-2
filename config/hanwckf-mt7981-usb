@@ -1,6 +1,6 @@
 CONFIG_TARGET_mediatek=y
 CONFIG_TARGET_mediatek_mt7981=y
-CONFIG_TARGET_mediatek_mt7981_DEVICE_cmcc_rax3000m-emmc=y
+CONFIG_TARGET_mediatek_mt7981_DEVICE_cmcc_rax3000m=y
 # CONFIG_TARGET_ROOTFS_INITRAMFS is not set
 CONFIG_DEVEL=y
 CONFIG_TOOLCHAINOPTS=y
@@ -277,7 +277,7 @@ CONFIG_PACKAGE_libimobiledevice=y
 CONFIG_LUCI_LANG_zh_Hans=y
 CONFIG_PACKAGE_kmod-wireguard=y
 # CONFIG_PACKAGE_luci-app-eqos-mtk is not set
-CONFIG_PACKAGE_luci-app-filetransfer=y
+# CONFIG_PACKAGE_luci-app-filetransfer is not set
 CONFIG_PACKAGE_luci-app-mtwifi-cfg=y
 CONFIG_PACKAGE_luci-app-turboacc-mtk=y
 CONFIG_PACKAGE_luci-app-upnp=y
@@ -290,7 +290,6 @@ CONFIG_PACKAGE_luci-theme-argon=y
 CONFIG_PACKAGE_luci-app-ttyd=y
 CONFIG_PACKAGE_luci-app-autoreboot=y
 
-CONFIG_PACKAGE_luci-app-nps=y
 CONFIG_PACKAGE_luci-app-openclash=y
 CONFIG_PACKAGE_luci-app-passwall2=y
 CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Haproxy=y
