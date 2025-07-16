@@ -25,21 +25,21 @@ uci commit network
 uci commit
 
 #uci set wireless.default_MT7981_1_1.ssid=xiaoguo
-uci set wireless.default_MT7981_1_1.encryption=psk2+ccmp
-uci set wireless.default_MT7981_1_1.key=password
+#uci set wireless.default_MT7981_1_1.encryption=psk2+ccmp
+#uci set wireless.default_MT7981_1_1.key=password
 
 #uci set wireless.default_MT7981_1_2.ssid=TK888
-uci set wireless.default_MT7981_1_2.encryption=psk2+ccmp
-uci set wireless.default_MT7981_1_2.key=password
-uci commit wireless
-uci commit
+#uci set wireless.default_MT7981_1_2.encryption=psk2+ccmp
+#uci set wireless.default_MT7981_1_2.key=password
+#uci commit wireless
+#uci commit
 
 # sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 # sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 
-# cp /etc/my-clash /etc/openclash/core/clash_meta
+cp /etc/my-clash /etc/openclash/core/clash_meta
 
 
-/etc/init.d/network restart
+#/etc/init.d/network restart
 
 exit 0
