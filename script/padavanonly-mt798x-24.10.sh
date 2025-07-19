@@ -1,29 +1,22 @@
-sed -i 's/192.168.6.1/192.168.23.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-sed -i 's/ImmortalWrt/Router/g' package/base-files/files/bin/config_generate
-sed -i "s/ImmortalWrt/WiFi/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
-mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
+sed -i 's/192.168.6.1/192.168.5.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.5.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+sed -i "s/ImmortalWrt/OpenWrt/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
-#sed -E '/^DEVICE_PACKAGES/ s/(\s*)([^ ]*ksmbd[^ ]*)(\s*)/ /g; s/  +/ /g; s/ $//' target/linux/mediatek/image/mt7981.mk
-#sed -i 's/luci-app-ksmbd luci-i18n-ksmbd-zh-cn ksmbd-utils/kmod-usb-storage-extras/g' target/linux/mediatek/image/mt7981.mk
-#sed -i 's/luci-app-usb-printer luci-i18n-usb-printer-zh-cn/kmod-usb-storage/g' target/linux/mediatek/image/mt7981.mk
+mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/padavanonly/libxcrypt-Makefile feeds/packages/libs/libxcrypt/Makefile
+mv $GITHUB_WORKSPACE/patch/padavanonly/199-diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
+mv $GITHUB_WORKSPACE/patch/padavanonly/mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 
-#rm -rf /include/kernel-6.6
-#mv $GITHUB_WORKSPACE/patch/padavanonly/kernel-6.6 include/kernel-6.6
-mv $GITHUB_WORKSPACE/patch/padavanonly/199-diy-ipv6.sh package/base-files/files/etc/uci-defaults/990-diy.sh
-
+# mv $GITHUB_WORKSPACE/patch/padavanonly/QINGYINSSIDMAC1.sh package/base-files/files/etc/QINGYINSSIDMAC1.sh
 # sed -i 's/0x580000 0x7280000/0x580000 0x1cc00000/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-netcore-n60-pro.dts
 
-
-# mv $GITHUB_WORKSPACE/patch/padavanonly/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
-# mv $GITHUB_WORKSPACE/patch/padavanonly/QINGYINSSIDMAC1.sh package/base-files/files/etc/QINGYINSSIDMAC1.sh
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #添加编译日期
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
-
+mv $GITHUB_WORKSPACE/patch/padavanonly/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
@@ -104,3 +97,6 @@ rm -rf package/imm21-luci
 ## 修改DTS的spi_nand的spi-max-frequency为52MHz，52000000
 #sed -i 's/spi-max-frequency = <20000000>/spi-max-frequency = <52000000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
 #sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
+#sed -E '/^DEVICE_PACKAGES/ s/(\s*)([^ ]*ksmbd[^ ]*)(\s*)/ /g; s/  +/ /g; s/ $//' target/linux/mediatek/image/mt7981.mk
+#sed -i 's/luci-app-ksmbd luci-i18n-ksmbd-zh-cn ksmbd-utils/kmod-usb-storage-extras/g' target/linux/mediatek/image/mt7981.mk
+#sed -i 's/luci-app-usb-printer luci-i18n-usb-printer-zh-cn/kmod-usb-storage/g' target/linux/mediatek/image/mt7981.mk
