@@ -7,8 +7,8 @@ on:
 env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x.git
   REPO_BRANCH: openwrt-21.02
-  CONFIG_FILE: config/hanwckf-mt7981-science-bw
-  DIY_SCRIPT: script/hanwckf-mt798x-science-bw.sh
+  CONFIG_FILE: config/hanwckf-mt7986-bw
+  DIY_SCRIPT: script/hanwckf-mt798x-bw.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
