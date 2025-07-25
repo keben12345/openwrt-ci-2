@@ -52,6 +52,7 @@ git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
+rm -rf package/helloworld/xray-core
 
 #新版ssr-libev和ss-rust缺少依赖，所以延用旧版，删除新版
 rm -rf package/passwall-packages/shadowsocks-rust
