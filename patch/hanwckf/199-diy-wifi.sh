@@ -29,9 +29,9 @@ uci commit wireless
 #uci commit
 
 mymac=$(cat /sys/class/net/br-lan/address 2>/dev/null | awk -F: '{print $5 $6}' | tr 'a-z' 'A-Z')
-num=30
+num=20
 wifipassword=12345678
-ipc=11
+ipc=101
 
 # 生成配置
 for i in $(seq 1 $num); do
@@ -98,7 +98,7 @@ uci commit firewall
 sed -i 's/root::0:0:99999:7:::/root:$1$iOzd6YV5$fFw/2Cd.2prhGTiuCPCj0.:0:0:99999:7:::/g' /etc/shadow
 sed -i 's/root:::0:99999:7:::/root:$1$iOzd6YV5$fFw/2Cd.2prhGTiuCPCj0.:0:0:99999:7:::/g' /etc/shadow
 
-mv /etc/my-clash /etc/openclash/core/clash_meta
+cp /etc/my-clash /etc/openclash/core/clash_meta
 
 /etc/init.d/network restart >/dev/null 2>&1
 /etc/init.d/firewall restart >/dev/null 2>&1
