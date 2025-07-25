@@ -43,11 +43,11 @@ git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 24.x feeds/
 #删除自带的老旧依赖，ssr-plus，passwall
 rm -rf feeds/packages/net/{chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev}
 rm -rf feeds/packages/net/{simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
-rm -rf feeds/packages/net/{dns2socks-rust,dns2tcp,dnsproxy,gn,redsocks2,shadow-tls,trojan,v2ray-core}
+#rm -rf feeds/packages/net/{dns2socks-rust,dns2tcp,dnsproxy,gn,redsocks2,shadow-tls,trojan,v2ray-core}
 rm -rf feeds/packages/devel/gn
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns}
 
-git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
+#git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
@@ -57,7 +57,7 @@ rm -rf package/passwall-packages/shadowsocks-rust
 rm -rf package/passwall-packages/shadowsocksr-libev
 rm -rf package/helloworld/shadowsocks-rust
 rm -rf package/helloworld/shadowsocksr-libev
-mv $GITHUB_WORKSPACE/patch/Makefile package/passwall-packages/xray-core/Makefile
+# mv $GITHUB_WORKSPACE/patch/Makefile package/passwall-packages/xray-core/Makefile
 
 rm -rf feeds/packages/net/v2ray-geodata
 rm -rf feeds/packages/net/mosdns
@@ -79,8 +79,6 @@ rm -rf feeds/packages/net/tailscale
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/adguardhome feeds/packages/net/adguardhome
-mv package/small-package/luci-app-alist package/luci-app-alist
-mv package/small-package/alist package/alist
 mv package/small-package/luci-app-easymesh package/luci-app-easymesh
 mv package/small-package/luci-app-gecoosac package/luci-app-gecoosac
 mv package/small-package/luci-app-smartdns package/luci-app-tailscale
@@ -97,17 +95,20 @@ git clone --depth 1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/e
 mv package/extra-ipk/linkease package/linkease
 rm -rf package/extra-ipk
 
-rm -rf feeds/packages/net/frp
-git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23pkg
-mv package/imm23pkg/net/frp feeds/packages/net/frp
-rm -rf package/imm23pkg
+#rm -rf feeds/packages/net/frp
+rm -rf package/passwall-packages/xray-core
+#git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23pkg
+git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/imm24pkg
+#mv package/imm23pkg/net/frp feeds/packages/net/frp
+mv package/imm24pkg/net/xray-core package/passwall-packages/xray-core
+rm -rf package/imm24pkg
 
 rm -rf feeds/luci/applications/luci-app-frpc
 git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
 mv package/imm23luci/applications/luci-app-frpc feeds/luci/applications/luci-app-frpc
 rm -rf package/imm23luci
 
-git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
-mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
-mv package/lede/package/lean/leigod-acc package/leigod-acc
-rm -rf package/lede
+#git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
+#mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
+#mv package/lede/package/lean/leigod-acc package/leigod-acc
+#rm -rf package/lede
