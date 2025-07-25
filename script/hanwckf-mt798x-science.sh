@@ -57,7 +57,7 @@ rm -rf package/passwall-packages/shadowsocks-rust
 rm -rf package/passwall-packages/shadowsocksr-libev
 rm -rf package/helloworld/shadowsocks-rust
 rm -rf package/helloworld/shadowsocksr-libev
-# mv $GITHUB_WORKSPACE/patch/Makefile package/passwall-packages/xray-core/Makefile
+mv $GITHUB_WORKSPACE/patch/Makefile package/passwall-packages/xray-core/Makefile
 
 rm -rf feeds/packages/net/v2ray-geodata
 rm -rf feeds/packages/net/mosdns
@@ -96,12 +96,12 @@ mv package/extra-ipk/linkease package/linkease
 rm -rf package/extra-ipk
 
 #rm -rf feeds/packages/net/frp
-rm -rf package/passwall-packages/xray-core
+#rm -rf package/passwall-packages/xray-core
 #git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23pkg
-git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/imm24pkg
+#git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/imm24pkg
 #mv package/imm23pkg/net/frp feeds/packages/net/frp
-mv package/imm24pkg/net/xray-core package/passwall-packages/xray-core
-rm -rf package/imm24pkg
+#mv package/imm24pkg/net/xray-core package/passwall-packages/xray-core
+#rm -rf package/imm24pkg
 
 rm -rf feeds/luci/applications/luci-app-frpc
 git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
