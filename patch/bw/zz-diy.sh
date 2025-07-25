@@ -53,7 +53,7 @@ uci set firewall.@forwarding[-1].dest='wan'
 uci add firewall rule
 uci set firewall.@rule[-1].src="proxy"
 uci set firewall.@rule[-1].dest='wan'
-uci set firewall.@rule[-1].name="proxy"
+uci set firewall.@rule[-1].name="ban-local"
 uci add_list firewall.@rule[-1].proto='all'
 uci set firewall.@rule[-1].target='REJECT'
 
