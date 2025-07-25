@@ -8,7 +8,7 @@ uci set dropbear.@dropbear[0].Interface=''
 
 uci commit
 
-# uci del network.wan6
+uci del network.wan6
 uci set network.lan.ip6assign=64
 uci del network.globals.ula_prefix
 uci set dhcp.lan.dns_service='0'
