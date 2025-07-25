@@ -95,17 +95,17 @@ git clone --depth 1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/e
 mv package/extra-ipk/linkease package/linkease
 rm -rf package/extra-ipk
 
-rm -rf feeds/packages/net/frp
-git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23pkg
-mv package/imm23pkg/net/frp feeds/packages/net/frp
-rm -rf package/imm23pkg
+#rm -rf feeds/packages/net/frp
+#git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23pkg
+#mv package/imm23pkg/net/frp feeds/packages/net/frp
+#rm -rf package/imm23pkg
 
-rm -rf feeds/luci/applications/luci-app-frpc
-git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
-mv package/imm23luci/applications/luci-app-frpc feeds/luci/applications/luci-app-frpc
-rm -rf package/imm23luci
+#rm -rf feeds/luci/applications/luci-app-frpc
+#git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
+#mv package/imm23luci/applications/luci-app-frpc feeds/luci/applications/luci-app-frpc
+#rm -rf package/imm23luci
 
-git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
-mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
-mv package/lede/package/lean/leigod-acc package/leigod-acc
-rm -rf package/lede
+#git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
+#mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
+#mv package/lede/package/lean/leigod-acc package/leigod-acc
+#rm -rf package/lede
