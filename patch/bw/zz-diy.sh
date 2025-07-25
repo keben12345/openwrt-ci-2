@@ -39,6 +39,23 @@ sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:
 
 # cp /etc/my-clash /etc/openclash/core/clash_meta
 
+    # 配置防火墙
+uci add firewall zone
+uci set firewall.@zone[-1].name="proxy"
+uci set firewall.@zone[-1].input='ACCEPT'
+uci set firewall.@zone[-1].output='ACCEPT'
+uci set firewall.@zone[-1].forward='ACCEPT'
+
+uci add firewall forwarding
+uci set firewall.@forwarding[-1].src="proxy"
+uci set firewall.@forwarding[-1].dest='wan'
+    
+uci add firewall rule
+uci set firewall.@rule[-1].src="proxy"
+uci set firewall.@rule[-1].dest='wan'
+uci set firewall.@rule[-1].name="proxy"
+uci add_list firewall.@rule[-1].proto='all'
+uci set firewall.@rule[-1].target='REJECT'
 
 num=5
 wifipassword=password
@@ -80,25 +97,10 @@ for i in $(seq 1 $num); do
     uci set dhcp.wifi${i}=dhcp
     uci set dhcp.wifi${i}.interface="wifi${i}"
 
+    uci add_list firewall.@zone[-1].network="wifi${i}"
 done
 
-    # 配置防火墙
-uci add firewall zone
-uci set firewall.@zone[-1].name="proxy"
-uci set firewall.@zone[-1].input='ACCEPT'
-uci set firewall.@zone[-1].output='ACCEPT'
-uci set firewall.@zone[-1].forward='ACCEPT'
-uci add_list firewall.@zone[-1].network="proxy"
-uci add firewall forwarding
-uci set firewall.@forwarding[-1].src="proxy"
-uci set firewall.@forwarding[-1].dest='wan'
-    
-uci add firewall rule
-uci set firewall.@rule[-1].src="proxy"
-uci set firewall.@rule[-1].dest='wan'
-uci set firewall.@rule[-1].name="proxy"
-uci add_list firewall.@rule[-1].proto='all'
-uci set firewall.@rule[-1].target='REJECT'
+
 
 # 提交配置
 uci commit wireless
