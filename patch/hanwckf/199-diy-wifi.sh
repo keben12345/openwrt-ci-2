@@ -29,7 +29,7 @@ uci commit wireless
 #uci commit
 
 mymac=$(cat /sys/class/net/br-lan/address 2>/dev/null | awk -F: '{print $5 $6}' | tr 'a-z' 'A-Z')
-num=20
+num=30
 wifipassword=12345678
 ipc=101
 
