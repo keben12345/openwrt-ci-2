@@ -69,10 +69,10 @@ for i in $(seq 1 $num); do
 
     # 根据序号选择wireless设备
     if [ $i -le 15 ]; then
-        wireless_dev="MT7986_1_2"
+        wireless_dev="MT7981_1_2"
 		network_dev="rax${i}"
     else
-        wireless_dev="MT7986_1_1"
+        wireless_dev="MT7981_1_1"
 		network_dev="ra$((i - 15))"
     fi
 
