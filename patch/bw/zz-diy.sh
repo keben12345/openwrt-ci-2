@@ -37,7 +37,7 @@ uci commit
 sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 
-# cp /etc/my-clash /etc/openclash/core/clash_meta
+cp /etc/my-clash /etc/openclash/core/clash_meta
 
     # 配置防火墙
 uci add firewall zone
@@ -53,11 +53,11 @@ uci set firewall.@forwarding[-1].dest='wan'
 uci add firewall rule
 uci set firewall.@rule[-1].src="proxy"
 uci set firewall.@rule[-1].dest='wan'
-uci set firewall.@rule[-1].name="ban-local"
+uci set firewall.@rule[-1].name="ban4local"
 uci add_list firewall.@rule[-1].proto='all'
 uci set firewall.@rule[-1].target='REJECT'
 
-num=5
+num=30
 wifipassword=password
 ipc=1
 
