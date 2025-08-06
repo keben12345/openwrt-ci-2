@@ -1,5 +1,5 @@
 #添加TurboAcc
-curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
+# curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
 sed -i 's/192.168.1.1/192.168.86.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.86.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
@@ -34,24 +34,21 @@ rm -rf package/nas-packages/network
 
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
-rm -rf feeds/packages/net/{chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev}
-rm -rf feeds/packages/net/{simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
-rm -rf feeds/packages/net/{dns2socks-rust,dns2tcp,dnsproxy,gn,redsocks2,shadow-tls,trojan,v2ray-core}
+
 #find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 #find ./ | grep Makefile | grep mosdns | xargs rm -f
 rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
+rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
-git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/Thaolga/openwrt-nekobox.git package/luci-app-nekobox
 #rm -rf feeds/packages/devel/gn
-rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
+
 
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 git clone --depth 1 https://github.com/ilxp/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
@@ -73,11 +70,13 @@ mv package/kz8-small/luci-app-poweroff package/luci-app-poweroff
 mv package/kz8-small/luci-app-tailscale package/luci-app-tailscale
 mv package/kz8-small/tailscale package/tailscale
 rm -rf package/kz8-small
+#修复TailScale配置文件冲突
+sed -i '/\/files/d'  package/tailscale/Makefile
 
-git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
-mv package/imm23luci/applications/luci-app-adbyby-plus package/luci-app-adbyby-plus
-rm -rf package/imm23luci
-git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23packages
-mv package/imm23packages/net/adbyby package/adbyby
-rm -rf package/imm23packages
-sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-adbyby-plus/Makefile
+# git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
+# mv package/imm23luci/applications/luci-app-adbyby-plus package/luci-app-adbyby-plus
+# rm -rf package/imm23luci
+# git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23packages
+# mv package/imm23packages/net/adbyby package/adbyby
+# rm -rf package/imm23packages
+# sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-adbyby-plus/Makefile
