@@ -54,7 +54,7 @@ git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/oaf
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/luci-app-netspeedtest
 
 rm -rf feeds/packages/net/{adguardhome,smartdns,tailscale}
-rm -rf feeds/luci/applications/{luci-app-alist,luci-app-smartdns
+rm -rf feeds/luci/applications/{luci-app-alist,luci-app-smartdns}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/adguardhome feeds/packages/net/adguardhome
@@ -70,22 +70,19 @@ rm -rf package/small-package
 git clone --depth 1 https://github.com/mingxiaoyu/luci-app-phtunnel.git package/phtunnel
 
 # iStore
-git clone --depth 1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
-mv package/extra-ipk/linkease package/linkease
-rm -rf package/extra-ipk
+#git clone --depth 1 https://github.com/xiangfeidexiaohuo/extra-ipk.git package/extra-ipk
+#mv package/extra-ipk/linkease package/linkease
+#rm -rf package/extra-ipk
 
-#rm -rf feeds/packages/net/frp
-#rm -rf package/passwall-packages/xray-core
-#git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23pkg
-#git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/imm24pkg
-#mv package/imm23pkg/net/frp feeds/packages/net/frp
-#mv package/imm24pkg/net/xray-core package/passwall-packages/xray-core
-#rm -rf package/imm24pkg
+rm -rf feeds/packages/net/frp
+git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/imm24pkg
+mv package/imm24pkg/net/frp package/frp
+rm -rf package/imm24pkg
 
 rm -rf feeds/luci/applications/luci-app-frpc
-git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
-mv package/imm23luci/applications/luci-app-frpc feeds/luci/applications/luci-app-frpc
-rm -rf package/imm23luci
+git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci package/imm24luci
+mv package/imm24luci/applications/luci-app-frpc package/luci-app-frpc
+rm -rf package/imm24luci
 
 #git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
 #mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
