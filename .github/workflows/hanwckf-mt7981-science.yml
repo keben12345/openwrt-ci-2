@@ -96,6 +96,8 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
+        sed -i '$a src-git luci-app-passwall https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
+        sed -i '$a src-git passwall-packages https://github.com/xiaorouji/openwrt-passwall-packages.git' feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
