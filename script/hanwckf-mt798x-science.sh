@@ -21,13 +21,9 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/
 #sed -i 's/<0x580000 0x7200000>/<0x580000 0xee00000>/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m.dts
 #sed -i 's/116736k/240128k/g' target/linux/mediatek/image/mt7981.mk
 
-#安装最新openclash
-rm -rf feeds/luci/applications/luci-app-openclash
-git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
-mv package/openclash/luci-app-openclash feeds/luci/applications/
-rm -rf package/openclash
+
 #下载5g模块
-git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+#git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 #sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
 #sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
 
@@ -36,11 +32,12 @@ rm -rf feeds/packages/lang/golang
 git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 
 rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
-rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns}
+rm -rf feeds/luci/applications/{luci-app-openclash,luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns}
 #find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 #find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
 # git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
