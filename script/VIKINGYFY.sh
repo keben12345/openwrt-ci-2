@@ -47,6 +47,7 @@ git clone --depth 1 https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 # find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 # find ./ | grep Makefile | grep mosdns | xargs rm -f
 
+sed -i 's/34308ed827a5dd4f4e35619914102d55b00604faa44fda051d1d25fb4a319325/ffdd71e26d8c6f82083b5868025a7882eaad3846569d21610547720b999b6aaa/g' package/passwall-packages/shadowsocksr-libev/Makefile
 
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git  package/oaf
 git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
