@@ -79,6 +79,8 @@ rm -rf package/nas-packages/network
 #sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-accesscontrol/Makefile
 #rm -rf package/imm23-luci
 
+#sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
+
 #git clone --depth 1 -b master https://github.com/coolsnowwolf/luci.git package/lean-luci
 #mv package/lean-luci/applications/luci-app-arpbind package/luci-app-arpbind
 #sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-arpbind/Makefile
