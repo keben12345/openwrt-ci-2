@@ -74,7 +74,7 @@ rm -rf package/kz8-small
 #修复TailScale配置文件冲突
 sed -i '/\/files/d'  package/tailscale/Makefile
 #修复rust
-sed -i 's/ci-llvm=true/ci-llvm=false/g' package/lang/rust/Makefile
+sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
 
 # git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
 # mv package/imm23luci/applications/luci-app-adbyby-plus package/luci-app-adbyby-plus
