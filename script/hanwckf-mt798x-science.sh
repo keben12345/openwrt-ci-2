@@ -56,7 +56,7 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/l
 
 #git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/oaf
-git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/luci-app-netspeedtest
+git clone --depth 1 https://github.com/sirpdboy/luci-app-netspeedtest.git package/luci-app-netspeedtest
 
 rm -rf feeds/packages/net/{adguardhome,smartdns,tailscale}
 rm -rf feeds/luci/applications/{luci-app-alist,luci-app-smartdns}
