@@ -17,9 +17,9 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/
 #mv $GITHUB_WORKSPACE/patch/hanwckf/xm-10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
 #定制版补丁
-mv $GITHUB_WORKSPACE/patch/tiktok/hanwckf-mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
-mv $GITHUB_WORKSPACE/patch/tiktok/1-bgp.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
-mv $GITHUB_WORKSPACE/patch/tiktok/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+#mv $GITHUB_WORKSPACE/patch/tiktok/hanwckf-mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
+#mv $GITHUB_WORKSPACE/patch/tiktok/1-bgp.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+#mv $GITHUB_WORKSPACE/patch/tiktok/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
 #改大闪存
 #sed -i 's/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000.dts
