@@ -4,7 +4,9 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-
 #sed -i 's/ImmortalWrt/OpenWrt/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 #sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
 mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-mt798x.sh package/base-files/files/etc/uci-defaults/zzz-diy.sh
-cp $GITHUB_WORKSPACE/patch/immortalwrt-24.10/32wifi.sh package/base-files/files/etc/diy-32wifi.sh
+
+mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/open-32wifi.sh package/base-files/files/etc/open-32wifi.sh
+mv $GITHUB_WORKSPACE/patch/tiktok/imm24-10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
