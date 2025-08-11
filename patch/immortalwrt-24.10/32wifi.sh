@@ -1,26 +1,24 @@
 #!/bin/sh
 
 # 新增WiFi数量
-increase_wifi_num=10
+increase_wifi_num=15
 # 除去默认，原本有几个WiFi
 existed_wifi_num=0
+
+# WiFi名称
+ssid=TikTok
+
+# WiFi密码
+password=123456789
+
+# WiFi接口地址
+ipaddr=10.10.1.1
 
 # 是否保留默认WiFi
 keep_default_wifi=yes
 # 单频WiFi芯片支持的最大WiFi数量
 # mt798x系列为16，ipq系列为8
-max_wifi_num=8
-
-
-# WiFi名称
-ssid=AX1800
-
-# WiFi密码
-password=123456qwerty
-
-# WiFi地址
-ipaddr=10.10.1.1
-
+max_wifi_num=16
 ############################### 分 割 线 ###################################
 
 routermac=$(cat /sys/class/net/br-lan/address 2>/dev/null | awk -F: '{print $5 $6}' | tr 'a-z' 'A-Z')
