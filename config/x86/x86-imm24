@@ -39,10 +39,10 @@ CONFIG_PACKAGE_luci-app-ttyd=y
 CONFIG_PACKAGE_luci-app-poweroff=n
 CONFIG_PACKAGE_luci-app-filemanager=y
 
-CONFIG_PACKAGE_wpad-openssl=y
-CONFIG_PACKAGE_hostapd-common=y
-CONFIG_PACKAGE_wireless-tools=y
-CONFIG_PACKAGE_pciutils=y
+CONFIG_PACKAGE_wpad-openssl=n
+CONFIG_PACKAGE_hostapd-common=n
+CONFIG_PACKAGE_wireless-tools=n
+CONFIG_PACKAGE_pciutils=n
 
 CONFIG_PACKAGE_luci-app-nikki=y
 CONFIG_PACKAGE_luci-app-homeproxy=y
