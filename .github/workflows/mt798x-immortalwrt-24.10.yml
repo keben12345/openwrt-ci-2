@@ -84,14 +84,6 @@ jobs:
         SOURCE_AUTHOR="$(echo $REPO_URL | awk -F '/' '{print $4}')"
         echo "SOURCE_AUTHOR=$SOURCE_AUTHOR" >> $GITHUB_ENV
 
-
-    - name: Cache Toolchain(缓存工具链)
-      if: env.CACHE_TOOLCHAIN == 'true'
-      uses: HiGarfield/cachewrtbuild@main
-      with:
-        ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-24.10-mt798x
-        prefix: ${{ env.OPENWRT_PATH }}
     
     - name: Install Feeds(安装feeds)
       run: |
