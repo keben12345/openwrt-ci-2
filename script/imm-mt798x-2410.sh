@@ -7,7 +7,7 @@ mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-mt798x.sh package/base-files/fi
 
 mv $GITHUB_WORKSPACE/patch/tiktok/open-32wifi.sh package/base-files/files/etc/open-wifi.sh
 mv $GITHUB_WORKSPACE/patch/tiktok/imm24-10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
-mv $GITHUB_WORKSPACE/patch/tiktok/1-bgp.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+mv $GITHUB_WORKSPACE/patch/tiktok/tk12318-bgp.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 mv $GITHUB_WORKSPACE/patch/tiktok/imm24-mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
