@@ -10,6 +10,7 @@ uci set dropbear.@dropbear[0].Interface=''
 
 uci commit
 
+sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -i '/modem/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
@@ -18,9 +19,12 @@ sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' 
 
 cp /etc/my-clash /etc/openclash/core/clash_meta
 
-
+uci set dhcp.lan.ignore='1'
+uci set network.lan.ipaddr='192.168.31.3'
+uci commit dhcp
+uci commit network
 uci commit
-#/etc/init.d/network restart
-#/etc/init.d/odhcpd restart
+/etc/init.d/network restart
+/etc/init.d/odhcpd restart
 
 exit 0
