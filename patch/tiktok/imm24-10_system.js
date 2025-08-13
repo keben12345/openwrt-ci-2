@@ -80,11 +80,9 @@ return baseclass.extend({
 		}
 
 		var fields = [
-			_('Hostname'),         boardinfo.hostname,
-			_('Model'),            boardinfo.model + cpubench.cpubench,
-			_('Architecture'),     cpuinfo.cpuinfo || boardinfo.system,
-			_('Target Platform'),  (L.isObject(boardinfo.release) ? boardinfo.release.target : ''),
-			_('Firmware Version'), 'TikTok 专用路由器 / 技术指导：16606479991 （微信同号）',
+			_('Hostname'),         'TikTok',
+			_('Model'),            '跨境专用软路由',
+		    '联系方式',            '微信：Tk12138awesome，16606479991',
 			_('Kernel Version'),   boardinfo.kernel,
 			_('Local Time'),       datestr,
 			_('Uptime'),           systeminfo.uptime ? '%t'.format(systeminfo.uptime) : null,
