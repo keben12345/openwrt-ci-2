@@ -1,6 +1,6 @@
-sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/luci2/bin/config_generate
+sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/luci2/bin/config_generate
 sed -i 's/LEDE/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/LEDE/OpenWrt/g' package/base-files/luci2/bin/config_generate
 sed -i 's/LEDE/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
@@ -21,13 +21,10 @@ fi
 
 rm -rf feeds/packages/lang/golang
 git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
-rm -rf feeds/packages/net/{chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev}
-rm -rf feeds/packages/net/{simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
-rm -rf feeds/packages/net/{dns2socks-rust,dns2tcp,dnsproxy,gn,redsocks2,shadow-tls,trojan,v2ray-core,mosdns}
+
+rm -rf feeds/packages/net/{v2ray-geodata,mosdns}
 rm -rf feeds/luci/applications/{luci-app-ssr-plus,luci-app-openclash,luci-app-passwall,luci-app-passwall2,luci-app-mosdns}
-git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
 #find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
@@ -60,8 +57,6 @@ rm -rf package/kz8-small
 
 git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/eqosplus
 
-git clone --depth 1 -b lua https://github.com/sbwml/luci-app-alist package/alist
-rm -rf package/alist/alist
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 
