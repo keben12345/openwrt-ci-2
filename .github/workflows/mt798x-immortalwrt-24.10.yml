@@ -89,6 +89,7 @@ jobs:
       run: |
         cd $OPENWRT_PATH
         git checkout v24.10.2
+        sed -i '1i src-git luci_app_ssrp https://github.com/fw876/helloworld.git' feeds.conf.default
         sed -i '1i src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git' feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
