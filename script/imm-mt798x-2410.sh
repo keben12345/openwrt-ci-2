@@ -6,15 +6,17 @@ sed -i 's/ImmortalWrt/TikTok/g' package/base-files/files/bin/config_generate
 #sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
 mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-mt798x.sh package/base-files/files/etc/uci-defaults/zzz-diy.sh
 
-mv $GITHUB_WORKSPACE/patch/tiktok/open-32wifi.sh package/base-files/files/etc/open-wifi.sh
+mkdir -p package/base-files/files/root
+mv $GITHUB_WORKSPACE/patch/tiktok/open-32wifi.sh package/base-files/files/root/open-wifi.sh
+mv $GITHUB_WORKSPACE/patch/tiktok/kwrt-luci-app-frpc.ipk package/base-files/files/root/kwrt-luci-app-frpc.ipk
 mv $GITHUB_WORKSPACE/patch/tiktok/imm24-10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 mv $GITHUB_WORKSPACE/patch/tiktok/tk12318-bgp.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 mv $GITHUB_WORKSPACE/patch/tiktok/imm24-mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-    tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
-    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
+    tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/root/
+    mv package/base-files/files/root/clash package/base-files/files/root/clash_meta
     rm -rf package/openclash-core
 fi
 
