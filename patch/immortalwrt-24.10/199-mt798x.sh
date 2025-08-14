@@ -8,8 +8,9 @@ uci set dropbear.@dropbear[0].Interface=''
 
 uci commit
 
-sed -i '/modem/d' /etc/opkg/distfeeds.conf
+sed -i '/helloworld/d' /etc/opkg/distfeeds.conf
 sed -i '/passwall/d' /etc/opkg/distfeeds.conf
+sed -i '/modem/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 
@@ -25,8 +26,9 @@ sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_cortex-a
 
 #chmod 755 /etc/init.d/QINGYINSSIDMAC1.sh
 cp /etc/my-clash /etc/openclash/core/clash_meta
-cp /etc/open-wifi.sh /root/open-wifi.sh
+#cp /etc/open-wifi.sh /root/open-wifi.sh
 chmod +x /root/open-wifi.sh
+opkg install /root/kwrt-luci-app-frpc.ipk
 
 uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
 uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
