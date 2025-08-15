@@ -47,6 +47,6 @@ uci commit dhcp
 uci commit network
 uci commit
 /etc/init.d/network restart
-/etc/init.d/odhcpd restart
+#/etc/init.d/odhcpd restart
 
 exit 0
