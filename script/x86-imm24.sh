@@ -7,7 +7,7 @@ sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
 sed -i 's/ImmortalWrt/WiFi/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 # sed -i 's#mirrors.vsean.net/openwrt#mirrors.pku.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
-mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-x86-1.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
+mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-x86.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
