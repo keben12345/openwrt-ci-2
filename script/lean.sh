@@ -8,7 +8,7 @@ sed -i 's/LEDE/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 sed -i '/openwrt_release/d' package/lean/default-settings/files/zzz-default-settings
 sed -i '/tencent.com/d' package/lean/default-settings/files/zzz-default-settings
-sed -i '/shadow/d' package/lean/default-settings/files/zzz-default-settings
+#sed -i '/shadow/d' package/lean/default-settings/files/zzz-default-settings
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/lean/199-diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
 
@@ -50,15 +50,19 @@ rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-alist,luci-app-luc
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
+mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/kz8-small/lucky package/lucky
 mv package/kz8-small/luci-app-lucky package/luci-app-lucky
-#mv package/kz8-small/smartdns package/smartdns
+mv package/kz8-small/tailscale package/tailscale
 rm -rf package/kz8-small
 
-git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/eqosplus
+git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/luci-app-eqosplus
+git clone --depth 1 https://github.com/sirpdboy/luci-app-netspeedtest.git package/luci-app-netspeedtest
 
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
+rm -rf feeds/luci/applications/luci-app-argon-config
+git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git feeds/luci/themes/luci-app-argon-config
 
 #UA2F校园网
 #git clone --depth 1 https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
