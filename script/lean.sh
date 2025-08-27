@@ -58,6 +58,7 @@ rm -rf package/kz8-small
 
 git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/luci-app-eqosplus
 git clone --depth 1 https://github.com/sirpdboy/luci-app-netspeedtest.git package/luci-app-netspeedtest
+git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/luci-app-oaf
 
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
