@@ -16,7 +16,7 @@ sed -i '/smpackage/d' /etc/opkg/distfeeds.conf
 sed -i '/kwrt/d' /etc/opkg/distfeeds.conf
 sed -i '/luci/d' /etc/opkg/distfeeds.conf
 #sed -i '$a src/gz openwrt_luci https://mirrors.pku.edu.cn/immortalwrt/releases/18.06-k5.4-SNAPSHOT/packages/mipsel_24kc/luci' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_luci https://mirrors.pku.edu.cn/immortalwrt/releases/18.06-k5.4-SNAPSHOT/packages/aarch64_cortex-a53/luci' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz #18.06_luci https://mirrors.pku.edu.cn/immortalwrt/releases/18.06-k5.4-SNAPSHOT/packages/aarch64_cortex-a53/luci' /etc/opkg/distfeeds.conf
 
 date_version=$(date +"%Y.%m.%d")
 sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
@@ -29,8 +29,8 @@ cp /etc/my-clash /etc/openclash/core/clash_meta
 
 #sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 #sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
-# uci set wireless.default_radio0.ssid=TIKTOK-2.4G
-# uci set wireless.default_radio1.ssid=TIKTOK-5G
+#uci set wireless.default_radio0.ssid=TIKTOK-2.4G
+#uci set wireless.default_radio1.ssid=TIKTOK-5G
 uci set wireless.default_radio0.encryption=psk2+ccmp
 uci set wireless.default_radio1.encryption=psk2+ccmp
 uci set wireless.default_radio0.key=password
