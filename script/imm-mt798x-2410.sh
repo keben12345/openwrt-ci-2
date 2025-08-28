@@ -6,12 +6,12 @@ sed -i 's/ImmortalWrt/TikTok/g' package/base-files/files/bin/config_generate
 #sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
 mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-mt798x.sh package/base-files/files/etc/uci-defaults/zzz-diy.sh
 
-mkdir -p package/base-files/files/root
-mv $GITHUB_WORKSPACE/patch/tiktok/open-32wifi.sh package/base-files/files/root/open-wifi.sh
-mv $GITHUB_WORKSPACE/patch/tiktok/kwrt-luci-app-frpc.ipk package/base-files/files/root/kwrt-luci-app-frpc.ipk
-mv $GITHUB_WORKSPACE/patch/tiktok/imm24-10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
-mv $GITHUB_WORKSPACE/patch/tiktok/tk12318-bgp.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
-mv $GITHUB_WORKSPACE/patch/tiktok/imm24-mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+#mkdir -p package/base-files/files/root
+#mv $GITHUB_WORKSPACE/patch/tiktok/open-32wifi.sh package/base-files/files/root/open-wifi.sh
+#mv $GITHUB_WORKSPACE/patch/tiktok/kwrt-luci-app-frpc.ipk package/base-files/files/root/kwrt-luci-app-frpc.ipk
+#mv $GITHUB_WORKSPACE/patch/tiktok/imm24-10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+#mv $GITHUB_WORKSPACE/patch/tiktok/tk12318-bgp.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+#mv $GITHUB_WORKSPACE/patch/tiktok/imm24-mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
@@ -32,16 +32,6 @@ sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-stat
 #添加编译日期
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
-
-#mv $GITHUB_WORKSPACE/patch/QINGYIN/QINGYINSSIDMAC2.sh package/base-files/files/etc/init.d/QINGYINSSIDMAC1.sh
-#mv $GITHUB_WORKSPACE/patch/QINGYIN/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
-
-#下载5g模块
-#git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-#rm -rf feeds/packages/net/quectel-cm
-#rm -rf feeds/packages/kernel/fibocom-qmi-wwan
-#rm -rf feeds/packages/kernel/quectel-qmi-wwan
-#rm -rf feeds/luci/protocols/luci-proto-quectel
 
 # iStore
 git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
