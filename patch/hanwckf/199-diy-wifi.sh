@@ -18,6 +18,14 @@ uci del dhcp.lan.ra
 uci commit dhcp
 uci commit network
 
+sed -i '/helloworld/d' /etc/opkg/distfeeds.conf
+sed -i '/passwall/d' /etc/opkg/distfeeds.conf
+sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
+cp /etc/my-clash /etc/openclash/core/clash_meta
+
+#sed -i 's/root::0:0:99999:7:::/root:$1$iOzd6YV5$fFw/2Cd.2prhGTiuCPCj0.:0:0:99999:7:::/g' /etc/shadow
+#sed -i 's/root:::0:99999:7:::/root:$1$iOzd6YV5$fFw/2Cd.2prhGTiuCPCj0.:0:0:99999:7:::/g' /etc/shadow
+
 #uci set wireless.default_MT7981_1_1.ssid=xiaoguo
 uci set wireless.default_MT7981_1_1.encryption=psk2+ccmp
 uci set wireless.default_MT7981_1_1.key=123456789
@@ -93,12 +101,6 @@ uci commit wireless
 uci commit network
 uci commit dhcp
 uci commit firewall
-
-
-#sed -i 's/root::0:0:99999:7:::/root:$1$iOzd6YV5$fFw/2Cd.2prhGTiuCPCj0.:0:0:99999:7:::/g' /etc/shadow
-#sed -i 's/root:::0:99999:7:::/root:$1$iOzd6YV5$fFw/2Cd.2prhGTiuCPCj0.:0:0:99999:7:::/g' /etc/shadow
-
-cp /etc/my-clash /etc/openclash/core/clash_meta
 
 /etc/init.d/network restart >/dev/null 2>&1
 /etc/init.d/firewall restart >/dev/null 2>&1
