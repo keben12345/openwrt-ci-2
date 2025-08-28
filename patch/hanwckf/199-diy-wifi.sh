@@ -20,18 +20,18 @@ uci commit network
 
 #uci set wireless.default_MT7981_1_1.ssid=xiaoguo
 uci set wireless.default_MT7981_1_1.encryption=psk2+ccmp
-uci set wireless.default_MT7981_1_1.key=12345678
+uci set wireless.default_MT7981_1_1.key=123456789
 
 #uci set wireless.default_MT7981_1_2.ssid=TK888
 uci set wireless.default_MT7981_1_2.encryption=psk2+ccmp
-uci set wireless.default_MT7981_1_2.key=12345678
+uci set wireless.default_MT7981_1_2.key=123456789
 uci commit wireless
 #uci commit
 
 mymac=$(cat /sys/class/net/br-lan/address 2>/dev/null | awk -F: '{print $5 $6}' | tr 'a-z' 'A-Z')
-num=30
-wifipassword=12345678
-ipc=101
+num=10
+wifipassword=123456789
+ipc=11
 
 # 生成配置
 for i in $(seq 1 $num); do
@@ -52,7 +52,7 @@ for i in $(seq 1 $num); do
     uci set wireless.wifinet${wifinet_num}=wifi-iface
     uci set wireless.wifinet${wifinet_num}.device="$wireless_dev"
     uci set wireless.wifinet${wifinet_num}.mode='ap'
-    uci set wireless.wifinet${wifinet_num}.ssid="wifi-${i}"
+    uci set wireless.wifinet${wifinet_num}.ssid="opwifi-${i}"
     uci set wireless.wifinet${wifinet_num}.encryption='psk2+ccmp'
     uci set wireless.wifinet${wifinet_num}.key="$wifipassword"
     # uci set wireless.wifinet${wifinet_num}.ifname="ap${i}"
@@ -95,8 +95,8 @@ uci commit dhcp
 uci commit firewall
 
 
-sed -i 's/root::0:0:99999:7:::/root:$1$iOzd6YV5$fFw/2Cd.2prhGTiuCPCj0.:0:0:99999:7:::/g' /etc/shadow
-sed -i 's/root:::0:99999:7:::/root:$1$iOzd6YV5$fFw/2Cd.2prhGTiuCPCj0.:0:0:99999:7:::/g' /etc/shadow
+#sed -i 's/root::0:0:99999:7:::/root:$1$iOzd6YV5$fFw/2Cd.2prhGTiuCPCj0.:0:0:99999:7:::/g' /etc/shadow
+#sed -i 's/root:::0:99999:7:::/root:$1$iOzd6YV5$fFw/2Cd.2prhGTiuCPCj0.:0:0:99999:7:::/g' /etc/shadow
 
 cp /etc/my-clash /etc/openclash/core/clash_meta
 
@@ -105,4 +105,3 @@ cp /etc/my-clash /etc/openclash/core/clash_meta
 /etc/init.d/dnsmasq restart >/dev/null 2>&1
 /etc/init.d/dropbear restart >/dev/null 2>&1
 
-exit 0
