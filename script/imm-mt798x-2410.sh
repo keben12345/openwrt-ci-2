@@ -57,6 +57,7 @@ git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAp
 git clone --depth 1 https://github.com/sirpdboy/luci-app-parentcontrol package/luci-app-parentcontrol
 git clone --depth 1 https://github.com/lwb1978/openwrt-gecoosac.git package/openwrt-gecoosac
 git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/luci-app-eqosplus
+git clone --depth 1 -b js https://github.com/sirpdboy/luci-app-netspeedtest.git package/luci-app-netspeedtest
 
 rm -rf feeds/packages/net/{adguardhome,tailscale}
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/kz8-small
@@ -64,7 +65,6 @@ mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
-mv package/kz8-small/luci-app-netspeedtest package/luci-app-netspeedtest
 mv package/kz8-small/homebox package/homebox
 mv package/kz8-small/tailscale package/tailscale
 mv package/kz8-small/luci-app-tailscale package/luci-app-tailscale
