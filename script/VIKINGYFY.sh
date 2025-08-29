@@ -1,8 +1,10 @@
 # 修改默认IP，主机名
 sed -i 's/192.168.1.1/192.168.13.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.13.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+#sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/HUAWEI/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
+
 
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
@@ -13,12 +15,6 @@ sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-stat
 #添加编译日期
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
-
-#默认WiFi设置
-sed -i 's/OWRT/WiFi/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
-sed -i 's/12345678/123456qwerty/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
-#sed -i '/BASE_WORD/d' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
-#sed -i 's/psk2+ccmp/none/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
 
 sed -i 's/hybrid/server/g' target/linux/qualcommax/base-files/etc/uci-defaults/991_set-network.sh
 
@@ -71,7 +67,11 @@ sed -i 's/START=.*/START=85/g' feeds/nss_packages/qca-nss-drv/files/qca-nss-drv.
 sed -i 's/START=.*/START=86/g' package/kernel/mac80211/files/qca-nss-pbuf.init
 #修复TailScale配置文件冲突
 sed -i '/\/files/d'  feeds/packages/net/tailscale/Makefile
-#修复Coremark编译失败
-sed -i 's/mkdir/mkdir -p/g' feeds/packages/utils/coremark/Makefile
 #rust报错
 sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
+
+#默认WiFi设置
+#sed -i 's/OWRT/WiFi/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
+#sed -i 's/12345678/123456qwerty/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
+#sed -i '/BASE_WORD/d' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
+#sed -i 's/psk2+ccmp/none/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
