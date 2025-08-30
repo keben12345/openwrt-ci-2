@@ -47,8 +47,6 @@ sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/
 #sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 #sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 
-#mv /etc/QINGYINSSIDMAC1.sh /etc/init.d/QINGYINSSIDMAC1.sh
-#chmod a+rwx /etc/init.d/QINGYINSSIDMAC1.sh
-#/etc/init.d/network restart
+cp /etc/my-clash /etc/openclash/core/clash_meta
 
 exit 0
