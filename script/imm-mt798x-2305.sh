@@ -30,7 +30,7 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     rm -rf package/openclash-core
 fi
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
 rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
 #find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
