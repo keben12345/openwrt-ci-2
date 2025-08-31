@@ -19,7 +19,7 @@ env:
 
 jobs:
   Build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Check Server Performance(检查服务器性能)
@@ -97,6 +97,7 @@ jobs:
       run: |
         cd $OPENWRT_PATH
         git checkout v23.05.4
+        sed -i '1i src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git' feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
