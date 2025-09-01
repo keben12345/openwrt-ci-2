@@ -7,7 +7,7 @@ on:
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: openwrt-24.10
-  CONFIG_FILE: config/test
+  CONFIG_FILE: config/imm-mt798x-24.10
   DIY_SCRIPT: script/imm-mt798x-2410.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
