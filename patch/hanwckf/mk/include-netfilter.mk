@@ -238,6 +238,11 @@ $(eval $(call nf_add,IPT_NFQUEUE,CONFIG_NETFILTER_XT_TARGET_NFQUEUE, $(P_XT)xt_N
 
 $(eval $(call nf_add,IPT_DEBUG,CONFIG_NETFILTER_XT_TARGET_TRACE, $(P_XT)xt_TRACE))
 
+# socket
+$(eval $(call nf_add,NF_SOCKET,CONFIG_NF_SOCKET_IPV4, $(P_V4)nf_socket_ipv4))
+$(eval $(call nf_add,NF_SOCKET,CONFIG_NF_SOCKET_IPV6, $(P_V6)nf_socket_ipv6))
+$(eval $(call nf_add,IPT_SOCKET,CONFIG_NETFILTER_XT_MATCH_SOCKET, $(P_XT)xt_socket))
+
 # tproxy
 
 $(eval $(call nf_add,IPT_TPROXY,CONFIG_NETFILTER_XT_MATCH_SOCKET, $(P_XT)xt_socket))
