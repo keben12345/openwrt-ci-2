@@ -8,10 +8,55 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.5.1/g" $(find ./feeds/luci/modules/lu
 
 #mv $GITHUB_WORKSPACE/patch/hanwckf/mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 mv $GITHUB_WORKSPACE/patch/hanwckf/199-diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
-mv $GITHUB_WORKSPACE/patch/hanwckf/mk/modules-netfilter.mk package/kernel/linux/modules/netfilter.mk
-mv $GITHUB_WORKSPACE/patch/hanwckf/mk/include-netfilter.mk include/netfilter.mk
-chmod +x package/kernel/linux/modules/netfilter.mk
-chmod +x include/netfilter.mk
+#mv $GITHUB_WORKSPACE/patch/hanwckf/mk/modules-netfilter.mk package/kernel/linux/modules/netfilter.mk
+#mv $GITHUB_WORKSPACE/patch/hanwckf/mk/include-netfilter.mk include/netfilter.mk
+
+##########修改package/kernel/linux/modules/netfilter.mk
+ed -s package/kernel/linux/modules/netfilter.mk <<EOF
+629
+a
+define KernelPackage/nf-socket
+  SUBMENU:=$(NF_MENU)
+  TITLE:=Netfilter socket lookup support
+  KCONFIG:= $(KCONFIG_NF_SOCKET)
+  FILES:=$(foreach mod,$(NF_SOCKET-m),$(LINUX_DIR)/net/$(mod).ko)
+  AUTOLOAD:=$(call AutoProbe,$(notdir $(NF_SOCKET-m)))
+endef
+
+$(eval $(call KernelPackage,nf-socket))
+
+define KernelPackage/ipt-socket
+  TITLE:=Iptables socket matching support
+  DEPENDS+=+kmod-nf-socket +kmod-nf-conntrack
+  KCONFIG:=$(KCONFIG_IPT_SOCKET)
+  FILES:=$(foreach mod,$(IPT_SOCKET-m),$(LINUX_DIR)/net/$(mod).ko)
+  AUTOLOAD:=$(call AutoProbe,$(notdir $(IPT_SOCKET-m)))
+  $(call AddDepends/ipt)
+endef
+
+define KernelPackage/ipt-socket/description
+  Kernel modules for socket matching
+endef
+
+$(eval $(call KernelPackage,ipt-socket))
+.
+w
+q
+EOF
+
+##########修改include/netfilter.mk#####################################
+ed -s include/netfilter.mk <<EOF
+240
+a
+# socket
+$(eval $(call nf_add,NF_SOCKET,CONFIG_NF_SOCKET_IPV4, $(P_V4)nf_socket_ipv4))
+$(eval $(call nf_add,NF_SOCKET,CONFIG_NF_SOCKET_IPV6, $(P_V6)nf_socket_ipv6))
+$(eval $(call nf_add,IPT_SOCKET,CONFIG_NETFILTER_XT_MATCH_SOCKET, $(P_XT)xt_socket))
+.
+w
+q
+EOF
+
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #添加编译日期
