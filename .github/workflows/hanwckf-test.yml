@@ -108,6 +108,8 @@ jobs:
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
+        cat package/kernel/linux/modules/netfilter.mk
+        cat package/kernel/linux/modules/netfilter.mk
 
     - name: Download DL Package(下载DL软件包)
       run: |
