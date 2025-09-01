@@ -68,6 +68,7 @@ mv package/kz8-small/wrtbwmon package/wrtbwmon
 mv package/kz8-small/homebox package/homebox
 mv package/kz8-small/tailscale package/tailscale
 mv package/kz8-small/luci-app-tailscale package/luci-app-tailscale
+mv package/kz8-small/luci-app-socat package/luci-app-socat
 rm -rf package/kz8-small
 
 #修复TailScale配置文件冲突
