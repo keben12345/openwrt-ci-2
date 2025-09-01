@@ -1,4 +1,4 @@
-name: test-hanwckf-mt7981-science
+name: hanwckf-test
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
