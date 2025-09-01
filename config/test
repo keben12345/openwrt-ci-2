@@ -1,7 +1,6 @@
 CONFIG_TARGET_mediatek=y
 CONFIG_TARGET_mediatek_filogic=y
-CONFIG_TARGET_MULTI_PROFILE=y
-CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_cudy_tr3000-v1=y
+CONFIG_TARGET_mediatek_filogic_DEVICE_cudy_tr3000-v1=y
 
 # CONFIG_TARGET_ROOTFS_INITRAMFS is not set
 CONFIG_LUCI_LANG_zh_Hans=y
