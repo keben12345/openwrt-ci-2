@@ -7,7 +7,7 @@ on:
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: openwrt-24.10
-  CONFIG_FILE: config/imm-mt798x-24.10
+  CONFIG_FILE: config/test
   DIY_SCRIPT: script/imm-mt798x-2410.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
@@ -19,7 +19,7 @@ env:
 
 jobs:
   Build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
     - name: Check Server Performance(检查服务器性能)
@@ -96,7 +96,6 @@ jobs:
       run: |
         cd $OPENWRT_PATH
         git checkout v24.10.2
-        # sed -i '1i src-git luci_app_ssrp https://github.com/fw876/helloworld.git' feeds.conf.default
         sed -i '1i src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git' feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
