@@ -6,6 +6,9 @@ uci delete ttyd.@ttyd[0].interface
 # 设置所有网口可连接 SSH
 uci set dropbear.@dropbear[0].Interface=''
 uci commit
+# 设置主题
+#uci set luci.main.mediaurlbase=/luci-static/design
+#uci commit luci
 
 sed -i 's#mirrors.tencent.com/lede#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 
