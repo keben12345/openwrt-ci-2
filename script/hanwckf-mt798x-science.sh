@@ -63,6 +63,7 @@ mv package/small-package/wrtbwmon package/wrtbwmon
 mv package/small-package/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/small-package/lucky package/lucky
 mv package/small-package/luci-app-lucky package/luci-app-lucky
+mv package/small-package/luci-app-arpbind package/luci-app-arpbind
 
 rm -rf package/small-package
 
