@@ -59,6 +59,9 @@ mv package/small-package/luci-app-gecoosac package/luci-app-gecoosac
 mv package/small-package/luci-app-smartdns package/luci-app-tailscale
 mv package/small-package/smartdns feeds/packages/net/tailscale
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
+mv package/small-package/wrtbwmon package/wrtbwmon
+mv package/small-package/luci-app-wrtbwmon package/luci-app-wrtbwmon
+
 rm -rf package/small-package
 
 
