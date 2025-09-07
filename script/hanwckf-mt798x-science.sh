@@ -44,8 +44,8 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/lu
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
 #mv $GITHUB_WORKSPACE/patch/Makefile package/passwall-packages/xray-core/Makefile
 
-
-#git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
+git clone --depth 1https://github.com/sbwml/luci-app-openlist2 package/openlist
+#git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 #git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/oaf
 #git clone --depth 1 https://github.com/sirpdboy/luci-app-netspeedtest.git package/luci-app-netspeedtest
 
@@ -61,6 +61,8 @@ mv package/small-package/smartdns feeds/packages/net/tailscale
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/small-package/wrtbwmon package/wrtbwmon
 mv package/small-package/luci-app-wrtbwmon package/luci-app-wrtbwmon
+mv package/small-package/lucky package/lucky
+mv package/small-package/luci-app-lucky package/luci-app-lucky
 
 rm -rf package/small-package
 
