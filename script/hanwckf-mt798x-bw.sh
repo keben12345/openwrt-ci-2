@@ -63,15 +63,15 @@ git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git pa
 mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
 
-#rm -rf feeds/packages/net/frp
-#git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23pkg
-#mv package/imm23pkg/net/frp feeds/packages/net/frp
-#rm -rf package/imm23pkg
+rm -rf feeds/packages/net/frp
+git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/imm24pkg
+mv package/imm24pkg/net/frp feeds/packages/net/frp
+rm -rf package/imm24pkg
 
-#rm -rf feeds/luci/applications/luci-app-frpc
-#git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
-#mv package/imm23luci/applications/luci-app-frpc feeds/luci/applications/luci-app-frpc
-#rm -rf package/imm23luci
+rm -rf feeds/luci/applications/luci-app-frpc
+git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci package/imm24luci
+mv package/imm24luci/applications/luci-app-frpc feeds/luci/applications/luci-app-frpc
+rm -rf package/imm24luci
 
 #git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
 #mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
