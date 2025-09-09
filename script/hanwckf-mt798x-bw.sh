@@ -14,8 +14,6 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
     rm -rf package/openclash-core
 fi
-
-
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #添加编译日期
@@ -58,7 +56,12 @@ mv package/small-package/smartdns feeds/packages/net/smartdns
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
 rm -rf package/small-package
 
-
+# iStore
+git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
+git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
+git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
+mv package/nas-packages/network/services/* package/nas-packages/
+rm -rf package/nas-packages/network
 
 #rm -rf feeds/packages/net/frp
 #git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23pkg
