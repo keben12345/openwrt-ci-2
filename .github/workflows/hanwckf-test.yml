@@ -10,6 +10,7 @@ env:
   CONFIG_FILE: config/hanwckf-mt7981-science
   DIY_SCRIPT: script/hanwckf-mt798x-science.sh
   CLASH_KERNEL: amd64
+  SSH_ACTIONS: true
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_ARTIFACT: true
@@ -115,6 +116,12 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
+    - name: SSH链接管理
+      uses: P3TERX/ssh2actions@v1.0.0
+      if: env.SSH_ACTIONS == 'true'
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
     - name: Organize Files(整理文件)
       if: steps.compile.outputs.status == 'success'
