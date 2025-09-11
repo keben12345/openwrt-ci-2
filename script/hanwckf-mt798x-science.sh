@@ -8,8 +8,8 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-
 
 #mv $GITHUB_WORKSPACE/patch/hanwckf/mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 mv $GITHUB_WORKSPACE/patch/hanwckf/199-diy-mini.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
-#mv $GITHUB_WORKSPACE/patch/hanwckf/mk/modules-netfilter.mk package/kernel/linux/modules/netfilter.mk
-#mv $GITHUB_WORKSPACE/patch/hanwckf/mk/include-netfilter.mk include/netfilter.mk
+mv $GITHUB_WORKSPACE/patch/hanwckf/mk/modules-netfilter.mk package/kernel/linux/modules/netfilter.mk
+mv $GITHUB_WORKSPACE/patch/hanwckf/mk/include-netfilter.mk include/netfilter.mk
 
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
