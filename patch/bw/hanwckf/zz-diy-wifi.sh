@@ -66,6 +66,7 @@ for i in $(seq 1 $num); do
     wifinet_num=$((i + 1))
     new_c=$((ipc + i -1))
     ipaddr="10.10.${new_c}.1"
+    wifi_id=$(printf "%02d" $i)
 
     # 根据序号选择wireless设备
     if [ $i -le 15 ]; then
@@ -80,7 +81,7 @@ for i in $(seq 1 $num); do
     uci set wireless.wifinet${wifinet_num}=wifi-iface
     uci set wireless.wifinet${wifinet_num}.device="$wireless_dev"
     uci set wireless.wifinet${wifinet_num}.mode='ap'
-    uci set wireless.wifinet${wifinet_num}.ssid="dh-${i}"
+    uci set wireless.wifinet${wifinet_num}.ssid="TikTok-${wifi_id}"
     uci set wireless.wifinet${wifinet_num}.encryption='psk2+ccmp'
     uci set wireless.wifinet${wifinet_num}.key="$wifipassword"
     # uci set wireless.wifinet${wifinet_num}.ifname="ap${i}"
@@ -108,7 +109,7 @@ uci commit network
 uci commit dhcp
 uci commit firewall
 
-#cp /etc/my-clash /etc/openclash/core/clash_meta
+cp /etc/my-clash /etc/openclash/core/clash_meta
 
 /etc/init.d/network restart >/dev/null 2>&1
 /etc/init.d/firewall restart >/dev/null 2>&1
