@@ -39,7 +39,7 @@ sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:
 
 cp /etc/my-clash /etc/openclash/core/clash_meta
 
-    # 配置防火墙
+###################################################################################
 uci add firewall zone
 uci set firewall.@zone[-1].name="proxy"
 uci set firewall.@zone[-1].input='ACCEPT'
@@ -53,14 +53,14 @@ uci set firewall.@forwarding[-1].dest='wan'
 uci add firewall rule
 uci set firewall.@rule[-1].src="proxy"
 uci set firewall.@rule[-1].dest='wan'
-uci set firewall.@rule[-1].name="ban4local"
+uci set firewall.@rule[-1].name="ban-local"
 uci add_list firewall.@rule[-1].proto='all'
 uci set firewall.@rule[-1].target='REJECT'
 
 num=30
 wifipassword=password
 ipc=1
-
+router_cpu=MT7981
 # 生成配置
 for i in $(seq 1 $num); do
     wifinet_num=$((i + 1))
@@ -70,10 +70,10 @@ for i in $(seq 1 $num); do
 
     # 根据序号选择wireless设备
     if [ $i -le 15 ]; then
-        wireless_dev="MT7981_1_2"
+        wireless_dev="${router_cpu}_1_2"
 		network_dev="rax${i}"
     else
-        wireless_dev="MT7981_1_1"
+        wireless_dev="${router_cpu}_1_1"
 		network_dev="ra$((i - 15))"
     fi
 
@@ -85,7 +85,7 @@ for i in $(seq 1 $num); do
     uci set wireless.wifinet${wifinet_num}.encryption='psk2+ccmp'
     uci set wireless.wifinet${wifinet_num}.key="$wifipassword"
     # uci set wireless.wifinet${wifinet_num}.ifname="ap${i}"
-    uci set wireless.wifinet${wifinet_num}.network="wifi${i}"
+    uci set wireless.wifinet${wifinet_num}.network="wifi${wifi_id}"
 
     # 配置网络接口
     uci set network.wifi${i}=interface
@@ -96,9 +96,9 @@ for i in $(seq 1 $num); do
 
     # 配置DHCP
     uci set dhcp.wifi${i}=dhcp
-    uci set dhcp.wifi${i}.interface="wifi${i}"
+    uci set dhcp.wifi${i}.interface="wifi${wifi_id}"
 
-    uci add_list firewall.@zone[-1].network="wifi${i}"
+    uci add_list firewall.@zone[-1].network="wifi${wifi_id}"
 done
 
 
@@ -108,8 +108,8 @@ uci commit wireless
 uci commit network
 uci commit dhcp
 uci commit firewall
+####################################################################################################
 
-cp /etc/my-clash /etc/openclash/core/clash_meta
 
 /etc/init.d/network restart >/dev/null 2>&1
 /etc/init.d/firewall restart >/dev/null 2>&1
