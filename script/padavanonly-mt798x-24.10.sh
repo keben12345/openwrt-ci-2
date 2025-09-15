@@ -8,9 +8,9 @@ mv $GITHUB_WORKSPACE/patch/padavanonly/199-diy.sh package/base-files/files/etc/u
 mv $GITHUB_WORKSPACE/patch/padavanonly/mtwifi.sh package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 
 #mv $GITHUB_WORKSPACE/patch/bw/zz-diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
-
 # mv $GITHUB_WORKSPACE/patch/padavanonly/QINGYINSSIDMAC1.sh package/base-files/files/etc/QINGYINSSIDMAC1.sh
 # sed -i 's/0x580000 0x7280000/0x580000 0x1cc00000/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-netcore-n60-pro.dts
+
 mv $GITHUB_WORKSPACE/patch/padavanonly/libxcrypt-Makefile feeds/packages/libs/libxcrypt/Makefile
 sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
 
