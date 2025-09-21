@@ -27,7 +27,7 @@ sed -i 's/hybrid/server/g' target/linux/qualcommax/base-files/etc/uci-defaults/9
 #rm -rf feeds/nss_packages/wwan
 
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
 rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
 git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
@@ -36,7 +36,6 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/pa
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth 1 https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 
-#sed -i 's/34308ed827a5dd4f4e35619914102d55b00604faa44fda051d1d25fb4a319325/ffdd71e26d8c6f82083b5868025a7882eaad3846569d21610547720b999b6aaa/g' feeds/passwall-packages/shadowsocksr-libev/Makefile
 
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git  package/oaf
 git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
