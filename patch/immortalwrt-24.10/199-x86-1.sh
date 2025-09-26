@@ -26,7 +26,7 @@ sed -i '$a src/gz openwrt_luci https://mirrors.pku.edu.cn/openwrt/releases/24.10
 sed -i '$a src/gz openwrt_packages https://mirrors.pku.edu.cn/openwrt/releases/24.10.2/packages/x86_64/packages' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz openwrt_routing https://mirrors.pku.edu.cn/openwrt/releases/24.10.2/packages/x86_64/routing' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz openwrt_telephony https://mirrors.pku.edu.cn/openwrt/releases/24.10.2/packages/x86_64/telephony' /etc/opkg/distfeeds.conf
-
+sed -i 'sopenwrt/immortalwrt/g' /etc/opkg/distfeeds.conf
 cp /etc/my-clash /etc/openclash/core/clash_meta
 
 
