@@ -67,6 +67,7 @@ mv package/kz8-small/luci-app-kodexplorer package/luci-app-kodexplorer
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
 mv package/kz8-small/luci-app-poweroff package/luci-app-poweroff
+mv package/kz8-small/luci-app-socat package/luci-app-socat
 mv package/kz8-small/luci-app-tailscale package/luci-app-tailscale
 mv package/kz8-small/tailscale package/tailscale
 rm -rf package/kz8-small
