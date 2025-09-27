@@ -7,7 +7,7 @@ uci delete ttyd.@ttyd[0].interface
 uci set dropbear.@dropbear[0].Interface=''
 
 uci commit
-
+cat /diy4me/rules-pw2 >> /usr/share/passwall2/0_default_config
 sed -i '/ssrp/d' /etc/opkg/distfeeds.conf
 sed -i '/helloworld/d' /etc/opkg/distfeeds.conf
 sed -i '/passwall/d' /etc/opkg/distfeeds.conf
