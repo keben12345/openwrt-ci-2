@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # 路由器cpu芯片
-router_cpu=MT7981
+router_cpu=MT7986
 
 # 新增WiFi数量
-increase_wifi_num=10
+increase_wifi_num=30
 
 # 除去默认，原本有几个WiFi
 existed_wifi_num=0
 
 # WiFi名称
-ssid=AX3000
+ssid=X60Pro
 
 # WiFi密码
 password=123456qwerty
@@ -25,13 +25,6 @@ a=$(echo "$ipaddr" | awk -F. '{print $1}')
 b=$(echo "$ipaddr" | awk -F. '{print $2}')
 c=$(echo "$ipaddr" | awk -F. '{print $3}')
 d=$(echo "$ipaddr" | awk -F. '{print $4}')
-
-# 判断新增WiFi数量是否超过了无线芯片的限制
-total_wifi=$((increase_wifi_num + existed_wifi_num))
-if [ $total_wifi -gt 30 ]; then
-    echo "WiFi数量超过了无线芯片限制，请重新设置"
-    exit 1 
-fi
 
 
 # 生成配置
@@ -98,26 +91,8 @@ uci commit network
 uci commit dhcp
 uci commit firewall
 
-# 显示配置摘要
-increase_5G-wifi_num=$((15 - existed_wifi_num))
-increase_2.4G-wifi_num=$((total_wifi - 15))
-if [ ${increase_2.4G-wifi_num} -gt 0]; then
-    increase_2.4G-wifi_num=${increase_2.4G-wifi_num}
-else
-    increase_2.4G-wifi_num=0
-fi
-echo -e "\n\n--------------------------------------------"
-echo "配置摘要："
-echo "  WiFi数量: $total_wifi 个"
-echo "  新增5G-WiFi数量: ${increase_5G-wifi_num} 个"
-echo "  新增2.4G-WiFi数量: ${increase_2.4G-wifi_num} 个"
-echo "  WiFi密码: $password"
-echo "  IP地址段: ${a}.${b}.x.${d}（x从 ${c} 到 $total_wifi）"
-echo "--------------------------------------------"
-
 # 重启服务
 echo -e "\n配置已完成！"
-echo "正在重启网络服务使配置生效，请等待几秒"
 /etc/init.d/network restart >/dev/null 2>&1
 /etc/init.d/firewall restart >/dev/null 2>&1
 /etc/init.d/dnsmasq restart >/dev/null 2>&1
