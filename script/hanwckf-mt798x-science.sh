@@ -12,6 +12,7 @@ mv $GITHUB_WORKSPACE/patch/hanwckf/199-diy-mini.sh package/base-files/files/etc/
 
 mkdir -p package/base-files/files/diy4me
 mv $GITHUB_WORKSPACE/patch/hanwckf/passwall/mt798x-30wifi-closed.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
+chmod +x package/base-files/files/etc/uci-defaults/zz-diy.sh
 mv $GITHUB_WORKSPACE/patch/hanwckf/passwall/rules-pw2 package/base-files/files/diy4me/rules-pw2
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
