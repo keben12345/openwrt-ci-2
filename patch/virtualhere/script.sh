@@ -4,7 +4,7 @@ sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emo
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 
 mkdir -p package/base-files/files/diy4me
-mv $GITHUB_WORKSPACE/patch/virtualhere/zz-diy.sh package/base-files/files/diy4me/zz-diy.sh
+mv $GITHUB_WORKSPACE/patch/virtualhere/zz-diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
 mv $GITHUB_WORKSPACE/patch/virtualhere/vhusbdarm64 package/base-files/files/diy4me/vhusbdarm64
 mv $GITHUB_WORKSPACE/patch/virtualhere/config.ini package/base-files/files/diy4me/virtualhere-config.ini
 
