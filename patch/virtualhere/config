@@ -1,0 +1,19 @@
+CONFIG_TARGET_mediatek=y
+CONFIG_TARGET_mediatek_filogic=y
+CONFIG_TARGET_mediatek_filogic_DEVICE_cudy_tr3000-v1=y
+
+# CONFIG_TARGET_ROOTFS_INITRAMFS is not set
+# CONFIG_PACKAGE_luci is not set
+# CONFIG_PACKAGE_dnsmasq is not set
+CONFIG_PACKAGE_dnsmasq-full=y
+
+CONFIG_PACKAGE_kmod-usb-net-rndis=y
+CONFIG_PACKAGE_kmod-usb-storage=y
+CONFIG_PACKAGE_kmod-usb-storage-extras=y
+CONFIG_PACKAGE_kmod-usb3=y
+
+# CONFIG_DEFAULT_luci-app-package-manager is not set
+# CONFIG_DEFAULT_luci-compat is not set
+# CONFIG_DEFAULT_luci-lib-base is not set
+# CONFIG_DEFAULT_luci-lib-ipkg is not set
+# CONFIG_DEFAULT_luci-light is not set
