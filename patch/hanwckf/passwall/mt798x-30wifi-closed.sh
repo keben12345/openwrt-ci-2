@@ -7,7 +7,9 @@ uci delete ttyd.@ttyd[0].interface
 uci set dropbear.@dropbear[0].Interface=''
 
 uci commit
-cat /diy4me/rules-pw2 >> /usr/share/passwall2/0_default_config
+
+cat /diy4me/rules-pw2 >> /etc/config/passwall2
+#cat /diy4me/rules-pw2 >> /usr/share/passwall2/0_default_config
 sed -i '/ssrp/d' /etc/opkg/distfeeds.conf
 sed -i '/helloworld/d' /etc/opkg/distfeeds.conf
 sed -i '/passwall/d' /etc/opkg/distfeeds.conf
@@ -46,7 +48,7 @@ b=$(echo "$ipaddr" | awk -F. '{print $2}')
 c=$(echo "$ipaddr" | awk -F. '{print $3}')
 d=$(echo "$ipaddr" | awk -F. '{print $4}')
 
-
+total_wifi=$((increase_wifi_num + existed_wifi_num))
 # 生成配置
 for i in $(seq $((existed_wifi_num + 1)) $total_wifi); do
     wifinet_num=$((i + 1))
