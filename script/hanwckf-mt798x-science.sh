@@ -58,6 +58,13 @@ git clone --depth 1 https://github.com/sbwml/luci-app-openlist2 package/openlist
 #git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 #git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/oaf
 #git clone --depth 1 https://github.com/sirpdboy/luci-app-netspeedtest.git package/luci-app-netspeedtest
+# iStore官方
+git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
+git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
+git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
+mv package/nas-packages/network/services/* package/nas-packages/
+rm -rf package/nas-packages/network
+
 
 rm -rf feeds/packages/net/{adguardhome,smartdns,tailscale}
 rm -rf feeds/luci/applications/{luci-app-alist,luci-app-smartdns}
@@ -82,10 +89,10 @@ git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages pac
 mv package/imm24pkg/net/frp package/frp
 rm -rf package/imm24pkg
 
-rm -rf feeds/luci/applications/luci-app-frpc
-git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci package/imm24luci
-mv package/imm24luci/applications/luci-app-frpc package/luci-app-frpc
-rm -rf package/imm24luci
+#rm -rf feeds/luci/applications/luci-app-frpc
+#git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci package/imm24luci
+#mv package/imm24luci/applications/luci-app-frpc package/luci-app-frpc
+#rm -rf package/imm24luci
 
 #git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
 #mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
