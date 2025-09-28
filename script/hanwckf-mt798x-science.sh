@@ -77,6 +77,15 @@ mv package/small-package/luci-app-lucky package/luci-app-lucky
 
 rm -rf package/small-package
 
+rm -rf feeds/packages/net/frp
+git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/imm24pkg
+mv package/imm24pkg/net/frp package/frp
+rm -rf package/imm24pkg
+
+rm -rf feeds/luci/applications/luci-app-frpc
+git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci package/imm24luci
+mv package/imm24luci/applications/luci-app-frpc package/luci-app-frpc
+rm -rf package/imm24luci
 
 #git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
 #mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
