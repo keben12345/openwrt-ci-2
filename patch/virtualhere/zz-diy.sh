@@ -34,7 +34,9 @@ sed -i '$a ./vhusbdarm64 -b' /etc/rc.local
 sed -i '$a exit 0' /etc/rc.local
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
+sed -i 's/:80/:53264/g' /etc/config/uhttpd
 
+/etc/init.d/uhttpd restart
 /etc/init.d/network restart
 # /etc/init.d/odhcpd restart
 # /etc/init.d/rpcd restart
