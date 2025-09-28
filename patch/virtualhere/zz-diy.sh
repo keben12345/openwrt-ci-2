@@ -10,7 +10,7 @@ uci set wireless.default_radio1.encryption='psk2'
 uci set wireless.default_radio1.key='11111111'
 uci set wireless.radio1.channel='auto'
 # uci set wireless.radio1.disabled=1
-#uci set network.lan.ipaddr='192.168.101.1'
+# uci set network.lan.ipaddr='192.168.101.1'
 uci set system.cfg01e48a.hostname=DSLR-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')
 
 # 设置所有网口可访问网页终端
@@ -25,7 +25,7 @@ sed -i 's/root::0:0:99999:7:::/root:$1$.E5ojRjg$TzUuYvfjrDI3Hcgfb8KXc.:0:0:99999
 sed -i 's/root:::0:99999:7:::/root:$1$.E5ojRjg$TzUuYvfjrDI3Hcgfb8KXc.:0:0:99999:7:::/g' /etc/shadow
 
 #wget -P /usr/sha/ https://testingcf.jsdelivr.net/gh/HiboyHiboy/opt-file/Advanced_Extensions_virtualhereasp
-mv /diy4me/virtualhere /usr/share/virtualhere
+mv /diy4me/vhusbdarm64 /usr/share/virtualhere
 mv /diy4me/virtualhere-config.ini /usr/share/config.ini
 chmod +x /usr/share/virtualhere
 echo > /etc/rc.local
