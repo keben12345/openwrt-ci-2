@@ -6,8 +6,8 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.86.1/g" $(find ./feeds/luci/modules/l
 #sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
 #sed -i 's/ImmortalWrt/WiFi/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 # sed -i 's#mirrors.vsean.net/openwrt#mirrors.pku.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
-mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
-mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-x86-1.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
+#mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
+mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-x86.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
@@ -44,12 +44,13 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
+git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-momo.git package/OpenWrt-momo
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth 1 https://github.com/Thaolga/openwrt-nekobox.git package/luci-app-nekobox
 #rm -rf feeds/packages/devel/gn
 
-
+git clone --depth 1 https://github.com/sbwml/luci-app-openlist2.git package/openlist2
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 git clone --depth 1 https://github.com/ilxp/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/luci-app-eqosplus
