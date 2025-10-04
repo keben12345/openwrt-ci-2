@@ -14,7 +14,9 @@ sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -i '/modem/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.2/targets/x86/64/kmods/6.6.93-1-c69323a377952557bd871e9f3c2e82ae' /etc/opkg/distfeeds.conf
+sed -i '/x86/d' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz targets_packages https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.3/targets/x86/64/packages' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.3/targets/x86/64/kmods/6.6.104-1-615f744fa1708941b4ef00bdfd1271a9' /etc/opkg/distfeeds.conf
 sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /etc/opkg/customfeeds.conf
 
 cp /etc/my-clash /etc/openclash/core/clash_meta
