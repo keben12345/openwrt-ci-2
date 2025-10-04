@@ -4,7 +4,7 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-
 #sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 #sed -i 's/ImmortalWrt/OpenWrt/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 #sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
-#mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-mt798x.sh package/base-files/files/etc/uci-defaults/zzz-diy.sh
+mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-mt798x.sh package/base-files/files/etc/uci-defaults/zzz-diy.sh
 
 #mkdir -p package/base-files/files/root
 #mv $GITHUB_WORKSPACE/patch/tiktok/open-32wifi.sh package/base-files/files/root/open-wifi.sh
