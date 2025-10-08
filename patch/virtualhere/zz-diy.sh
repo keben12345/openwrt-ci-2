@@ -10,7 +10,7 @@ uci set wireless.default_radio1.encryption='psk2'
 uci set wireless.default_radio1.key='11111111'
 uci set wireless.radio1.channel='auto'
 uci set wireless.radio1.htmode='HE160'
-uci set wireless.radio0.disabled=1
+# uci set wireless.radio0.disabled=1
 # uci set network.lan.ipaddr='192.168.101.1'
 uci set system.cfg01e48a.hostname=DSLR-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')
 
