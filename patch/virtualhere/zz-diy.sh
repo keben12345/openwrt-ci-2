@@ -37,8 +37,14 @@ chmod +x virtualhere
 exit 0
 EOF
 
+sed -i '/passwall/d' /etc/opkg/distfeeds.conf
+sed -i '/modem/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's/:80/:53264/g' /etc/config/uhttpd
+sed -i '/mediatek/d' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.3/targets/mediatek/filogic/kmods/6.6.104-1-3ca4b8cb2fcc3a2027e8496143a86cab' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz core https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.3/targets/mediatek/filogic/packages' /etc/opkg/distfeeds.conf
+
 
 /etc/init.d/uhttpd restart
 /etc/init.d/network restart
