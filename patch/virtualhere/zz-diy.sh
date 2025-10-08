@@ -1,15 +1,16 @@
 #!/bin/sh
 
 #uci set wireless.radio0.cell_density=0
-uci set wireless.default_radio0.ssid=WDSLR_2.4G_$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')
-uci set wireless.default_radio1.ssid=WDSLR_5G_$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')
+uci set wireless.default_radio0.ssid=WDSLR_$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')_2.4G
+uci set wireless.default_radio1.ssid=WDSLR_$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')_5G
 uci set wireless.default_radio0.encryption='psk2'
 uci set wireless.default_radio0.key='11111111'
 uci set wireless.radio0.channel='auto'
 uci set wireless.default_radio1.encryption='psk2'
 uci set wireless.default_radio1.key='11111111'
 uci set wireless.radio1.channel='auto'
-# uci set wireless.radio1.disabled=1
+uci set wireless.radio1.htmode='HE160'
+uci set wireless.radio0.disabled=1
 # uci set network.lan.ipaddr='192.168.101.1'
 uci set system.cfg01e48a.hostname=DSLR-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')
 
@@ -28,10 +29,13 @@ sed -i 's/root:::0:99999:7:::/root:$1$.E5ojRjg$TzUuYvfjrDI3Hcgfb8KXc.:0:0:99999:
 mv /diy4me/vhusbdarm64 /usr/share/virtualhere
 mv /diy4me/virtualhere-config.ini /usr/share/config.ini
 chmod +x /usr/share/virtualhere
-echo > /etc/rc.local
-sed -i '$a cd /usr/share' /etc/rc.local
-sed -i '$a ./vhusbdarm64 -b' /etc/rc.local
-sed -i '$a exit 0' /etc/rc.local
+
+cat << EOF > /etc/rc.local
+cd /usr/share
+chmod +x virtualhere
+./virtualhere -b
+exit 0
+EOF
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's/:80/:53264/g' /etc/config/uhttpd
