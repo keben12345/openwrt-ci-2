@@ -8,14 +8,15 @@ uci set dropbear.@dropbear[0].Interface=''
 
 uci commit
 
-uci del network.wan6
-uci del network.lan.ip6assign
+uci del dhcp.lan.ra
+uci del dhcp.lan.ra_slaac
+uci del dhcp.lan.dns_service
+uci del dhcp.lan.ra_flags
 uci del network.globals.ula_prefix
 uci del dhcp.lan.dhcpv6
 uci del dhcp.lan.ndp
-uci del dhcp.lan.ra
-uci del dhcp.lan.ra_default
-uci del dhcp.lan.ra_flags
+uci del network.wan6
+uci del network.lan.ip6assign
 
 uci commit dhcp
 uci commit network
