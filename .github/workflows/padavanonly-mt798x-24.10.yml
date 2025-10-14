@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x-6.6.git
+  REPO_URL: https://github.com/keben12345/immortalwrt-mt798x-24.10-1.git
   REPO_BRANCH: 2410
-  CONFIG_FILE: config/padavanonly-mt7986
+  CONFIG_FILE: config/padavanonly-mt7981-24.10
   DIY_SCRIPT: script/padavanonly-mt798x-24.10.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
