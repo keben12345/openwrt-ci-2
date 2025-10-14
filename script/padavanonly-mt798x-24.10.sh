@@ -60,11 +60,11 @@ mv package/small-package/luci-app-wrtbwmon package/luci-app-wrtbwmon
 rm -rf package/small-package
 
 # iStore
-git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
-git clone --depth 1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
-git clone --depth 1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
-mv package/nas-packages/network/services/* package/nas-packages/
-rm -rf package/nas-packages/network
+#git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
+#git clone --depth 1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
+#git clone --depth 1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
+#mv package/nas-packages/network/services/* package/nas-packages/
+#rm -rf package/nas-packages/network
 
 #git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/imm21-luci
 #mv package/imm21-luci/applications/luci-app-accesscontrol package/luci-app-accesscontrol
