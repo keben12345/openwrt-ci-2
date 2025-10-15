@@ -37,12 +37,12 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/p
 git clone --depth 1 https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 
 
-git clone --depth 1 https://github.com/destan19/OpenAppFilter.git  package/oaf
-git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
+#git clone --depth 1 https://github.com/destan19/OpenAppFilter.git  package/oaf
+#git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
 #mv package/kwrt-packages/uugamebooster package/uugamebooster
 #mv package/kwrt-packages/luci-app-uugamebooster package/luci-app-uugamebooster
-mv package/kwrt-packages/luci-app-pushbot package/luci-app-pushbot
-rm -rf package/kwrt-packages
+#mv package/kwrt-packages/luci-app-pushbot package/luci-app-pushbot
+#rm -rf package/kwrt-packages
 
 #sed -i "s/openwrt-\$(UU_ARCH)\/\$(PKG_VERSION)\/uu.tar.gz?/openwrt-\$(UU_ARCH)\/\$(PKG_VERSION)\//g" package/uugamebooster/Makefile
 #sed -i "s/\$(PKG_NAME)-\$(UU_ARCH)-\$(PKG_VERSION).tar.gz/uu.tar.gz/g" package/uugamebooster/Makefile
