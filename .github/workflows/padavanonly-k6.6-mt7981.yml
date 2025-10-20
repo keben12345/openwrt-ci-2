@@ -14,7 +14,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: padavanonly-k6.6-mt7981
+  FIRMWARE_TAG: padavanonly-k6.6-mt798x
   TZ: Asia/Shanghai
 
 jobs:
