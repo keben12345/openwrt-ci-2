@@ -86,7 +86,7 @@ rm -rf package/small-package
 
 rm -rf feeds/packages/net/frp
 git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/imm24pkg
-mv package/imm24pkg/net/frp package/frp
+mv package/imm24pkg/net/frp feeds/packages/net/frp
 rm -rf package/imm24pkg
 
 #rm -rf feeds/luci/applications/luci-app-frpc
