@@ -19,9 +19,9 @@ cp /etc/my-clash /etc/openclash/core/clash_meta
 uci set wireless.MT7986_1_2.htmode='HE80'
 uci set wireless.MT7986_1_2.channel='44'
 uci set wireless.default_MT7986_1_1.encryption=psk2+ccmp
-uci set wireless.default_MT7986_1_1.key=123456qwerty
+uci set wireless.default_MT7986_1_1.key=12345678
 uci set wireless.default_MT7986_1_2.encryption=psk2+ccmp
-uci set wireless.default_MT7986_1_2.key=123456qwerty
+uci set wireless.default_MT7986_1_2.key=12345678
 # 路由器cpu芯片
 router_cpu=MT7986
 
@@ -35,7 +35,7 @@ existed_wifi_num=0
 ssid=X60Pro
 
 # WiFi密码
-password=123456qwerty
+password=12345678
 
 # WiFi地址
 ipaddr=10.10.1.1
@@ -114,7 +114,7 @@ uci commit dhcp
 uci commit firewall
 
 # 重启服务
-echo -e "\n配置已完成！"
+
 /etc/init.d/network restart >/dev/null 2>&1
 /etc/init.d/firewall restart >/dev/null 2>&1
 /etc/init.d/dnsmasq restart >/dev/null 2>&1
