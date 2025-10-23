@@ -10,10 +10,10 @@ mv $GITHUB_WORKSPACE/patch/hanwckf/199-diy.sh package/base-files/files/etc/uci-d
 #mv $GITHUB_WORKSPACE/patch/hanwckf/mk/modules-netfilter.mk package/kernel/linux/modules/netfilter.mk
 #mv $GITHUB_WORKSPACE/patch/hanwckf/mk/include-netfilter.mk include/netfilter.mk
 
-#mkdir -p package/base-files/files/diy4me
-#mv $GITHUB_WORKSPACE/patch/hanwckf/passwall/mt798x-30wifi-closed.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
-#chmod +x package/base-files/files/etc/uci-defaults/zz-diy.sh
-#mv $GITHUB_WORKSPACE/patch/hanwckf/passwall/rules-pw2 package/base-files/files/diy4me/rules-pw2
+mkdir -p package/base-files/files/diy4me
+mv $GITHUB_WORKSPACE/patch/hanwckf/passwall/mt798x-30wifi-closed.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
+chmod +x package/base-files/files/etc/uci-defaults/zz-diy.sh
+mv $GITHUB_WORKSPACE/patch/hanwckf/passwall/rules-pw2 package/base-files/files/diy4me/rules-pw2
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
@@ -86,7 +86,7 @@ rm -rf package/small-package
 
 rm -rf feeds/packages/net/frp
 git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/imm24pkg
-mv package/imm24pkg/net/frp package/frp
+mv package/imm24pkg/net/frp feeds/packages/net/frp
 rm -rf package/imm24pkg
 
 #rm -rf feeds/luci/applications/luci-app-frpc
