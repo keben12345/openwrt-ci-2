@@ -73,7 +73,7 @@ jobs:
     - name: Clone Source Code(克隆源代码)
       run: |
         df -hT $GITHUB_WORKSPACE
-        git clone --depth=1 -b $REPO_BRANCH --single-branch $REPO_URL openwrt
+        git clone -b $REPO_BRANCH --single-branch $REPO_URL openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
@@ -120,6 +120,7 @@ jobs:
       run: |
         mv $CONFIG_FILE $OPENWRT_PATH/.config
         cd $OPENWRT_PATH
+        git checkout 84449c9
         make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
