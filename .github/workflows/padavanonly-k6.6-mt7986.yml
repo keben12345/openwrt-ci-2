@@ -94,6 +94,7 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
+        git checkout 560d8ff
         sed -i '1i src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git' feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
@@ -120,7 +121,7 @@ jobs:
       run: |
         mv $CONFIG_FILE $OPENWRT_PATH/.config
         cd $OPENWRT_PATH
-        git checkout 84449c9
+        
         make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
