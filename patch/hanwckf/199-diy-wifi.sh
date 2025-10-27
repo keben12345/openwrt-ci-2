@@ -32,7 +32,7 @@ increase_wifi_num=30
 existed_wifi_num=0
 
 # WiFi名称
-ssid=TB-idn
+ssid=X60Pro
 
 # WiFi密码
 password=12345678
