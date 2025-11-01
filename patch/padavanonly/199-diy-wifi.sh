@@ -8,13 +8,13 @@ uci set dropbear.@dropbear[0].Interface=''
 
 uci commit
 
-cat /diy4me/rules-pw2 >> /etc/config/passwall2
+#cat /diy4me/rules-pw2 >> /etc/config/passwall2
 sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -i '/Modem/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 sed -i '/filogic/d' /etc/opkg/distfeeds.conf
-echo > /etc/opkg/distfeeds.conf
+#echo > /etc/opkg/distfeeds.conf
 sed -i '$a src/gz openwrt_core https://mirrors.pku.edu.cn/immortalwrt/releases/24.10-SNAPSHOT/targets/mediatek/filogic/packages' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz openwrt_kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10-SNAPSHOT/targets/mediatek/filogic/kmods/6.6.95-1-3ca4b8cb2fcc3a2027e8496143a86cab' /etc/opkg/distfeeds.conf
 echo > /etc/opkg/customfeeds.conf
@@ -42,9 +42,9 @@ uci del dhcp.lan.ra
 uci set wireless.MT7986_1_2.htmode='HE80'
 uci set wireless.MT7986_1_2.channel='44'
 uci set wireless.default_MT7986_1_1.encryption=psk2+ccmp
-uci set wireless.default_MT7986_1_1.key=123456qwerty
+uci set wireless.default_MT7986_1_1.key=password
 uci set wireless.default_MT7986_1_2.encryption=psk2+ccmp
-uci set wireless.default_MT7986_1_2.key=123456qwerty
+uci set wireless.default_MT7986_1_2.key=password
 # 路由器cpu芯片
 router_cpu=MT7986
 
@@ -58,7 +58,7 @@ existed_wifi_num=0
 ssid=X60Pro
 
 # WiFi密码
-password=123456qwerty
+password=password
 
 # WiFi地址
 ipaddr=10.10.1.1
