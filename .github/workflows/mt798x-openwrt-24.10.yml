@@ -97,7 +97,10 @@ jobs:
       run: |
         cd $OPENWRT_PATH
         git checkout v24.10.4
+        sed -i '/routing/d' feeds.conf.default
         sed -i '1i src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git' feeds.conf.default
+        sed -i '1i src-git routing https://git.openwrt.org/feed/routing.git;openwrt-24.10' feeds.conf.default
+        
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
