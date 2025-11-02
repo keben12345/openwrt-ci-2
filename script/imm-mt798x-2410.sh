@@ -1,10 +1,11 @@
-sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/192.168.18.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.18.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 #sed -i 's/ImmortalWrt/TikTok/g' package/base-files/files/bin/config_generate
 #sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 #sed -i 's/ImmortalWrt/OpenWrt/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 #sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
-mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-mt798x.sh package/base-files/files/etc/uci-defaults/zzz-diy.sh
+mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-mt798x.sh package/base-files/files/etc/uci-defaults/zz-111diy.sh
+mv $GITHUB_WORKSPACE/patch/tiktok/open-32wifi.sh package/base-files/files/etc/uci-defaults/zz-222wifi.sh
 
 #mkdir -p package/base-files/files/root
 #mv $GITHUB_WORKSPACE/patch/tiktok/open-32wifi.sh package/base-files/files/root/open-wifi.sh
@@ -14,10 +15,11 @@ mv $GITHUB_WORKSPACE/patch/immortalwrt-24.10/199-mt798x.sh package/base-files/fi
 #mv $GITHUB_WORKSPACE/patch/tiktok/imm24-mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 #mv $GITHUB_WORKSPACE/patch/tiktok/199-diy.sh package/base-files/files/etc/uci-defaults/zzz-diy.sh
 
+mkdir -p package/base-files/files/etc/openclash/core
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
     tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
-    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
+    mv package/base-files/files/etc/clash package/base-files/files/etc/openclash/core/clash_meta
     rm -rf package/openclash-core
 fi
 
