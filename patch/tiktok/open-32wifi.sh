@@ -1,12 +1,13 @@
 #!/bin/sh
 
+
 # 新增WiFi数量
 increase_wifi_num=32
 # 除去默认，原本有几个WiFi
 existed_wifi_num=0
 
 # WiFi名称
-ssid=TikTok
+ssid=1
 
 # WiFi密码
 password=123123123
@@ -16,6 +17,9 @@ ipaddr=10.10.101.1
 
 # 是否保留默认WiFi
 keep_default_wifi=no
+uci del wireless.default_radio0
+uci del wireless.default_radio1
+
 # 单频WiFi芯片支持的最大WiFi数量
 # mt798x系列为16，ipq系列为8
 max_wifi_num=16
@@ -56,10 +60,10 @@ for i in $(seq $((existed_wifi_num + 1)) $total_wifi); do
 
     # 根据序号选择wireless设备
     if [ $i -le $final_max_wifi_num ]; then
-        wireless_dev="radio0"
+        wireless_dev="radio1"
 		network_dev="5GAP"
     else
-        wireless_dev="radio1"
+        wireless_dev="radio0"
 		network_dev="2.4GAP"
     fi
 
