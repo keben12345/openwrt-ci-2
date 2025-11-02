@@ -3,8 +3,7 @@ name: mt798x-immortalwrt-24.10
 # Add a button to trigger the workflow
 on:
   workflow_dispatch:
-  schedule:
-    - cron: 0 22 * * *
+
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
