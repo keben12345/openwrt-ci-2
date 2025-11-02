@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # 新增WiFi数量
-increase_wifi_num=15
+increase_wifi_num=32
 # 除去默认，原本有几个WiFi
 existed_wifi_num=0
 
@@ -9,13 +9,13 @@ existed_wifi_num=0
 ssid=TikTok
 
 # WiFi密码
-password=123456789
+password=123123123
 
 # WiFi接口地址
-ipaddr=10.10.1.1
+ipaddr=10.10.101.1
 
 # 是否保留默认WiFi
-keep_default_wifi=yes
+keep_default_wifi=no
 # 单频WiFi芯片支持的最大WiFi数量
 # mt798x系列为16，ipq系列为8
 max_wifi_num=16
@@ -67,7 +67,7 @@ for i in $(seq $((existed_wifi_num + 1)) $total_wifi); do
     uci set wireless.wifinet${wifinet_num}=wifi-iface
     uci set wireless.wifinet${wifinet_num}.device="$wireless_dev"
     uci set wireless.wifinet${wifinet_num}.mode='ap'
-    uci set wireless.wifinet${wifinet_num}.ssid="${ssid}-${wifi_id}"
+    uci set wireless.wifinet${wifinet_num}.ssid="${ssid}${wifi_id}"
     uci set wireless.wifinet${wifinet_num}.encryption='psk2+ccmp'
     uci set wireless.wifinet${wifinet_num}.key="$password"
     uci set wireless.wifinet${wifinet_num}.ifname="${network_dev}${wifi_id}"
@@ -109,14 +109,6 @@ uci commit network
 uci commit dhcp
 uci commit firewall
 
-# 显示配置摘要
-
-echo -e "\n\n--------------------------------------------"
-echo "配置摘要："
-echo "  WiFi总数量: $total_wifi 个"
-echo "  WiFi密码: $password"
-echo "  IP地址段: ${a}.${b}.x.${d}（x从 ${c} 到 $total_wifi）"
-echo "--------------------------------------------"
 
 # 重启服务
 echo -e "\n配置已完成！"
