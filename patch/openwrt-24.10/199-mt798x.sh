@@ -28,28 +28,27 @@ uci set dropbear.@dropbear[0].Interface=''
 uci commit
 
 sed -i '/modem/d' /etc/opkg/distfeeds.conf
+sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
-#sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz kmods http://downloads.openwrt.org/releases/24.10.0/targets/mediatek/filogic/kmods/6.6.73-1-d649d775435da5a8637f7a955a80d331' /etc/opkg/distfeeds.conf
-sed -i '$a #src/gz opkg https://opkg.888608.xyz/openwrt-24.10/aarch64_cortex-a53' /etc/opkg/customfeeds.conf
+sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
+sed -i '/filogic/d' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.4/targets/mediatek/filogic/kmods/6.6.110-1-6a9e125268c43e0bae8cecb014c8ab03' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz filogicpkg https://mirrors.pku.edu.cn/openwrt/releases/24.10.4/targets/mediatek/filogic/packages' /etc/opkg/distfeeds.conf
+echo > /etc/opkg/customfeeds.conf
+sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/releases/24.10/packages/aarch64_cortex-a53/kiddin9' /etc/opkg/customfeeds.conf
+#sed -i '$a #src/gz opkg https://opkg.888608.xyz/openwrt-24.10/aarch64_cortex-a53' /etc/opkg/customfeeds.conf
 sed -i 's/https/http/g' /etc/opkg/distfeeds.conf
 
-OPENCLASH_FILE="/etc/config/openclash"
-if [ -f "$OPENCLASH_FILE" ]; then
-    mv /etc/my-clash /etc/openclash/core/clash_meta
-fi
+cp /etc/my-clash /etc/openclash/core/clash_meta
 
 # wifi设置
-uci set wireless.default_radio0.ssid=CUDY
-uci set wireless.default_radio1.ssid=CUDY-5G
-uci set wireless.default_radio0.encryption=psk2+ccmp
-uci set wireless.default_radio1.encryption=psk2+ccmp
-uci set wireless.default_radio0.key=XLNB6666
-uci set wireless.default_radio1.key=XLNB6666
+uci set wireless.default_radio0.ssid=OpenWrt-2.4G
+uci set wireless.default_radio1.ssid=OpenWrt-5G
+#uci set wireless.default_radio0.encryption=psk2+ccmp
+#uci set wireless.default_radio1.encryption=psk2+ccmp
+#uci set wireless.default_radio0.key=password
+#uci set wireless.default_radio1.key=password
 uci commit wireless
-uci set network.lan.netmask='255.0.0.0'
-uci commit network
-uci commit
 
 #uci commit dhcp
 #uci commit network

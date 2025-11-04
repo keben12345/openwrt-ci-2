@@ -14,8 +14,8 @@ sed -i '/modem/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 sed -i '/mediatek/d' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.3/targets/mediatek/filogic/kmods/6.6.104-1-3ca4b8cb2fcc3a2027e8496143a86cab' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz core https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.3/targets/mediatek/filogic/packages' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.4/targets/mediatek/filogic/kmods/6.6.110-1-927b5064be0608a0f5695442c79b0938' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz core https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.4/targets/mediatek/filogic/packages' /etc/opkg/distfeeds.conf
 
 #echo > /etc/opkg/distfeeds.conf
 #sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.2/targets/mediatek/filogic/kmods/6.6.93-1-2ccac7a75355327cb6dfb4df1ecb575e' /etc/opkg/distfeeds.conf
@@ -27,13 +27,13 @@ sed -i '$a src/gz core https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.3/t
 #sed -i '$a src/gz openwrt_telephony https://mirrors.pku.edu.cn/openwrt/releases/24.10.2/packages/aarch64_cortex-a53/telephony' /etc/opkg/distfeeds.conf
 #sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_cortex-a53/kiddin9' /etc/opkg/customfeeds.conf
 
-cp /etc/my-clash /etc/openclash/core/clash_meta
+#cp /etc/my-clash /etc/openclash/core/clash_meta
 #chmod +x /root/open-wifi.sh
 
-uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
-uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
-uci commit wireless
-uci commit
+#uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
+#uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
+#uci commit wireless
+#uci commit
 
-/etc/init.d/network restart >/dev/null 2>&1
+#/etc/init.d/network restart >/dev/null 2>&1
 exit 0

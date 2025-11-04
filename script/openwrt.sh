@@ -1,5 +1,5 @@
-sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.0.0.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-mt798x.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
 sed -i 's/${defaults ? 0 : 1}/0/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
@@ -11,13 +11,13 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
 fi
 
 #tr3000大分区112m
-sed -i 's/0x4000000/0x7000000/g' target/linux/mediatek/dts/mt7981b-cudy-tr3000-v1.dts
+#sed -i 's/0x4000000/0x7000000/g' target/linux/mediatek/dts/mt7981b-cudy-tr3000-v1.dts
 
 #完全删除luci版本
-#sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #添加编译日期
-#sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
-#sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
+sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
+sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
 
 # iStore
@@ -28,11 +28,10 @@ mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
 
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
 #find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 #find ./ | grep Makefile | grep mosdns | xargs rm -f
 rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
-rm -rf feeds/packages/net/{chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
@@ -41,16 +40,17 @@ git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
 
+git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/luci-app-eqosplus
 
-git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/imm21-luci
-mv package/imm21-luci/applications/luci-app-filetransfer package/luci-app-filetransfer
+#git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/imm21-luci
+#mv package/imm21-luci/applications/luci-app-filetransfer package/luci-app-filetransfer
 #sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-accesscontrol/Makefile
-sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-filetransfer/Makefile
+#sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-filetransfer/Makefile
 #sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-v2ray-server/Makefile
-mv package/imm21-luci/libs/luci-lib-fs package/luci-lib-fs
-rm -rf package/imm21-luci
+#mv package/imm21-luci/libs/luci-lib-fs package/luci-lib-fs
+#rm -rf package/imm21-luci
